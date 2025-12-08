@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Career Advancement Preparation – Final Hub</title>
+  <style>
+    :root {
+      --bg: #050816;
+      --ink: #e5e7eb;
+      --ink-dim: #9ca3af;
+      --brand: #60a5fa;
+      --brand-2: #22d3ee;
+      --accent-1: #a855f7;
+      --accent-2: #34d399;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font: 16px/1.6 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+      color: var(--ink);
+      background:
+        radial-gradient(ellipse 1400px 800px at 20% -5%, rgba(96,165,250,0.2) 0%, transparent 55%),
+        radial-gradient(ellipse 1100px 650px at 80% 0%, rgba(168,85,247,0.16) 0%, transparent 55%),
+        radial-gradient(ellipse 1000px 650px at 40% 100%, rgba(45,212,191,0.14) 0%, transparent 55%),
+        var(--bg);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 96px 12px 32px;
+      transition: background .35s ease, color .35s ease;
+    }
+
+    /* Top bar */
+    .nav-shell {
+      position: fixed;
+      top: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(1320px, 100% - 32px);
+      z-index: 30;
+    }
+
+    .top-nav {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 10px 20px;
+      border-radius: 999px;
+      background:
+        radial-gradient(circle at 0 0, rgba(96,165,250,0.35), transparent 65%),
+        linear-gradient(135deg, rgba(15,23,42,0.97), rgba(15,23,42,0.94));
+      border: 1px solid rgba(148,163,253,0.6);
+      box-shadow: 0 18px 40px rgba(15,23,42,0.9);
+      backdrop-filter: blur(18px);
+    }
+
+    .nav-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.9);
+      border: 1px solid rgba(52,211,153,0.6);
+      font-size: 11px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--ink-dim);
+      white-space: nowrap;
+    }
+
+    .nav-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: radial-gradient(circle, #22c55e 0, #166534 55%, transparent 70%);
+      box-shadow: 0 0 0 4px rgba(34,197,94,0.35);
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-left: 8px;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      font-size: 13px;
+      padding: 6px 13px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      color: var(--ink-dim);
+      background: transparent;
+      transition: all .22s ease;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+
+    .nav-link:hover {
+      color: var(--ink);
+      border-color: rgba(148,163,253,0.7);
+      background: radial-gradient(circle at 0 0, rgba(148,163,253,0.25), transparent 60%);
+    }
+
+    .nav-link.is-active {
+      background: linear-gradient(135deg, #3b82f6, #06b6d4);
+      color: #020617;
+      font-weight: 600;
+      box-shadow: 0 10px 24px rgba(37,99,235,0.8);
+      border-color: transparent;
+    }
+
+    .spacer { flex: 1; }
+
+    .theme-chip {
+      padding: 7px 13px;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,253,0.75);
+      background: linear-gradient(135deg, rgba(15,23,42,0.95), rgba(15,23,42,0.9));
+      color: var(--ink);
+      font-size: 13px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      user-select: none;
+      transition: all .22s ease;
+      box-shadow: 0 10px 26px rgba(15,23,42,0.9);
+    }
+
+    .theme-chip span:first-child {
+      font-size: 16px;
+    }
+
+    .theme-chip:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 34px rgba(15,23,42,1);
+      border-color: rgba(129,140,248,0.95);
+      background: linear-gradient(135deg, rgba(30,64,175,0.98), rgba(15,23,42,0.92));
+    }
+
+    /* Main layout */
+    .main-shell {
+      width: min(1320px, 100% - 32px);
+    }
+
+    .hub-panel,
+    .frame-panel {
+      border-radius: 26px;
+      background:
+        radial-gradient(circle at 0 0, rgba(96,165,250,0.22), transparent 65%),
+        linear-gradient(145deg, rgba(15,23,42,0.98), rgba(15,23,42,0.95));
+      border: 1px solid rgba(148,163,253,0.6);
+      box-shadow:
+        0 22px 60px rgba(15,23,42,0.95),
+        0 0 0 1px rgba(15,23,42,0.85);
+      padding: 28px 26px 26px;
+      backdrop-filter: blur(26px);
+    }
+
+    .frame-panel {
+      padding: 0;
+      overflow: hidden;
+      display: none;
+      height: calc(100vh - 128px);
+      min-height: 420px;
+    }
+
+    #pageFrame {
+      width: 100%;
+      height: 100%;
+      border: none;
+      border-radius: 28px;
+      background: #020617;
+    }
+
+    .eyebrow {
+      font-size: 12px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--ink-dim);
+      margin-bottom: 6px;
+      text-align: center;
+    }
+
+    .hero-title {
+      margin: 0 0 8px;
+      font-size: clamp(30px, 3.1vw, 40px);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      text-align: center;
+      background: linear-gradient(135deg, #ffffff, #c4d2ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 10px 32px rgba(15,23,42,1);
+    }
+
+    .hero-subtitle {
+      margin: 0;
+      font-size: 15px;
+      color: var(--ink-dim);
+      text-align: center;
+      max-width: 680px;
+      margin-inline: auto;
+    }
+
+    .hero-subtitle span {
+      color: var(--brand-2);
+      font-weight: 600;
+    }
+
+    .hub-grid {
+      margin-top: 28px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+    }
+
+    .hub-card {
+      border-radius: 24px;
+      padding: 18px 18px 16px;
+      border: 1px solid rgba(148,163,253,0.65);
+      background:
+        radial-gradient(circle at 0 0, rgba(148,163,253,0.32), transparent 65%),
+        linear-gradient(135deg, rgba(15,23,42,0.98), rgba(15,23,42,0.94));
+      box-shadow: 0 18px 40px rgba(15,23,42,0.95);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .hub-card.wide {
+      grid-column: 1 / -1;
+      background:
+        radial-gradient(circle at 0 0, rgba(251,191,36,0.4), transparent 65%),
+        linear-gradient(135deg, rgba(15,23,42,0.98), rgba(15,23,42,0.94));
+      border-color: rgba(250,204,21,0.9);
+      box-shadow:
+        0 18px 42px rgba(15,23,42,1),
+        0 0 0 1px rgba(250,204,21,0.3);
+    }
+
+    .hub-card-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 4px;
+    }
+
+    .hub-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      background: radial-gradient(circle at 30% 0, #fbbf24, #f97316);
+      box-shadow: 0 8px 18px rgba(251,191,36,0.7);
+    }
+
+    .hub-card.wide .hub-icon {
+      background: radial-gradient(circle at 30% 0, #facc15, #f97316);
+      box-shadow: 0 10px 22px rgba(250,204,21,0.9);
+    }
+
+    .hub-title {
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .hub-pill {
+      margin-left: auto;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,253,0.7);
+      background: rgba(15,23,42,0.9);
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--ink-dim);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .hub-pill span:last-child { font-size: 13px; }
+
+    .hub-body {
+      font-size: 14px;
+      color: var(--ink-dim);
+      margin-bottom: 10px;
+    }
+
+    .hub-footer-row {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: auto;
+    }
+
+    .hub-btn {
+      border-radius: 999px;
+      border: 1px solid rgba(96,165,250,0.9);
+      background: linear-gradient(135deg, #2563eb, #06b6d4);
+      padding: 7px 14px;
+      font-size: 13px;
+      color: #020617;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      box-shadow: 0 10px 26px rgba(37,99,235,0.85);
+      transition: all .22s ease;
+    }
+
+    .hub-btn span:last-child { font-size: 14px; }
+
+    .hub-btn:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.05);
+    }
+
+    .hub-card.wide .hub-btn {
+      background: linear-gradient(135deg, #facc15, #f97316);
+      border-color: rgba(245,158,11,0.95);
+      box-shadow: 0 10px 30px rgba(245,158,11,0.85);
+      color: #111827;
+    }
+
+    .hub-footer-note {
+      margin-top: 20px;
+      font-size: 12px;
+      color: var(--ink-dim);
+      text-align: right;
+      opacity: 0.9;
+    }
+
+    /* Light theme */
+    body.light {
+      --bg: #f7f9ff;
+      --ink: #0f172a;
+      --ink-dim: #4b5563;
+      background:
+        radial-gradient(ellipse 1400px 800px at 20% -5%, rgba(96,165,250,0.18) 0%, transparent 55%),
+        radial-gradient(ellipse 1100px 650px at 80% 0%, rgba(196,181,253,0.18) 0%, transparent 55%),
+        #e5edff;
+      color-scheme: light;
+    }
+
+    body.light .top-nav {
+      background:
+        radial-gradient(circle at 0 0, rgba(191,219,254,0.9), transparent 65%),
+        linear-gradient(135deg, #ffffff, #e5edff);
+      border-color: rgba(148,163,253,0.9);
+      box-shadow:
+        0 18px 40px rgba(148,163,253,0.6),
+        0 0 0 1px rgba(191,219,254,0.9);
+    }
+
+    body.light .nav-brand {
+      background: linear-gradient(135deg, #eff6ff, #e0f2fe);
+      color: #111827;
+      border-color: rgba(34,197,94,0.8);
+    }
+
+    body.light .nav-link { color: #4b5563; }
+    body.light .nav-link:hover {
+      color: #111827;
+      background: rgba(191,219,254,0.9);
+      border-color: rgba(148,163,253,1);
+    }
+
+    body.light .nav-link.is-active {
+      color: #020617;
+      background: linear-gradient(135deg, #2563eb, #0ea5e9);
+      box-shadow: 0 10px 26px rgba(37,99,235,0.85);
+    }
+
+    body.light .theme-chip {
+      background: linear-gradient(135deg, #ffffff, #e5edff);
+      color: #111827;
+      border-color: rgba(148,163,253,0.95);
+      box-shadow: 0 10px 26px rgba(148,163,253,0.65);
+    }
+
+    body.light .theme-chip:hover {
+      background: linear-gradient(135deg, #e0e7ff, #dbeafe);
+    }
+
+    body.light .hub-panel,
+    body.light .frame-panel {
+      background:
+        radial-gradient(circle at 0 0, rgba(191,219,254,0.9), transparent 65%),
+        linear-gradient(145deg, #ffffff, #e5edff);
+      border-color: rgba(148,163,253,0.95);
+      box-shadow:
+        0 22px 46px rgba(148,163,253,0.6),
+        0 0 0 1px rgba(191,219,254,0.9);
+    }
+
+    body.light .hero-title {
+      background: linear-gradient(135deg, #0f172a, #1d4ed8);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 6px 20px rgba(148,163,253,0.9);
+    }
+
+    body.light .hero-subtitle { color: #111827; }
+
+    body.light .hub-card {
+      background:
+        radial-gradient(circle at 0 0, rgba(191,219,254,0.9), transparent 65%),
+        linear-gradient(135deg, #ffffff, #e5edff);
+      border-color: rgba(148,163,253,0.95);
+      box-shadow:
+        0 16px 32px rgba(148,163,253,0.6),
+        0 0 0 1px rgba(191,219,254,0.9);
+    }
+
+    body.light .hub-card.wide {
+      background:
+        radial-gradient(circle at 0 0, rgba(254,240,138,0.95), transparent 65%),
+        linear-gradient(135deg, #fefce8, #fef3c7);
+      border-color: rgba(250,204,21,0.95);
+      box-shadow:
+        0 18px 38px rgba(250,204,21,0.7),
+        0 0 0 1px rgba(253,224,71,0.8);
+    }
+
+    body.light .hub-body { color: #111827; }
+    body.light .hub-footer-note { color: #4b5563; }
+
+    @media (max-width: 900px) {
+      body { padding-top: 96px; }
+      .top-nav {
+        flex-wrap: wrap;
+        row-gap: 8px;
+      }
+      .nav-links {
+        width: 100%;
+        justify-content: flex-start;
+        order: 3;
+      }
+      .spacer { display: none; }
+      .frame-panel { height: calc(100vh - 136px); }
+    }
+
+    @media (max-width: 640px) {
+      .hub-panel { padding: 22px 18px 20px; }
+      .hero-subtitle { text-align: left; margin-inline: 0; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Top navigation bar -->
+  <div class="nav-shell">
+    <div class="top-nav">
+      <div class="nav-brand">
+        <span class="nav-dot"></span>
+        CIS 4860 · CAREER ADVANCEMENT PREPARATION
+      </div>
+      <div class="nav-links">
+        <button class="nav-link is-active" data-view="hub" type="button">Hub</button>
+        <button class="nav-link" data-view="charter" type="button">Project Charter</button>
+        <button class="nav-link" data-view="status" type="button">Status Reports</button>
+        <button class="nav-link" data-view="closure" type="button">Closure</button>
+        <button class="nav-link" data-view="interview" type="button">Interview</button>
+        <button class="nav-link" data-view="star" type="button">STAR Stories</button>
+      </div>
+      <div class="spacer"></div>
+      <button id="themeToggle" class="theme-chip" type="button">
+        <span>🎨</span>
+        <span>Toggle Theme</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="main-shell">
+    <!-- Hub View -->
+    <section class="hub-panel" id="hubPanel">
+      <div class="eyebrow">CIS 4860 · Managing Information Systems Projects</div>
+      <h1 class="hero-title">Career Advancement Preparation Hub</h1>
+      <p class="hero-subtitle">
+        Select a section below to open the project overview, <span>status reports</span>,
+        closure document, interview, and <span>STAR stories</span> inside this page.
+      </p>
+
+      <div class="hub-grid">
+        <!-- Project Overview -->
+        <article class="hub-card">
+          <div class="hub-card-header">
+            <div class="hub-icon">📋</div>
+            <div class="hub-title">Project Overview</div>
+            <div class="hub-pill"><span>OPEN</span><span>↗</span></div>
+          </div>
+          <p class="hub-body">
+            View the main Career Advancement Preparation project charter with mission, vision,
+            scope, roadmap, and stakeholder analysis.
+          </p>
+          <div class="hub-footer-row">
+            <button class="hub-btn" data-open="charter" type="button">
+              <span>Open Charter</span>
+              <span>↗</span>
+            </button>
+          </div>
+        </article>
+
+        <!-- Status Reports -->
+        <article class="hub-card">
+          <div class="hub-card-header">
+            <div class="hub-icon">📈</div>
+            <div class="hub-title">Status Reports</div>
+            <div class="hub-pill"><span>WEEKLY</span></div>
+          </div>
+          <p class="hub-body">
+            Review weekly progress, risks, accomplishments, and plans that track how the project
+            moved from planning to completion over the semester.
+          </p>
+          <div class="hub-footer-row">
+            <button class="hub-btn" data-open="status" type="button">
+              <span>View Reports</span>
+              <span>↗</span>
+            </button>
+          </div>
+        </article>
+
+        <!-- Closure -->
+        <article class="hub-card">
+          <div class="hub-card-header">
+            <div class="hub-icon">✅</div>
+            <div class="hub-title">Closure Document</div>
+            <div class="hub-pill"><span>FINAL</span></div>
+          </div>
+          <p class="hub-body">
+            See the final project closure summary, outcomes, sign-offs, and lessons learned that
+            capture how the Career Advancement Preparation project wrapped up.
+          </p>
+          <div class="hub-footer-row">
+            <button class="hub-btn" data-open="closure" type="button">
+              <span>Open Closure</span>
+              <span>↗</span>
+            </button>
+          </div>
+        </article>
+
+        <!-- Interview -->
+        <article class="hub-card">
+          <div class="hub-card-header">
+            <div class="hub-icon">🎤</div>
+            <div class="hub-title">Interview</div>
+            <div class="hub-pill"><span>INSIGHTS</span></div>
+          </div>
+          <p class="hub-body">
+            Read the stakeholder interview summary with Joseph Cortez, Senior Controls and
+            Automation Engineer, and the key insights he shared about project management,
+            organization, and career development.
+          </p>
+          <div class="hub-footer-row">
+            <button class="hub-btn" data-open="interview" type="button">
+              <span>View Interview</span>
+              <span>↗</span>
+            </button>
+          </div>
+        </article>
+
+        <!-- STAR Stories -->
+        <article class="hub-card wide">
+          <div class="hub-card-header">
+            <div class="hub-icon">⭐</div>
+            <div class="hub-title">STAR Stories Collection</div>
+            <div class="hub-pill"><span>READY TO USE</span></div>
+          </div>
+          <p class="hub-body">
+            Access six STAR stories that highlight collaboration, problem-solving, quality,
+            complexity, stewardship, and time management from your MIS, AWS, and CIS coursework.
+          </p>
+          <div class="hub-footer-row">
+            <button class="hub-btn" data-open="star" type="button">
+              <span>Open STAR Stories</span>
+              <span>↗</span>
+            </button>
+          </div>
+        </article>
+      </div>
+
+      <div class="hub-footer-note">
+        Use the navigation bar or the buttons above to switch between sections. Content opens
+        inside this page so the navigation bar always stays visible.
+      </div>
+    </section>
+
+    <!-- Iframe View -->
+    <section class="frame-panel" id="framePanel" aria-label="Embedded page">
+      <iframe id="pageFrame" title="Project section"></iframe>
+    </section>
+  </div>
+
+  <script>
+    // Theme handling
+    const body = document.body;
+    const themeToggle = document.getElementById('themeToggle');
+    const savedTheme = localStorage.getItem('cap-nav-theme');
+    if (savedTheme === 'light') {
+      body.classList.add('light');
+    }
+
+    themeToggle.addEventListener('click', () => {
+      body.classList.toggle('light');
+      const mode = body.classList.contains('light') ? 'light' : 'dark';
+      localStorage.setItem('cap-nav-theme', mode);
+    });
+
+    // Navigation between Hub + iframe pages
+    const navLinks = document.querySelectorAll('.nav-link');
+    const hubPanel = document.getElementById('hubPanel');
+    const framePanel = document.getElementById('framePanel');
+    const frame = document.getElementById('pageFrame');
+
+    const pageMap = {
+      charter: 'index.html',
+      status: 'status_reports_fixed_dark_light.html',
+      closure: 'closure_document.html',
+      interview: 'interview_joseph_cortez_v2.html',
+      star: 'star_stories_page.html'
+    };
+
+    function setActiveNav(view) {
+      navLinks.forEach(link => {
+        if (link.dataset.view === view) {
+          link.classList.add('is-active');
+        } else {
+          link.classList.remove('is-active');
+        }
+      });
+    }
+
+    function showHub() {
+      setActiveNav('hub');
+      hubPanel.style.display = 'block';
+      framePanel.style.display = 'none';
+    }
+
+    function showPage(viewKey) {
+      const src = pageMap[viewKey];
+      if (!src) return;
+      setActiveNav(viewKey);
+      hubPanel.style.display = 'none';
+      framePanel.style.display = 'block';
+      if (frame.getAttribute('src') !== src) {
+        frame.setAttribute('src', src);
+      }
+    }
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        const view = link.dataset.view;
+        if (view === 'hub') {
+          showHub();
+        } else {
+          showPage(view);
+        }
+      });
+    });
+
+    // Buttons in hub cards
+    document.querySelectorAll('.hub-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const view = btn.dataset.open;
+        if (view === 'hub') {
+          showHub();
+        } else {
+          showPage(view);
+        }
+      });
+    });
+
+    // Start on Hub
+    showHub();
+  </script>
+</body>
+</html>
