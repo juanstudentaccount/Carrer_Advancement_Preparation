@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Career Advancement Preparation - Project Closure</title>
+  <style>
+    :root {
+      --bg: #0a0e1a;
+      --card: #0f152b;
+      --muted: #1d2543;
+      --ink: #e7eaf7;
+      --ink-dim: #b9bfd7;
+      --brand: #5b8cff;
+      --brand-2: #8ae6ff;
+      --accent-1: #a78bfa;
+      --accent-2: #34d399;
+      --radius: 22px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font: 16px/1.7 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+      color: var(--ink);
+      background:
+        radial-gradient(ellipse 1400px 800px at 20% -5%, rgba(91,140,255,0.22) 0, transparent 55%),
+        radial-gradient(ellipse 1200px 700px at 80% 0%, rgba(167,139,250,0.18) 0, transparent 55%),
+        radial-gradient(ellipse 1000px 600px at 50% 100%, rgba(52,211,153,0.12) 0, transparent 55%),
+        var(--bg);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      transition: background .35s ease, color .35s ease;
+    }
+
+    .page-shell {
+      width: 100%;
+      max-width: 1200px;
+      border-radius: 32px;
+      background: linear-gradient(145deg, rgba(255,255,255,0.06), rgba(15,21,43,0.96));
+      border: 1px solid rgba(91,140,255,0.35);
+      box-shadow:
+        0 32px 80px rgba(0,0,0,0.75),
+        0 0 0 1px rgba(15,23,42,0.7);
+      overflow: hidden;
+      backdrop-filter: blur(26px);
+      position: relative;
+      padding: 32px 32px 40px;
+    }
+
+    .page-shell::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 10% 0%, rgba(148,163,253,0.22) 0, transparent 55%),
+        radial-gradient(circle at 90% 0%, rgba(52,211,153,0.16) 0, transparent 50%);
+      mix-blend-mode: screen;
+      opacity: 0.8;
+      pointer-events: none;
+    }
+
+    .page-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .top-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .badge {
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,253,0.6);
+      background: radial-gradient(circle at 0 0, rgba(148,163,253,0.4), transparent 60%);
+      font-size: 12px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--ink-dim);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #22c55e 0, #166534 55%, transparent 70%);
+      box-shadow: 0 0 0 4px rgba(34,197,94,0.35);
+    }
+
+    .spacer { flex: 1; }
+
+    .chip {
+      padding: 9px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,253,0.6);
+      background: linear-gradient(135deg, rgba(15,23,42,0.9), rgba(15,23,42,0.7));
+      color: var(--ink);
+      font-size: 13px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      user-select: none;
+      transition: all .25s ease;
+      box-shadow: 0 8px 24px rgba(15,23,42,0.7);
+      backdrop-filter: blur(16px);
+    }
+
+    .chip span { font-size: 16px; }
+
+    .chip:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 36px rgba(15,23,42,0.9);
+      border-color: rgba(129,140,248,0.9);
+      background: linear-gradient(135deg, rgba(30,64,175,0.95), rgba(15,23,42,0.9));
+    }
+
+    header.page-header {
+      text-align: left;
+      margin-bottom: 20px;
+    }
+
+    .page-title {
+      margin: 0 0 4px;
+      font-size: clamp(30px, 2.8vw, 38px);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      background: linear-gradient(135deg, #ffffff, #c4d2ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 8px 28px rgba(15,23,42,0.9);
+    }
+
+    .page-subtitle {
+      margin: 0;
+      font-size: 16px;
+      color: var(--ink-dim);
+      max-width: 760px;
+    }
+
+    .page-subtitle span {
+      color: var(--brand-2);
+      font-weight: 600;
+    }
+
+    .sections {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      margin-top: 22px;
+    }
+
+    .section-card {
+      border-radius: 20px;
+      padding: 18px 20px 16px;
+      background:
+        radial-gradient(circle at 0 0, rgba(148,163,253,0.22), transparent 60%),
+        linear-gradient(145deg, rgba(15,23,42,0.96), rgba(10,16,36,0.96));
+      border: 1px solid rgba(129,140,248,0.7);
+      box-shadow:
+        0 14px 38px rgba(15,23,42,0.9),
+        0 0 0 1px rgba(15,23,42,0.9);
+    }
+
+    .section-card h2 {
+      margin: 0 0 6px;
+      font-size: 18px;
+      letter-spacing: -0.01em;
+    }
+
+    .section-card h3 {
+      margin: 10px 0 4px;
+      font-size: 15px;
+      text-transform: none;
+    }
+
+    .section-card p {
+      margin: 4px 0 8px;
+      font-size: 14px;
+      color: var(--ink);
+    }
+
+    .section-card ul {
+      margin: 4px 0 8px 1.2rem;
+      padding-left: 1rem;
+      font-size: 14px;
+    }
+
+    .section-card li {
+      margin-bottom: 3px;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 8px 18px;
+      font-size: 14px;
+    }
+
+    .info-label {
+      font-weight: 600;
+      color: var(--brand-2);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+      font-size: 13px;
+    }
+
+    th, td {
+      border: 1px solid rgba(148,163,253,0.5);
+      padding: 6px 8px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: rgba(15,23,42,0.9);
+      color: #e5e7eb;
+      font-weight: 600;
+    }
+
+    td {
+      background: rgba(15,23,42,0.5);
+    }
+
+    .signoff-list, .names-list {
+      list-style: none;
+      padding-left: 0;
+      margin: 4px 0 8px;
+      font-size: 14px;
+    }
+
+    .signoff-list li::before,
+    .names-list li::before {
+      content: "• ";
+      color: var(--brand-2);
+    }
+
+    footer.page-footer {
+      margin-top: 18px;
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      font-size: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+      color: var(--ink-dim);
+    }
+
+    .footer-link {
+      text-decoration: none;
+      color: var(--ink-dim);
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,253,0.6);
+      background: linear-gradient(135deg, rgba(15,23,42,0.9), rgba(15,23,42,0.7));
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all .2s ease;
+    }
+
+    .footer-link span { font-size: 14px; }
+
+    .footer-link:hover {
+      color: var(--ink);
+      border-color: rgba(129,140,248,1);
+      transform: translateY(-1px);
+      box-shadow: 0 10px 24px rgba(15,23,42,0.9);
+    }
+
+    /* Light theme */
+    body.light {
+      --bg: #f7f9ff;
+      --ink: #0f172a;
+      --ink-dim: #374151;
+      --brand: #365cff;
+      --brand-2: #0284c7;
+      --accent-1: #7c3aed;
+      --accent-2: #059669;
+      background:
+        radial-gradient(ellipse 1400px 800px at 20% -5%, rgba(54,92,255,0.12) 0%, transparent 55%),
+        radial-gradient(ellipse 1200px 700px at 80% 0%, rgba(167,139,250,0.12) 0%, transparent 55%),
+        #eef2ff;
+      color-scheme: light;
+    }
+
+    body.light .page-shell {
+      background: linear-gradient(150deg, rgba(255,255,255,0.96), rgba(248,250,255,0.99));
+      box-shadow:
+        0 26px 60px rgba(15,23,42,0.18),
+        0 0 0 1px rgba(191,219,254,0.8);
+      border-color: rgba(129,140,248,0.7);
+    }
+
+    body.light .page-shell::before { opacity: 0.9; }
+
+    body.light .page-title {
+      background: linear-gradient(135deg, #111827, #1d4ed8);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 6px 18px rgba(148,163,253,0.8);
+    }
+
+    body.light .page-subtitle { color: #111827; }
+    body.light .page-subtitle span { color: #0369a1; }
+
+    body.light .section-card {
+      background:
+        radial-gradient(circle at 0 0, rgba(191,219,254,0.5), transparent 65%),
+        linear-gradient(135deg, #ffffff, #e5edff);
+      border-color: rgba(129,140,248,0.9);
+      box-shadow:
+        0 12px 26px rgba(148,163,253,0.55),
+        0 0 0 1px rgba(191,219,254,0.9);
+    }
+
+    body.light .section-card p,
+    body.light .section-card li {
+      color: #111827;
+    }
+
+    body.light th {
+      background: #e0e7ff;
+      color: #111827;
+    }
+    body.light td {
+      background: #f3f4ff;
+      color: #111827;
+    }
+
+    body.light .chip {
+      background: linear-gradient(135deg, #ffffff, #e5edff);
+      color: #0f172a;
+      box-shadow: 0 10px 26px rgba(148,163,253,0.6);
+    }
+    body.light .chip:hover {
+      background: linear-gradient(135deg, #e0e7ff, #dbeafe);
+    }
+
+    body.light .footer-link {
+      background: linear-gradient(135deg, #ffffff, #e5edff);
+      color: #111827;
+      border-color: rgba(148,163,253,0.9);
+    }
+    body.light .footer-link:hover {
+      background: linear-gradient(135deg, #e0e7ff, #dbeafe);
+    }
+
+    @media (max-width: 900px) {
+      body {
+        align-items: stretch;
+        padding: 16px;
+      }
+      .page-shell {
+        padding: 22px 18px 26px;
+        border-radius: 24px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .top-row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .spacer { display: none; }
+      header.page-header { text-align: left; }
+      .page-subtitle { margin-top: 2px; }
+      footer.page-footer {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-shell">
+    <div class="page-inner">
+      <div class="top-row">
+        <div class="badge">
+          <span class="badge-dot"></span>
+          CIS 4860 · Career Advancement Preparation
+        </div>
+        <div class="spacer"></div>
+        <button class="chip" id="themeToggle" type="button">
+          <span>🎨</span>
+          <span>Toggle Theme</span>
+        </button>
+      </div>
+
+      <header class="page-header">
+        <h1 class="page-title">Final Project Closure</h1>
+        <p class="page-subtitle">
+          Closure summary for the <span>Career Advancement Preparation</span> project, documenting outcomes,
+          lessons learned, and next steps.
+        </p>
+      </header>
+
+      <div class="sections">
+        <!-- 1. Project Information -->
+        <section class="section-card" id="s1">
+          <h2>1. Project Information</h2>
+          <div class="info-grid">
+            <div>
+              <div class="info-label">Project Title</div>
+              <p>Career Advancement Preparation</p>
+            </div>
+            <div>
+              <div class="info-label">Project Manager</div>
+              <p>Juan Talome</p>
+            </div>
+            <div>
+              <div class="info-label">Project Closure Type</div>
+              <p>✅ Normal Closure – Project completed successfully</p>
+            </div>
+          </div>
+          <h3>Project Description</h3>
+          <p>
+            My Career Advancement Preparation project aims to assist me in transitioning into an entry-level
+            IT help desk position with a clear, structured plan. The users include instructors, peers, and
+            potential employers who will review my achievements and deliverables that focus on career readiness
+            and help me gain skills to better navigate my professional career.
+          </p>
+          <h3>Closing Summary</h3>
+          <p>
+            I successfully met my project goals by completing all required project requirements and finishing
+            all of my major deliverables. One challenge was the interview section, where I completed one of
+            three planned interviews. Besides this setback, all other areas of the project were successfully
+            completed and aligned with my overall goal.
+          </p>
+        </section>
+
+        <!-- 2. Deliverables Summary -->
+        <section class="section-card" id="s2">
+          <h2>2. Deliverables Summary</h2>
+          <p>List of major deliverables and their completion status at project close.</p>
+          <table>
+            <tr>
+              <th>Deliverable Name</th>
+              <th>Original Definition of Done</th>
+              <th>Actual Progress</th>
+              <th>Status</th>
+            </tr>
+            <tr>
+              <td>Resume (Updated &amp; Improved)</td>
+              <td>Updated resume content targeting entry-level IT help desk roles.</td>
+              <td>I successfully created an updated resume that highlights my technical skills, coursework, and IT help desk focus.</td>
+              <td>🟢 Complete</td>
+            </tr>
+            <tr>
+              <td>Professional Portfolio</td>
+              <td>Portfolio website created, showcasing my key projects, certifications, and experience.</td>
+              <td>I created a portfolio that highlights my CIS projects, labs, and the Career Advancement Preparation charter site.</td>
+              <td>🟢 Complete</td>
+            </tr>
+            <tr>
+              <td>Industry Certificates</td>
+              <td>Complete the Google IT Support Professional Certificate.</td>
+              <td>The Google IT Support Professional Certificate was completed and added to my portfolio and resume.</td>
+              <td>🟢 Complete</td>
+            </tr>
+            <tr>
+              <td>Job Applications</td>
+              <td>Submit 10 targeted applications for entry-level IT help desk roles.</td>
+              <td>I submitted 10 job applications aligned with my IT help desk goal and tracked them in my plan.</td>
+              <td>🟢 Complete</td>
+            </tr>
+            <tr>
+              <td>LinkedIn Profile Enhancement</td>
+              <td>LinkedIn profile updated and tailored to entry-level IT help desk opportunities.</td>
+              <td>My LinkedIn profile was enhanced with a professional headline, updated experience, and links to my projects.</td>
+              <td>🟢 Complete</td>
+            </tr>
+          </table>
+        </section>
+
+        <!-- 3. Change Log -->
+        <section class="section-card" id="s3">
+          <h2>3. Change Log</h2>
+          <p>Summary of major scope changes made during the project.</p>
+          <table>
+            <tr>
+              <th>Change No.</th>
+              <th>Change Date</th>
+              <th>Change</th>
+              <th>Reason for Change</th>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>10/06/2025</td>
+              <td>Project underwent a complete scope change from the original AI-focused topic to the Career Advancement Preparation project.</td>
+              <td>I was unable to find a viable way to present my original AI topic as a semester project that directly supported my career goals.</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>10/13/2025</td>
+              <td>I updated the charter, Trello plan, and graphs to reflect the new project scope and deliverables.</td>
+              <td>I received feedback from my professor and peers, which helped me refine my scope and align it with realistic outcomes.</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>mm/dd/yy</td>
+              <td>Describe the change.</td>
+              <td>Why was this change needed?</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>mm/dd/yy</td>
+              <td>Describe the change.</td>
+              <td>Why was this change needed?</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>mm/dd/yy</td>
+              <td>Describe the change.</td>
+              <td>Why was this change needed?</td>
+            </tr>
+          </table>
+        </section>
+
+        <!-- 4. Performance Analysis -->
+        <section class="section-card" id="s4">
+          <h2>4. Performance Analysis</h2>
+          <h3>4.1 Budget Performance</h3>
+          <p>
+            My budget stayed on track since the only expense I had was my Coursera subscription, which I paid
+            40 dollars a month for while completing the Google IT Support Professional Certificate.
+          </p>
+          <h3>4.2 Schedule Performance</h3>
+          <p>
+            I met my deadlines and my timelines were realistic. There were small adjustments to some due dates
+            to match realistic progress, but overall my project followed a steady pace across the semester.
+          </p>
+        </section>
+
+        <!-- 5. Stakeholder Management -->
+        <section class="section-card" id="s5">
+          <h2>5. Stakeholder Management</h2>
+          <p>
+            My engagement with stakeholders and potential users was positive. Whenever I received feedback, I
+            approached it with an open mindset, which helped my project improve and be successful.
+          </p>
+          <p>
+            The most valuable feedback came from my professor, who has strong project management experience, and
+            from my peers, who were working on similar projects. Their insights helped me refine my scope,
+            deliverables, and presentation of the project.
+          </p>
+        </section>
+
+        <!-- 6. Risk and Issue Summary -->
+        <section class="section-card" id="s6">
+          <h2>6. Risk and Issue Summary</h2>
+          <p>
+            The most significant risk to my project occurred when I had to undergo a complete project change.
+            This was unexpected and required a lot of work to get back on track. I handled this situation with a
+            growth mindset and continued to seek feedback, which helped the project recover and succeed.
+          </p>
+          <p>
+            At project close there are no outstanding risks; the project has closed successfully and is ready to
+            be used as part of my career advancement plan.
+          </p>
+        </section>
+
+        <!-- 7. What Went Well -->
+        <section class="section-card" id="s7">
+          <h2>7. What Went Well?</h2>
+          <h3>Successes and Best Practices</h3>
+          <p>
+            Weekly check-ins went very well because they kept the project active and ensured I was regularly
+            reflecting on progress. Consistent feedback was essential for staying on track.
+          </p>
+          <p>
+            Using Trello was also very effective for guiding me through my milestones, and I plan to continue
+            using it for future projects because it helps me visualize tasks and track progress.
+          </p>
+        </section>
+
+        <!-- 8. What Didn't Go Well -->
+        <section class="section-card" id="s8">
+          <h2>8. What Didn&apos;t Go Well?</h2>
+          <h3>Challenges and Problems</h3>
+          <p>
+            Challenges during my project included keeping up with deadlines while also managing other coursework.
+            Balancing project presentations, labs, and personal assignments at the same time was difficult.
+          </p>
+          <p>
+            Staying consistent with an organized plan, using tools like Trello, and breaking work into smaller
+            pieces helped me manage this workload and stay on track.
+          </p>
+        </section>
+
+        <!-- 9. What Would You Do Differently? -->
+        <section class="section-card" id="s9">
+          <h2>9. What Would You Do Differently?</h2>
+          <h3>Improvements and Recommendations</h3>
+          <p>
+            In the future, I would use everything I learned from this project and apply it earlier in the
+            semester. My goal is to continue improving my project management skills so that each new project
+            has a clearer scope, stronger planning, and even more effective execution.
+          </p>
+        </section>
+
+        <!-- 10. Lessons Learned Register -->
+        <section class="section-card" id="s10">
+          <h2>10. Lessons Learned Register</h2>
+          <p>
+            Documented lessons learned across the project lifecycle, using SDLC stages to organize insights.
+          </p>
+          <table>
+<tr>
+  <th>Date</th>
+  <th>SDLC Stage</th>
+  <th>What was the problem?</th>
+  <th>What was the consequence?</th>
+  <th>Lesson Learned Advice</th>
+</tr>
+<tr>
+  <td>09/05/2025</td>
+  <td>Initiation</td>
+  <td>My first idea (an AI research-style project) was too broad and not directly tied to my career goal.</td>
+  <td>I felt overwhelmed and unsure how to measure success for the semester.</td>
+  <td>Validate project scope with the instructor early and choose a project clearly aligned to a specific career outcome.</td>
+</tr>
+<tr>
+  <td>09/20/2025</td>
+  <td>Planning</td>
+  <td>I didn’t initially define clear, realistic deliverables for the charter and website.</td>
+  <td>I had to revise my plan and rebuild my deliverables to focus on things that truly helped my IT help desk goal.</td>
+  <td>Turn the overall goal into concrete, value-adding deliverables and confirm they are feasible within the semester.</td>
+</tr>
+<tr>
+  <td>10/15/2025</td>
+  <td>Execution</td>
+  <td>Coordinating interview schedules with busy professionals took longer than I expected.</td>
+  <td>The interview milestone became compressed, and I had less time to synthesize insights into my deliverables.</td>
+  <td>Start interview outreach early, build in follow-up time, and assume scheduling will take longer than planned.</td>
+</tr>
+<tr>
+  <td>11/03/2025</td>
+  <td>Monitoring</td>
+  <td>I skipped one weekly status check and didn’t update my progress and risks on time.</td>
+  <td>I lost visibility on what was slipping and had to catch up quickly on multiple tasks at once.</td>
+  <td>Protect a weekly review time to update status reports, adjust the plan, and identify risks before they become problems.</td>
+</tr>
+<tr>
+  <td>12/01/2025</td>
+  <td>Closing</td>
+  <td>I left polishing the website, STAR stories page, and formatting changes too close to the end.</td>
+  <td>The final week felt more stressful because I was doing content work and design fixes at the same time.</td>
+  <td>Finish draft content early, then schedule separate time just for quality and formatting so closing week is mainly review.</td>
+</tr>
+
+          </table>
+        </section>
+
+        <!-- 11. Key Takeaways for Future Projects -->
+        <section class="section-card" id="s11">
+          <h2>11. Key Takeaways for Future Projects</h2>
+          <p><strong>Top 3–5 Actionable Insights:</strong></p>
+          <ul>
+            <li>
+              <strong>Plan with a realistic scope and timeline.</strong> When beginning a project,
+              planning is essential in order to set the scope and set realistic timelines for a single
+              semester.
+            </li>
+            <li>
+              <strong>Use a weekly review to adjust the plan early.</strong> Revisit status reports
+              every week to check what&apos;s on track, what&apos;s at risk, and which tasks need to be moved,
+              simplified, or dropped so the overall goal stays realistic.
+            </li>
+            <li>
+              <strong>Build quality in from the start, not at the end.</strong> Use a checklist for each
+              deliverable (clear writing, correct links, rubric alignment, and visual polish) and review it
+              before submitting, instead of waiting until the final week to fix everything.
+            </li>
+          </ul>
+        </section>
+
+        <!-- 12. Formal Sign-Off -->
+        <section class="section-card" id="s12">
+          <h2>12. Formal Sign-Off</h2>
+          <p>
+            Feedback and sign-off from stakeholders confirming project completion and their satisfaction
+            with the outcome.
+          </p>
+          <ul class="signoff-list">
+            <li>Alexis Pinon</li>
+            <li>Joseph Cortez</li>
+            <li>Jeremy Yan</li>
+            <li>Everett Clayton-Skinner</li>
+            <li>Alejandro Diaz</li>
+            <li>Juan Talome</li>
+          </ul>
+          <p>
+            <strong>Stakeholder Final Feedback:</strong> All stakeholders were pleased and impressed by
+            the final project and deliverables, and they are interested in seeing how I use my plan in
+            the future.
+          </p>
+        </section>
+
+        <!-- 13. Recognition -->
+        <section class="section-card" id="s13">
+          <h2>13. Recognition</h2>
+          <p>Acknowledgment of team members&apos; contributions and key stakeholder support.</p>
+          <ul class="names-list">
+            <li>Alexis Pinon</li>
+            <li>Joseph Cortez</li>
+            <li>Jeremy Yan</li>
+            <li>Everett Clayton-Skinner</li>
+            <li>Alejandro Diaz</li>
+            <li>Instructor: Maria Espinoza</li>
+          </ul>
+        </section>
+
+        <!-- 14. What&apos;s Next -->
+        <section class="section-card" id="s14">
+          <h2>14. What&apos;s Next</h2>
+          <p>
+            Next steps after this project are to continue using it to apply for more positions and to
+            showcase my deliverables as evidence of my skills and dedication to my professional career.
+          </p>
+          <p>
+            I look forward to using the project management skills I practiced in this project and to
+            improving my execution on future projects. I also plan to continue updating my charter and
+            other deliverables over time as I gain new ideas, experience, and evidence of progress.
+          </p>
+        </section>
+      </div>
+
+      <footer class="page-footer">
+        <a class="footer-link" href="career_advancement_hub_main.html">
+          <span>⬅</span>
+          Back to Hub
+        </a>
+      </footer>
+    </div>
+  </div>
+
+  <script>
+    const body = document.body;
+    const toggle = document.getElementById('themeToggle');
+    const storedTheme = localStorage.getItem('closureTheme');
+
+    if (storedTheme === 'light') {
+      body.classList.add('light');
+    }
+
+    toggle?.addEventListener('click', () => {
+      body.classList.toggle('light');
+      const mode = body.classList.contains('light') ? 'light' : 'dark';
+      localStorage.setItem('closureTheme', mode);
+    });
+  </script>
+</body>
+</html>
