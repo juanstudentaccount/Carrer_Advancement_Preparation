@@ -31,7 +31,8 @@
       display: flex;
       justify-content: center;
       align-items: flex-start;
-      padding: 96px 12px 32px;
+      /* slightly tighter side padding so content can breathe more */
+      padding: 96px 8px 32px;
       transition: background .35s ease, color .35s ease;
     }
 
@@ -41,7 +42,8 @@
       top: 16px;
       left: 50%;
       transform: translateX(-50%);
-      width: min(1320px, 100% - 32px);
+      /* wider content area */
+      width: min(1400px, 100% - 16px);
       z-index: 30;
     }
 
@@ -147,7 +149,8 @@
 
     /* Main layout */
     .main-shell {
-      width: min(1320px, 100% - 32px);
+      /* match nav-shell and give the inner pages more width */
+      width: min(1400px, 100% - 16px);
     }
 
     .hub-panel,
@@ -168,7 +171,8 @@
       padding: 0;
       overflow: hidden;
       display: none;
-      height: calc(100vh - 128px);
+      /* a touch taller so embedded pages feel more “full screen” */
+      height: calc(100vh - 112px);
       min-height: 420px;
     }
 
