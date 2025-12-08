@@ -1,1023 +1,762 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Career Advancement Preparation - Project Charter</title>
-  <style>
-    :root {
-      --bg: #0a0e1a;
-      --card: #0f152b;
-      --muted: #1d2543;
-      --ink: #e7eaf7;
-      --ink-dim: #b9bfd7;
-      --brand: #5b8cff;
-      --brand-2: #8ae6ff;
-      --accent-amber: #fbbf24;
-      --accent-green: #34d399;
-      --danger: #fb7185;
-      --border-subtle: rgba(148, 163, 253, 0.32);
-      --shadow-soft: 0 22px 60px rgba(15, 23, 42, 0.95);
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html,
-    body {
-      height: 100%;
-    }
-
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
-        "Segoe UI", Roboto, sans-serif;
-      background:
-        radial-gradient(circle 900px at -10% -10%, rgba(37, 99, 235, 0.55), transparent 60%),
-        radial-gradient(circle 900px at 110% -10%, rgba(8, 47, 73, 0.7), transparent 60%),
-        radial-gradient(circle 1200px at 0 110%, rgba(55, 65, 81, 0.85), transparent 65%),
-        var(--bg);
-      color: var(--ink);
-      -webkit-font-smoothing: antialiased;
-      padding: 32px 20px 40px;
-      display: flex;
-      justify-content: center;
-    }
-
-    .page {
-      max-width: 1120px;
-      width: 100%;
-      background:
-        radial-gradient(circle 900px at 0 0, rgba(37, 99, 235, 0.3), transparent 60%),
-        radial-gradient(circle 600px at 100% 0, rgba(8, 47, 73, 0.8), transparent 55%),
-        linear-gradient(160deg, rgba(10, 16, 36, 0.96), rgba(15, 23, 42, 0.96));
-      border-radius: 32px;
-      box-shadow:
-        0 28px 80px rgba(15, 23, 42, 0.95),
-        0 0 0 1px rgba(15, 23, 42, 0.9);
-      border: 1px solid rgba(148, 163, 253, 0.4);
-      overflow: hidden;
-      position: relative;
-      backdrop-filter: blur(26px);
-    }
-
-    /* Header */
-    .header {
-      position: relative;
-      text-align: center;
-      padding: 64px 32px;
-      background:
-        radial-gradient(circle 800px at 50% 0%, rgba(91, 140, 255, 0.3), transparent 70%),
-        linear-gradient(135deg, #1a2c74 0%, #1e3aa5 50%, #3d63ff 100%);
-      color: #fff;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-      overflow: hidden;
-    }
-
-    .header h1 {
-      margin: 0 0 12px;
-      font-size: 42px;
-      font-weight: 800;
-      letter-spacing: -0.04em;
-      text-shadow: 0 14px 40px rgba(15, 23, 42, 0.9);
-    }
-
-    .header p.subtitle {
-      margin: 0 auto;
-      max-width: 600px;
-      font-size: 15px;
-      opacity: 0.96;
-    }
-
-    .badge-row {
-      margin: 18px auto 0;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 10px;
-      font-size: 11px;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-    }
-
-    .badge {
-      padding: 6px 12px;
-      border-radius: 999px;
-      border: 1px solid rgba(191, 219, 254, 0.9);
-      background: linear-gradient(135deg, rgba(15, 23, 42, 0.7), rgba(30, 64, 175, 0.9));
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.75);
-    }
-
-    .badge span.icon {
-      font-size: 14px;
-    }
-
-    .badge-accent {
-      border-color: rgba(250, 204, 21, 0.95);
-      background: linear-gradient(135deg, rgba(120, 53, 15, 0.9), rgba(251, 191, 36, 0.9));
-      box-shadow: 0 14px 32px rgba(251, 191, 36, 0.85);
-    }
-
-    .corner-orbit {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-    }
-
-    .corner-orbit::before,
-    .corner-orbit::after {
-      content: "";
-      position: absolute;
-      border-radius: 999px;
-      border: 1px solid rgba(191, 219, 254, 0.38);
-    }
-
-    .corner-orbit::before {
-      width: 220px;
-      height: 220px;
-      top: -140px;
-      left: -110px;
-    }
-
-    .corner-orbit::after {
-      width: 260px;
-      height: 260px;
-      top: -160px;
-      right: -130px;
-    }
-
-    /* Content */
-    .content {
-      padding: 28px 26px 30px;
-      display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
-      gap: 22px;
-    }
-
-    @media (max-width: 960px) {
-      .content {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
-    @media (max-width: 640px) {
-      body {
-        padding: 20px 10px 28px;
-      }
-
-      .page {
-        border-radius: 26px;
-      }
-
-      .header {
-        padding: 40px 18px 32px;
-      }
-
-      .header h1 {
-        font-size: 30px;
-      }
-
-      .content {
-        padding: 22px 16px 24px;
-      }
-    }
-
-    h2 {
-      font-size: 18px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: #c7d2fe;
-      margin-bottom: 4px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    h2 span.kicker {
-      font-size: 12px;
-      font-weight: 500;
-      text-transform: none;
-      color: var(--ink-dim);
-      letter-spacing: normal;
-    }
-
-    h3 {
-      font-size: 16px;
-      margin: 12px 0 6px;
-      color: #e5e7eb;
-    }
-
-    p {
-      font-size: 14px;
-      color: var(--ink-dim);
-      margin-bottom: 8px;
-    }
-
-    ul {
-      margin: 0 0 10px 18px;
-      padding-left: 0;
-      color: var(--ink-dim);
-      font-size: 14px;
-    }
-
-    li + li {
-      margin-top: 4px;
-    }
-
-    strong {
-      color: #e5e7eb;
-    }
-
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 3px 9px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 253, 0.5);
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--ink-dim);
-    }
-
-    .pill span.dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: radial-gradient(circle at 30% 0, #22c55e, #14532d);
-      box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.35);
-    }
-
-    .pill-alert {
-      border-color: rgba(248, 113, 113, 0.7);
-      color: #fecaca;
-    }
-
-    .stack {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-
-    .card {
-      background: linear-gradient(145deg, rgba(15, 23, 42, 0.98), rgba(15, 23, 42, 0.96));
-      border-radius: 20px;
-      border: 1px solid var(--border-subtle);
-      padding: 14px 14px 12px;
-      box-shadow: 0 14px 32px rgba(15, 23, 42, 0.9);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .card-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 8px;
-    }
-
-    .chip {
-      font-size: 11px;
-      padding: 3px 9px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 253, 0.6);
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      color: var(--ink-dim);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .chip span.bullet {
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: radial-gradient(circle at 30% 0, #e5e7eb, #64748b);
-    }
-
-    .chip-primary {
-      border-color: rgba(96, 165, 250, 0.9);
-      color: #bfdbfe;
-      background: linear-gradient(135deg, rgba(15, 23, 42, 0.96), rgba(30, 64, 175, 0.9));
-    }
-
-    .chip-gold {
-      border-color: rgba(250, 204, 21, 0.9);
-      color: #facc15;
-      background: linear-gradient(135deg, rgba(15, 23, 42, 0.96), rgba(120, 53, 15, 0.9));
-    }
-
-    .chip-soft {
-      border-style: dashed;
-      border-color: rgba(148, 163, 253, 0.6);
-      opacity: 0.9;
-    }
-
-    .meta-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 4px;
-    }
-
-    .meta-item {
-      font-size: 11px;
-      color: var(--ink-dim);
-      padding: 3px 8px;
-      border-radius: 999px;
-      background: rgba(15, 23, 42, 0.85);
-      border: 1px solid rgba(51, 65, 85, 0.9);
-    }
-
-    .meta-label {
-      color: rgba(148, 163, 253, 0.95);
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      font-weight: 500;
-      margin-right: 4px;
-    }
-
-    .grid-two {
-      display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-      gap: 10px;
-    }
-
-    @media (max-width: 840px) {
-      .grid-two {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
-    .timeline {
-      border-left: 1px dashed rgba(148, 163, 253, 0.6);
-      padding-left: 12px;
-      margin-left: 4px;
-    }
-
-    .timeline-item + .timeline-item {
-      margin-top: 6px;
-    }
-
-    .timeline-tag {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: rgba(129, 140, 248, 0.95);
-      margin-bottom: 2px;
-    }
-
-    .timeline-title {
-      font-size: 14px;
-      color: #e5e7eb;
-    }
-
-    .timeline-body {
-      font-size: 13px;
-      color: var(--ink-dim);
-    }
-
-    .tag-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 4px;
-    }
-
-    .tag {
-      font-size: 11px;
-      padding: 4px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 253, 0.5);
-      color: var(--ink-dim);
-      background: rgba(15, 23, 42, 0.9);
-    }
-
-    .tag-pill {
-      border-color: rgba(45, 212, 191, 0.8);
-      color: #a5f3fc;
-      background: radial-gradient(circle at 0 0, rgba(34, 211, 238, 0.8), rgba(15, 23, 42, 0.96));
-    }
-
-    .tag-critical {
-      border-color: rgba(248, 113, 113, 0.9);
-      color: #fecaca;
-      background: radial-gradient(circle at 0 0, rgba(248, 113, 113, 0.95), rgba(15, 23, 42, 0.96));
-    }
-
-    .risk-flag {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 12px;
-      color: #fecaca;
-      padding: 3px 9px;
-      border-radius: 999px;
-      border: 1px solid rgba(248, 113, 113, 0.8);
-      background: rgba(24, 24, 27, 0.85);
-    }
-
-    .risk-flag span.dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: radial-gradient(circle at 30% 0, #fb7185, #7f1d1d);
-      box-shadow: 0 0 0 3px rgba(248, 113, 113, 0.4);
-    }
-
-    .section-title {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 8px;
-    }
-
-    .section-title h3 {
-      margin: 0;
-    }
-
-    .metric-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 6px;
-    }
-
-    .metric {
-      flex: 1 1 120px;
-      border-radius: 16px;
-      padding: 8px 10px;
-      border: 1px solid rgba(30, 64, 175, 0.85);
-      background: linear-gradient(135deg, rgba(15, 23, 42, 0.98), rgba(17, 24, 39, 0.98));
-      box-shadow: 0 12px 28px rgba(15, 23, 42, 0.9);
-      font-size: 12px;
-    }
-
-    .metric-label {
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      font-size: 10px;
-      color: rgba(148, 163, 253, 0.95);
-      margin-bottom: 2px;
-    }
-
-    .metric-value {
-      font-size: 16px;
-      font-weight: 700;
-      color: #e5e7eb;
-    }
-
-    .metric-sub {
-      font-size: 11px;
-      color: var(--ink-dim);
-    }
-
-    .timeline-board {
-      margin-top: 8px;
-      border-radius: 16px;
-      border: 1px solid rgba(148, 163, 253, 0.55);
-      background:
-        radial-gradient(circle at 0 0, rgba(59, 130, 246, 0.42), transparent 65%),
-        linear-gradient(135deg, rgba(15, 23, 42, 0.98), rgba(15, 23, 42, 0.96));
-      padding: 10px 11px 8px;
-      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.95);
-    }
-
-    .timeline-board-head {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 8px;
-      font-size: 12px;
-      color: var(--ink-dim);
-    }
-
-    .timeline-board-title {
-      font-weight: 600;
-      color: #e5e7eb;
-    }
-
-    .timeline-board-legend {
-      display: flex;
-      gap: 8px;
-      align-items: center;
-      font-size: 11px;
-    }
-
-    .legend-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 253, 0.9);
-      background: rgba(15, 23, 42, 0.9);
-    }
-
-    .legend-dot.done {
-      background: radial-gradient(circle at 30% 0, #22c55e, #14532d);
-      border-color: rgba(34, 197, 94, 0.9);
-    }
-
-    .legend-dot.progress {
-      background: radial-gradient(circle at 30% 0, #facc15, #92400e);
-      border-color: rgba(245, 158, 11, 0.9);
-    }
-
-    .legend-dot.future {
-      background: rgba(15, 23, 42, 0.95);
-      border-style: dashed;
-    }
-
-    .lane-row {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 6px;
-      font-size: 11px;
-    }
-
-    @media (max-width: 840px) {
-      .lane-row {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 640px) {
-      .lane-row {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
-    .lane {
-      border-radius: 12px;
-      padding: 8px 9px;
-      border: 1px dashed rgba(148, 163, 253, 0.7);
-      background: rgba(15, 23, 42, 0.9);
-      min-height: 64px;
-    }
-
-    .lane-title {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: rgba(148, 163, 253, 0.95);
-      margin-bottom: 4px;
-    }
-
-    .lane ul {
-      margin: 0;
-      padding-left: 14px;
-      font-size: 11px;
-    }
-
-    .lane li {
-      color: var(--ink-dim);
-    }
-
-    .lane li span.dot {
-      display: inline-block;
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      margin-right: 4px;
-      background: rgba(148, 163, 253, 0.9);
-    }
-
-    .lane li span.dot.done {
-      background: #22c55e;
-    }
-
-    .lane li span.dot.progress {
-      background: #facc15;
-    }
-
-    .two-col {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-      gap: 16px;
-    }
-
-    @media (max-width: 720px) {
-      .two-col {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
-    .kpi-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 6px;
-    }
-
-    .kpi {
-      flex: 1 1 140px;
-      border-radius: 14px;
-      padding: 7px 9px;
-      border: 1px solid rgba(148, 163, 253, 0.6);
-      font-size: 12px;
-      background: radial-gradient(circle at 0 0, rgba(37, 99, 235, 0.65), transparent 65%);
-    }
-
-    .kpi-label {
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      color: rgba(191, 219, 254, 0.95);
-      margin-bottom: 2px;
-    }
-
-    .kpi-value {
-      font-size: 15px;
-      font-weight: 700;
-      color: #e5e7eb;
-    }
-
-    .kpi-sub {
-      font-size: 11px;
-      color: var(--ink-dim);
-    }
-
-    .callout {
-      border-radius: 14px;
-      padding: 10px 11px;
-      border: 1px solid rgba(45, 212, 191, 0.65);
-      background:
-        radial-gradient(circle at 0 0, rgba(45, 212, 191, 0.4), transparent 60%),
-        rgba(15, 23, 42, 0.98);
-      font-size: 13px;
-      color: #e0f2fe;
-      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.95);
-    }
-
-    .callout strong {
-      color: #bef264;
-    }
-
-    .footnote {
-      margin-top: 10px;
-      font-size: 11px;
-      color: #9ca3af;
-    }
-
-    .footnote span {
-      color: #e5e7eb;
-    }
-
-    .list-tight li + li {
-      margin-top: 3px;
-    }
-  </style>
+<meta charset="utf-8"/>
+<title>Career Advancement Preparation – Project Charter</title>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<style>
+:root {
+  --bg: #020617;
+  --bg-soft: #050816;
+  --bg-panel: rgba(15,23,42,0.98);
+  --bg-section: rgba(15,23,42,0.98);
+  --bg-subtle: rgba(15,23,42,0.9);
+  --ink: #e5e7eb;
+  --ink-strong: #f9fafb;
+  --ink-dim: #9ca3af;
+  --ink-muted: #6b7280;
+  --ink-soft: #a5b4fc;
+  --brand: #60a5fa;
+  --brand-soft: rgba(96,165,250,0.25);
+  --accent-1: #22d3ee;
+  --accent-2: #a855f7;
+  --accent-gold: #facc15;
+  --accent-emerald: #34d399;
+  --border-soft: rgba(148,163,253,0.45);
+  --border-strong: rgba(129,140,248,0.9);
+  --shadow-soft: 0 26px 72px rgba(15,23,42,0.95);
+  --shadow-soft-light: 0 26px 72px rgba(15,23,42,0.65);
+  --radius-xl: 26px;
+  --radius-lg: 22px;
+  --radius-md: 18px;
+  --radius-pill: 999px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+    "Segoe UI", sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(ellipse 1200px 700px at 80% 10%, rgba(167,139,250,0.12), transparent 60%),
+    radial-gradient(ellipse 1100px 650px at 0% 0%, rgba(56,189,248,0.12), transparent 60%),
+    radial-gradient(ellipse 1100px 650px at 50% 110%, rgba(45,212,191,0.14), transparent 60%),
+    #020617;
+  display: flex;
+  justify-content: center;
+  padding: 32px 12px 40px;
+  transition: background .35s ease, color .35s ease;
+}
+
+body.light {
+  color-scheme: light;
+  --bg: #f4f6ff;
+  --bg-soft: #e5edff;
+  --bg-panel: rgba(248,250,255,0.98);
+  --bg-section: rgba(248,250,255,0.98);
+  --bg-subtle: rgba(239,246,255,0.98);
+  --ink: #111827;
+  --ink-strong: #020617;
+  --ink-dim: #4b5563;
+  --ink-muted: #6b7280;
+  --ink-soft: #4338ca;
+  --brand: #2563eb;
+  --brand-soft: rgba(59,130,246,0.18);
+  --accent-1: #0ea5e9;
+  --accent-2: #6366f1;
+  --accent-gold: #eab308;
+  --accent-emerald: #059669;
+  --border-soft: rgba(148,163,184,0.65);
+  --border-strong: rgba(59,130,246,0.9);
+  --shadow-soft: 0 28px 72px rgba(148,163,184,0.6);
+  --shadow-soft-light: 0 18px 42px rgba(148,163,184,0.55);
+  background:
+    radial-gradient(ellipse 1200px 700px at 80% 10%, rgba(59,130,246,0.15), transparent 60%),
+    radial-gradient(ellipse 1100px 650px at 0% 0%, rgba(129,140,248,0.16), transparent 60%),
+    radial-gradient(ellipse 1100px 650px at 50% 110%, rgba(45,212,191,0.12), transparent 60%),
+    #e5edff;
+}
+
+/* Shell */
+.page-shell {
+  width: min(1180px, 100%);
+  border-radius: 32px;
+  padding: 26px 26px 30px;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 0 0, rgba(96,165,250,0.18), transparent 60%),
+    linear-gradient(135deg, rgba(15,23,42,0.98), rgba(15,23,42,0.98));
+  box-shadow: var(--shadow-soft);
+  border: 1px solid var(--border-soft);
+  backdrop-filter: blur(22px);
+}
+
+body.light .page-shell {
+  background:
+    radial-gradient(circle at 0 0, rgba(191,219,254,0.9), transparent 60%),
+    linear-gradient(135deg, rgba(248,250,255,0.98), rgba(238,242,255,0.98));
+}
+
+/* Header strip */
+.header-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.header-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 5px 14px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(52,211,153,0.6);
+  background: rgba(15,23,42,0.9);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+}
+
+body.light .header-pill {
+  background: rgba(239,246,255,0.98);
+  color: #1f2937;
+  border-color: rgba(34,197,94,0.8);
+}
+
+.header-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: radial-gradient(circle, #22c55e 0, #15803d 55%, transparent 70%);
+  box-shadow: 0 0 0 4px rgba(45,212,191,0.45);
+}
+
+.header-pill span {
+  white-space: nowrap;
+}
+
+.badge {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(148,163,253,0.55);
+  background: rgba(15,23,42,0.9);
+  color: var(--ink-soft);
+}
+
+body.light .badge {
+  background: rgba(224,231,255,0.98);
+  border-color: rgba(129,140,248,0.85);
+  color: #3730a3;
+}
+
+/* Hero */
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.2fr);
+  gap: 24px;
+  align-items: stretch;
+  margin-bottom: 28px;
+}
+
+@media (max-width: 880px) {
+  .hero-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.hero-title {
+  font-size: clamp(2.1rem, 3.1vw, 2.7rem);
+  margin: 0 0 8px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  line-height: 1.15;
+  background: linear-gradient(135deg, #e5ecff, #ffffff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 10px 32px rgba(15,23,42,1);
+}
+
+body.light .hero-title {
+  background: linear-gradient(135deg, #0f172a, #1d4ed8);
+}
+
+.hero-subtitle {
+  font-size: 0.96rem;
+  color: var(--ink-dim);
+  max-width: 540px;
+}
+
+.hero-subtitle span {
+  color: var(--accent-1);
+  font-weight: 600;
+}
+
+.hero-meta-row {
+  margin-top: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  font-size: 0.78rem;
+  color: var(--ink-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
+
+/* Goal card */
+.goal-card {
+  border-radius: var(--radius-xl);
+  padding: 18px 18px 18px 20px;
+  border: 1px solid rgba(96,165,250,0.75);
+  background:
+    radial-gradient(circle at 0 0, rgba(59,130,246,0.5), transparent 65%),
+    radial-gradient(circle at 100% 0, rgba(14,165,233,0.35), transparent 55%),
+    linear-gradient(145deg, #020617, #020617);
+  box-shadow: 0 18px 50px rgba(15,23,42,0.9);
+  position: relative;
+  overflow: hidden;
+}
+
+body.light .goal-card {
+  background:
+    radial-gradient(circle at 0 0, rgba(191,219,254,0.95), transparent 65%),
+    radial-gradient(circle at 100% 0, rgba(219,234,254,0.95), transparent 60%),
+    linear-gradient(145deg, #ffffff, #e5edff);
+  box-shadow: var(--shadow-soft-light);
+}
+
+.goal-label {
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(191,219,254,0.96);
+  margin-bottom: 6px;
+}
+
+body.light .goal-label {
+  color: #1e40af;
+}
+
+.goal-main {
+  font-size: 0.9rem;
+  color: #e5f0ff;
+  max-width: 380px;
+}
+
+body.light .goal-main {
+  color: #0f172a;
+}
+
+.goal-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 9px;
+}
+
+.goal-chip {
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(191,219,254,0.9);
+  color: #e5f0ff;
+  background: rgba(15,23,42,0.45);
+}
+
+body.light .goal-chip {
+  color: #1f2937;
+  background: rgba(239,246,255,0.96);
+}
+
+/* Sections */
+.section-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+  gap: 22px;
+  margin-bottom: 24px;
+}
+
+@media (max-width: 880px) {
+  .section-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.section-card {
+  border-radius: var(--radius-lg);
+  padding: 16px 16px 16px 18px;
+  background:
+    radial-gradient(circle at 0 0, rgba(30,64,175,0.2), transparent 65%),
+    linear-gradient(145deg, rgba(15,23,42,0.98), rgba(15,23,42,0.98));
+  border: 1px solid rgba(148,163,253,0.55);
+  box-shadow: 0 18px 42px rgba(15,23,42,0.95);
+}
+
+body.light .section-card {
+  background:
+    radial-gradient(circle at 0 0, rgba(219,234,254,0.9), transparent 65%),
+    linear-gradient(145deg, rgba(248,250,255,0.98), rgba(233,241,255,0.98));
+  border-color: rgba(148,163,184,0.65);
+  box-shadow: var(--shadow-soft-light);
+}
+
+.section-kicker {
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 4px;
+}
+
+.section-title {
+  margin: 0 0 8px;
+  font-size: 1.1rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--ink-strong);
+}
+
+.section-body {
+  font-size: 0.9rem;
+  color: var(--ink-dim);
+  line-height: 1.6;
+}
+
+.section-body strong {
+  color: var(--ink);
+}
+
+/* Pills */
+.pill-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.pill {
+  font-size: 0.78rem;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(148,163,253,0.6);
+  background: rgba(15,23,42,0.95);
+  color: #c7d2fe;
+}
+
+body.light .pill {
+  background: rgba(224,231,255,0.96);
+  color: #1f2937;
+  border-color: rgba(148,163,184,0.8);
+}
+
+/* List */
+ul {
+  margin: 0.35rem 0 0.2rem 1.1rem;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 4px;
+}
+
+/* Diagram + Trello */
+.diagram-card,
+.trello-card {
+  border-radius: var(--radius-lg);
+  padding: 14px 14px 16px;
+  border: 1px solid rgba(96,165,250,0.7);
+  background:
+    radial-gradient(circle at 0 0, rgba(30,64,175,0.5), transparent 60%),
+    linear-gradient(145deg, #020617, #020617);
+  box-shadow: 0 18px 52px rgba(15,23,42,0.95);
+  margin-bottom: 22px;
+}
+
+body.light .diagram-card,
+body.light .trello-card {
+  background:
+    radial-gradient(circle at 0 0, rgba(219,234,254,0.98), transparent 60%),
+    linear-gradient(145deg, #ffffff, #e5edff);
+  border-color: rgba(148,163,184,0.9);
+  box-shadow: var(--shadow-soft-light);
+}
+
+.diagram-title,
+.trello-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.diagram-text,
+.trello-text {
+  font-size: 0.86rem;
+  color: var(--ink-dim);
+  margin-bottom: 10px;
+}
+
+figure {
+  margin: 0;
+}
+
+.diagram-img,
+.trello-img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 14px;
+  border: 1px solid rgba(148,163,253,0.7);
+  box-shadow: 0 4px 18px rgba(0,0,0,0.55);
+  display: block;
+}
+
+body.light .diagram-img,
+body.light .trello-img {
+  border-color: rgba(148,163,184,0.9);
+}
+
+figcaption {
+  font-size: 0.8rem;
+  margin-top: 8px;
+  color: var(--ink-dim);
+}
+
+/* Two-column blocks */
+.two-col {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.05fr);
+  gap: 22px;
+  margin-bottom: 24px;
+}
+
+@media (max-width: 880px) {
+  .two-col {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Divider */
+.divider {
+  margin: 20px 0 16px;
+  border: none;
+  height: 1px;
+  background:
+    linear-gradient(90deg,
+      transparent,
+      rgba(129,140,248,0.9),
+      transparent
+    );
+}
+
+body.light .divider {
+  background:
+    linear-gradient(90deg,
+      transparent,
+      rgba(148,163,184,0.9),
+      transparent
+    );
+}
+
+/* Footer note */
+.footer-note {
+  font-size: 0.82rem;
+  color: var(--ink-muted);
+  margin-top: 6px;
+}
+
+/* Responsive tweaks */
+@media (max-width: 640px) {
+  body {
+    padding-top: 20px;
+  }
+  .page-shell {
+    border-radius: 22px;
+    padding: 20px 16px 22px;
+  }
+}
+</style>
 </head>
 <body>
-<div class="page">
-  <header class="header">
-    <div class="corner-orbit"></div>
-    <h1>Career Advancement Preparation Charter</h1>
-    <p class="subtitle">
-      A semester-long plan to secure an entry-level IT help desk role by building practical skills,
-      professional assets, and a repeatable system for career growth.
-    </p>
-    <div class="badge-row">
-      <div class="badge">
-        <span class="icon">🎓</span>
-        CIS 4860 · Managing Information Systems Projects
-      </div>
-      <div class="badge badge-accent">
-        <span class="icon">🎯</span>
-        Goal: Entry-Level IT Help Desk
-      </div>
+<div class="page-shell" id="top">
+  <header class="header-strip">
+    <div class="header-pill">
+      <span class="header-dot"></span>
+      <span>CIS 4860 · MANAGING INFORMATION SYSTEMS PROJECTS</span>
     </div>
+    <div class="badge">Career Advancement Preparation · Project Charter</div>
   </header>
 
-  <main class="content">
-    <!-- LEFT COLUMN -->
-    <section class="stack">
-      <!-- 1. Project Overview -->
-      <article class="card">
-        <div class="card-header">
-          <div>
-            <h2>1. Project Overview</h2>
-            <div class="meta-row">
-              <span class="meta-item"><span class="meta-label">Student</span>Juan Talome</span>
-              <span class="meta-item"><span class="meta-label">Course</span>CIS 4860</span>
-              <span class="meta-item"><span class="meta-label">Semester</span>Fall 2025</span>
-            </div>
-          </div>
-          <span class="chip chip-primary">
-            <span class="bullet"></span>
-            Active Project
-          </span>
-        </div>
+  <section class="hero-grid">
+    <div>
+      <h1 class="hero-title">Career Advancement Preparation Charter</h1>
+      <p class="hero-subtitle">
+        A semester-long plan to move from CIS student to entry-level IT help desk
+        professional by combining project management principles with real-world
+        deliverables, networking, and continuous learning.
+      </p>
+      <div class="hero-meta-row">
+        <span>Student · Juan Talome</span>
+        <span>Course · CIS 4860</span>
+        <span>Semester · Fall 2025</span>
+      </div>
+    </div>
+
+    <aside class="goal-card">
+      <div class="goal-chip-row">
+        <span class="goal-chip">Goal · Entry-Level IT Help Desk</span>
+        <span class="goal-chip">Focus · Career Advancement</span>
+      </div>
+      <div class="goal-label">Primary Outcome</div>
+      <p class="goal-main">
+        Build a repeatable system for career growth—resume, skills, certifications, and
+        interview stories—so that after this course I am fully prepared to secure an
+        entry-level IT help desk role.
+      </p>
+    </aside>
+  </section>
+
+  <section class="section-grid">
+    <article class="section-card">
+      <div class="section-kicker">01 · Project Overview</div>
+      <h2 class="section-title">What this project is about</h2>
+      <div class="section-body">
         <p>
-          The Career Advancement Preparation project is a personal, semester-long initiative designed to
-          help me transition from student to IT professional. The core objective is to secure an entry-level
-          IT help desk role by creating a clear roadmap, completing career-building deliverables, and
-          practicing professional skills such as interviewing, networking, and storytelling.
+          The Career Advancement Preparation project is a structured, semester-long
+          initiative that treats my career development as a project. Instead of building a
+          single technical system, the project focuses on creating a set of professional
+          deliverables—including a refined resume, completed certification, interview
+          stories, and networking conversations—that all support my goal of entering the
+          IT help desk field.
         </p>
         <p>
-          This charter defines the mission, vision, scope, deliverables, stakeholders, and risks so that my
-          efforts are structured—not random—and aligned with long-term career goals in IT and cybersecurity.
+          Throughout the semester I will apply project management concepts such as scope,
+          schedule, risk, and stakeholder management to my own career. Weekly status
+          reports, a hybrid methodology, and a Trello board will help keep work organized,
+          visible, and aligned with my goal.
         </p>
-      </article>
+      </div>
+    </article>
 
-      <!-- 2. Mission & Vision -->
-      <article class="card">
-        <div class="card-header">
-          <h2>2. Mission &amp; Vision</h2>
-          <span class="chip chip-soft">
-            <span class="bullet"></span>
-            Purpose &amp; Future State
-          </span>
+    <article class="section-card">
+      <div class="section-kicker">02 · Mission &amp; Vision</div>
+      <h2 class="section-title">Purpose and future state</h2>
+      <div class="section-body">
+        <p><strong>Mission:</strong> Build a strong foundation of technical, professional, and
+          interpersonal skills that prepares me for an entry-level IT help desk role while
+          practicing real project management techniques.</p>
+        <p><strong>Vision (3–5 years):</strong> Grow from an entry-level IT help desk technician
+          into a cybersecurity professional who supports secure, resilient systems and
+          mentors other students beginning their own IT careers.</p>
+        <div class="pill-row">
+          <span class="pill">Growth Mindset</span>
+          <span class="pill">Long-Term Career Roadmap</span>
+          <span class="pill">Project-Based Learning</span>
         </div>
-        <h3>Mission</h3>
-        <p>
-          To build a strong foundation for my IT career by completing targeted deliverables that improve my
-          technical skills, professional presence, and confidence—so that I am fully prepared to apply for and
-          succeed in an entry-level IT help desk position.
-        </p>
-        <h3>Vision (3–5 Years)</h3>
-        <p>
-          To grow from an entry-level IT help desk role into a cybersecurity professional who can protect
-          organizations from threats, solve complex technical problems, and mentor others beginning their own
-          IT journeys.
-        </p>
-      </article>
+      </div>
+    </article>
+  </section>
 
-      <!-- 3. Scope & Boundaries -->
-      <article class="card">
-        <div class="card-header">
-          <h2>3. Scope &amp; Boundaries</h2>
-          <span class="chip">
-            <span class="bullet"></span>
-            What Is In &amp; Out
-          </span>
-        </div>
-        <div class="grid-two">
-          <div>
-            <h3>In Scope</h3>
-            <ul class="list-tight">
-              <li>Design and maintenance of the Career Advancement Preparation website and charter.</li>
-              <li>Completion of job-focused deliverables (résumé, LinkedIn, cover letters).</li>
-              <li>Progress on the Google IT Support Professional Certificate.</li>
-              <li>Creation of STAR stories and interview practice materials.</li>
-              <li>Weekly status reports documenting progress, risks, and lessons learned.</li>
-            </ul>
-          </div>
-          <div>
-            <h3>Out of Scope</h3>
-            <ul class="list-tight">
-              <li>Advanced cybersecurity responsibilities beyond entry-level expectations.</li>
-              <li>Formal job placement services outside my own applications and networking.</li>
-              <li>Building full enterprise systems or production-ready applications.</li>
-            </ul>
-          </div>
-        </div>
-      </article>
-
-      <!-- 4. Stakeholders -->
-      <article class="card">
-        <div class="card-header">
-          <h2>4. Stakeholders</h2>
-          <span class="chip chip-soft">
-            <span class="bullet"></span>
-            People &amp; Support
-          </span>
-        </div>
-        <div class="grid-two">
-          <div>
-            <h3>Primary Stakeholders</h3>
-            <ul class="list-tight">
-              <li><strong>Project Owner – Myself:</strong> responsible for all work, learning, and follow-through.</li>
-              <li><strong>Instructor:</strong> provides guidance, expectations, and feedback on deliverables.</li>
-              <li><strong>Class Peers:</strong> offer collaboration, examples, and support.</li>
-            </ul>
-          </div>
-          <div>
-            <h3>Secondary Stakeholders</h3>
-            <ul class="list-tight">
-              <li><strong>IT Hiring Managers &amp; Recruiters:</strong> future audience for my portfolio and applications.</li>
-              <li><strong>Professional Contacts &amp; Mentors:</strong> provide advice and networking opportunities.</li>
-              <li><strong>Family &amp; Support Network:</strong> offer encouragement and accountability.</li>
-            </ul>
-          </div>
-        </div>
-      </article>
-
-      <!-- 5. Risks & Assumptions -->
-      <article class="card">
-        <div class="card-header">
-          <div class="section-title">
-            <h2>5. Risks &amp; Assumptions</h2>
-          </div>
-          <span class="risk-flag">
-            <span class="dot"></span>
-            Manageable with Planning
-          </span>
-        </div>
-        <div class="grid-two">
-          <div>
-            <h3>Key Risks</h3>
-            <ul class="list-tight">
-              <li><strong>Time Management:</strong> balancing multiple CIS courses, labs, and this project.</li>
-              <li><strong>Procrastination:</strong> delaying work on deliverables or STAR stories.</li>
-              <li><strong>Overwhelm:</strong> feeling stuck when learning new tools or technical topics.</li>
-            </ul>
-          </div>
-          <div>
-            <h3>Mitigation Strategies</h3>
-            <ul class="list-tight">
-              <li>Use a Trello/task board with small tasks, due dates, and priorities.</li>
-              <li>Reserve weekly “career work” blocks dedicated only to this project.</li>
-              <li>Ask for help early from instructors, classmates, or online communities.</li>
-            </ul>
-          </div>
-        </div>
-      </article>
-    </section>
-
-    <!-- RIGHT COLUMN -->
-    <section class="stack">
-      <!-- 6. Deliverables & Success Metrics -->
-      <article class="card">
-        <div class="card-header">
-          <h2>6. Deliverables &amp; Success Metrics</h2>
-          <span class="chip chip-gold">
-            <span class="bullet"></span>
-            Career-Focused Outcomes
-          </span>
-        </div>
-        <h3>Major Deliverables</h3>
-        <ul class="list-tight">
-          <li>Career Advancement Preparation website and polished project charter.</li>
-          <li>Completed interview with an industry professional and reflection.</li>
-          <li>Collection of at least five STAR stories.</li>
-          <li>Weekly status reports with progress, risks, and next steps.</li>
-          <li>Progress toward or completion of the Google IT Support certificate.</li>
+  <section class="two-col">
+    <article class="section-card">
+      <div class="section-kicker">03 · Goals &amp; Deliverables</div>
+      <h2 class="section-title">What success looks like</h2>
+      <div class="section-body">
+        <ul>
+          <li>Submit at least ten targeted applications for entry-level IT help desk roles.</li>
+          <li>Complete the Google IT Support Professional Certificate to strengthen my technical foundation.</li>
+          <li>Conduct informational interviews with IT and cybersecurity professionals to build my network.</li>
+          <li>Create a polished project hub website showcasing my charter, status reports, interview, and STAR stories.</li>
+          <li>Develop at least six STAR stories demonstrating teamwork, problem-solving, quality, resilience, and stewardship.</li>
         </ul>
-        <div class="metric-row">
-          <div class="metric">
-            <div class="metric-label">Applications Target</div>
-            <div class="metric-value">10+</div>
-            <div class="metric-sub">entry-level IT help desk applications submitted.</div>
-          </div>
-          <div class="metric">
-            <div class="metric-label">STAR Stories</div>
-            <div class="metric-value">5–6</div>
-            <div class="metric-sub">complete stories ready for interviews.</div>
-          </div>
-          <div class="metric">
-            <div class="metric-label">Status Reports</div>
-            <div class="metric-value">Weekly</div>
-            <div class="metric-sub">clear updates on progress and next steps.</div>
-          </div>
-        </div>
-      </article>
+      </div>
+    </article>
 
-      <!-- 7. Project Methodology Diagram -->
-      <article class="card">
-        <div class="card-header">
-          <h2>7. Project Methodology Diagram</h2>
-          <span class="chip chip-soft">
-            <span class="bullet"></span>
-            Hybrid Iterative Plan
-          </span>
+    <article class="section-card">
+      <div class="section-kicker">04 · Stakeholders</div>
+      <h2 class="section-title">Who is involved</h2>
+      <div class="section-body">
+        <ul>
+          <li><strong>Primary stakeholder:</strong> Myself, as the project owner and beneficiary.</li>
+          <li><strong>Instructor &amp; classmates:</strong> Provide feedback, accountability, and peer learning.</li>
+          <li><strong>Industry professionals:</strong> Interview partners and networking contacts who share real-world expectations.</li>
+          <li><strong>Future employers:</strong> Indirect stakeholders that will later evaluate the skills and artifacts produced.</li>
+        </ul>
+        <div class="pill-row">
+          <span class="pill">Student &amp; Project Owner</span>
+          <span class="pill">Instructor &amp; Peers</span>
+          <span class="pill">Industry Mentors</span>
         </div>
-        <div style="text-align:center; margin-top:6px;">
-          <figure style="margin:0;">
-            <img
-              src="../images/Project_Diagram.png"
-              alt="Hybrid iterative project plan diagram for Career Advancement Preparation."
-              style="width:100%; max-width:580px; height:auto; border-radius:12px; box-shadow:0 4px 16px rgba(0,0,0,.35); background:#020617;"
-            />
-            <figcaption style="margin-top:10px; color:var(--ink-dim); font-size:12px;">
-              Diagram showing how the project cycles through planning, execution, reflection, and adjustment
-              across multiple releases during the semester.
-            </figcaption>
-          </figure>
-        </div>
-      </article>
+      </div>
+    </article>
+  </section>
 
-      <!-- 8. Timeline & Trello Snapshot -->
-      <article class="card">
-        <div class="card-header">
-          <h2>8. Timeline &amp; Work Plan</h2>
-          <span class="chip chip-soft">
-            <span class="bullet"></span>
-            Weeks, Milestones &amp; Tools
-          </span>
-        </div>
+  <section class="diagram-card">
+    <h3 class="diagram-title">05 · Hybrid Iterative Methodology</h3>
+    <p class="diagram-text">
+      The project uses a hybrid approach: a semester-long plan with clear milestones (similar to
+      waterfall), combined with weekly check-ins and adjustments (similar to agile). Each “release”
+      focuses on a specific set of outcomes such as updating the resume, completing certification
+      modules, preparing interview stories, or finalizing the closure document and STAR stories.
+    </p>
+    <figure>
+      <img
+        class="diagram-img"
+        alt="Hybrid iterative project methodology showing phased releases with feedback loops and decision points"
+        src="../images/Project_Diagram.png"
+        style="max-width:100%; height:auto; border:1px solid rgba(91,140,255,0.3); border-radius:12px; box-shadow:0 4px 16px rgba(0,0,0,.3);"/>
+      <figcaption>
+        The hybrid plan breaks the semester into releases with concrete outcomes, feedback after
+        each, and go/no-go decision points.
+      </figcaption>
+    </figure>
+  </section>
 
-        <div class="timeline-board">
-          <div class="timeline-board-head">
-            <div class="timeline-board-title">Semester Roadmap</div>
-            <div class="timeline-board-legend">
-              <span class="legend-dot done"></span><span>Completed</span>
-              <span class="legend-dot progress"></span><span>In Progress</span>
-              <span class="legend-dot future"></span><span>Planned</span>
-            </div>
-          </div>
-          <div class="lane-row">
-            <div class="lane">
-              <div class="lane-title">Weeks 1–4</div>
-              <ul>
-                <li><span class="dot done"></span>Draft mission, vision, and initial charter.</li>
-                <li><span class="dot done"></span>Set up Trello/task board for project tracking.</li>
-                <li><span class="dot progress"></span>Start Google IT Support coursework.</li>
-              </ul>
-            </div>
-            <div class="lane">
-              <div class="lane-title">Weeks 5–9</div>
-              <ul>
-                <li><span class="dot progress"></span>Conduct stakeholder interview and summarize insights.</li>
-                <li><span class="dot progress"></span>Write STAR stories based on project and PMI principles.</li>
-                <li><span class="dot future"></span>Refine résumé and LinkedIn profile.</li>
-              </ul>
-            </div>
-            <div class="lane">
-              <div class="lane-title">Weeks 10–15</div>
-              <ul>
-                <li><span class="dot future"></span>Finish certificate coursework and remaining labs.</li>
-                <li><span class="dot future"></span>Submit targeted job applications.</li>
-                <li><span class="dot future"></span>Complete closure document and final reflection.</li>
-              </ul>
-            </div>
-          </div>
+  <section class="two-col">
+    <article class="section-card">
+      <div class="section-kicker">06 · Tools &amp; Resources</div>
+      <h2 class="section-title">Systems supporting the project</h2>
+      <div class="section-body">
+        <ul>
+          <li><strong>Trello board:</strong> Tracks tasks, milestones, and weekly status using columns such as Backlog, In Progress, and Done.</li>
+          <li><strong>Google IT Support Professional Certificate:</strong> Provides structured technical learning and hands-on labs.</li>
+          <li><strong>GitHub Pages:</strong> Hosts the project hub, charter, status reports, interview summary, and STAR stories in one place.</li>
+          <li><strong>Career resources:</strong> LinkedIn, job boards, and interview preparation materials to align work with real opportunities.</li>
+        </ul>
+        <div class="pill-row">
+          <span class="pill">Trello</span>
+          <span class="pill">Google IT Support</span>
+          <span class="pill">GitHub Pages</span>
         </div>
+      </div>
+    </article>
 
-        <div class="two-col" style="margin-top:12px;">
-          <div>
-            <h3>Weekly Rhythm</h3>
-            <ul class="list-tight">
-              <li><strong>Plan:</strong> Review tasks and update Trello for the week.</li>
-              <li><strong>Do:</strong> Work on certificate modules, STAR stories, and deliverables.</li>
-              <li><strong>Check:</strong> Complete status reports and compare progress to goals.</li>
-              <li><strong>Act:</strong> Adjust priorities and next steps based on what I learn.</li>
-            </ul>
-          </div>
-          <div>
-            <h3>Trello Snapshot</h3>
-            <figure style="margin:0; text-align:center;">
-              <img
-                src="../images/Trello_Screenshot.png"
-                alt="Trello board screenshot used to track tasks and milestones for the project."
-                style="width:100%; max-width:480px; height:auto; border-radius:12px; box-shadow:0 4px 16px rgba(0,0,0,.35); background:#020617;"
-              />
-              <figcaption style="margin-top:10px; color:var(--ink-dim); font-size:12px;">
-                Trello board organized into lists for Backlog, This Week, In Progress, and Done to keep
-                project tasks visible and manageable.
-              </figcaption>
-            </figure>
-          </div>
-        </div>
-      </article>
+    <article class="trello-card">
+      <h3 class="trello-title">07 · Visual Task Management</h3>
+      <p class="trello-text">
+        Trello keeps the project visible and manageable. Each card represents a concrete task—
+        such as “apply to a specific job posting” or “complete a module of the Google IT Support
+        Certificate”—with due dates, labels, and notes so nothing falls through the cracks.
+      </p>
+      <figure>
+        <img
+          class="trello-img"
+          alt="Screenshot of Trello board showing lists and cards aligned to the hybrid methodology"
+          src="../images/Trello_Screenshot.png"
+          style="max-width:100%; height:auto; border:1px solid rgba(91,140,255,0.3); border-radius:12px; box-shadow:0 4px 16px rgba(0,0,0,.3);"/>
+        <figcaption>
+          The Trello board aligns with the hybrid plan using lists for Backlog, In Progress, This Week,
+          and Done, making it easy to see progress at a glance.
+        </figcaption>
+      </figure>
+    </article>
+  </section>
 
-      <!-- 9. Definition of Success -->
-      <article class="card">
-        <div class="card-header">
-          <h2>9. Definition of Success</h2>
-          <span class="chip chip-soft">
-            <span class="bullet"></span>
-            What “Good” Looks Like
-          </span>
-        </div>
+  <section class="two-col">
+    <article class="section-card">
+      <div class="section-kicker">08 · Risks &amp; Constraints</div>
+      <h2 class="section-title">What could get in the way</h2>
+      <div class="section-body">
+        <ul>
+          <li><strong>Time and workload:</strong> Balancing multiple CIS courses with labs, group projects, and this career-focused work.</li>
+          <li><strong>Delayed responses from professionals:</strong> Reaching out for interviews and networking can take longer than expected.</li>
+          <li><strong>Motivation &amp; burnout:</strong> Keeping energy and focus through a demanding semester with several deadlines.</li>
+        </ul>
         <p>
-          This project is successful if, by the end of the semester, I have a clear and confident path into
-          IT—supported by a strong project website, polished résumé and LinkedIn profile, finished STAR stories,
-          and real progress toward an entry-level IT help desk role.
+          To reduce these risks, I use weekly planning, smaller milestones, and open communication
+          with classmates and my instructor. If something slips, the hybrid plan allows me to
+          re-balance priorities and move less critical tasks into later weeks.
         </p>
-        <div class="kpi-row">
-          <div class="kpi">
-            <div class="kpi-label">Career Readiness</div>
-            <div class="kpi-value">High</div>
-            <div class="kpi-sub">I can clearly explain my skills, goals, and project experience.</div>
-          </div>
-          <div class="kpi">
-            <div class="kpi-label">Confidence Level</div>
-            <div class="kpi-value">↑</div>
-            <div class="kpi-sub">I feel prepared for interviews and job applications.</div>
-          </div>
-          <div class="kpi">
-            <div class="kpi-label">Deliverable Quality</div>
-            <div class="kpi-value">Polished</div>
-            <div class="kpi-sub">Work meets rubric expectations and looks professional.</div>
-          </div>
-        </div>
-        <div class="callout" style="margin-top:10px;">
-          <strong>Ultimately, success means</strong> turning this class project into a practical springboard for
-          my real career—using the habits, tools, and artifacts I built this semester long after the course ends.
-        </div>
-        <p class="footnote">
-          <span>Note:</span> This charter can evolve as I learn more about IT, project management, and myself, as
-          long as it stays aligned with my long-term vision.
+      </div>
+    </article>
+
+    <article class="section-card">
+      <div class="section-kicker">09 · Quality &amp; Success Criteria</div>
+      <h2 class="section-title">How quality is built in</h2>
+      <div class="section-body">
+        <ul>
+          <li>Each deliverable (charter, STAR stories, interview summary, status reports) is reviewed against the rubric and revised at least once.</li>
+          <li>Links, formatting, and content on the project hub are tested for clarity, consistency, and usability.</li>
+          <li>STAR stories follow a clear Situation–Task–Action–Result structure and connect to PMI principles.</li>
+          <li>Reflection after major milestones captures lessons learned and improvement opportunities for future projects.</li>
+        </ul>
+      </div>
+    </article>
+  </section>
+
+  <hr class="divider"/>
+
+  <section class="two-col">
+    <article class="section-card">
+      <div class="section-kicker">10 · Reflection</div>
+      <h2 class="section-title">What I learned from this project</h2>
+      <div class="section-body">
+        <p>
+          This project showed that project management is more than tools—it is a mindset. Treating my
+          own career as a project helped me understand how scope, schedule, risk, and stakeholders
+          connect to real life. Weekly status reports pushed me to be honest about progress, and
+          they made it easier to adapt when things did not go exactly as planned.
         </p>
-      </article>
-    </section>
-  </main>
+        <p>
+          I also learned how valuable it is to keep everything visible. The hub, Trello board,
+          status reports, and STAR stories all give me evidence of my effort, which I can re-use in
+          interviews and future classes.
+        </p>
+      </div>
+    </article>
+
+    <article class="section-card">
+      <div class="section-kicker">11 · Key Takeaways</div>
+      <h2 class="section-title">Insights for future projects</h2>
+      <div class="section-body">
+        <ul>
+          <li>Start with a realistic scope and adjust early when the original plan is too ambitious.</li>
+          <li>Schedule regular check-ins (like weekly status reports) to maintain momentum and accountability.</li>
+          <li>Build buffer time for learning new tools, certifications, and technologies instead of assuming everything will go perfectly.</li>
+          <li>Use visual tools like Trello to keep work organized and reduce stress when juggling many tasks.</li>
+          <li>Treat networking and interviews as project tasks—not afterthoughts—so they receive time and attention.</li>
+        </ul>
+        <p class="footer-note">
+          These lessons will carry over into future technical, academic, and career projects—especially
+          as I move toward cybersecurity and more advanced IT roles.
+        </p>
+      </div>
+    </article>
+  </section>
 </div>
+
+<script>
+  // When loaded inside the hub iframe, the parent sends theme messages.
+  // If no message is received, default to dark.
+  (function () {
+    document.body.classList.remove("light");
+  })();
+
+  window.addEventListener("message", function (event) {
+    if (!event.data || event.data.type !== "setTheme") return;
+    if (event.data.theme === "light") {
+      document.body.classList.add("light");
+    } else {
+      document.body.classList.remove("light");
+    }
+  });
+</script>
 </body>
 </html>
