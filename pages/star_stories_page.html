@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>6 STAR Stories – Career Advancement Preparation</title>
+  <style>
+    :root {
+      --bg: #0a0e1a;
+      --card: #0f152b;
+      --muted: #1d2543;
+      --ink: #e7eaf7;
+      --ink-dim: #b9bfd7;
+      --brand: #5b8cff;
+      --brand-2: #8ae6ff;
+      --accent-1: #a78bfa;
+      --accent-2: #34d399;
+      --shadow: 0 16px 40px rgba(0,0,0,.6);
+      --radius: 22px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font: 16px/1.6 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+      color: var(--ink);
+      background:
+        radial-gradient(ellipse 1400px 800px at 20% -5%, rgba(91,140,255,0.22) 0%, transparent 55%),
+        radial-gradient(ellipse 1200px 700px at 80% 0%, rgba(167,139,250,0.18) 0%, transparent 55%),
+        radial-gradient(ellipse 1000px 600px at 50% 100%, rgba(52,211,153,0.12) 0%, transparent 55%),
+        var(--bg);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      transition: background .35s ease, color .35s ease;
+    }
+
+    .page-shell {
+      width: 100%;
+      max-width: 1200px;
+      border-radius: 32px;
+      background: linear-gradient(145deg, rgba(255,255,255,0.06), rgba(15,21,43,0.96));
+      border: 1px solid rgba(91,140,255,0.35);
+      box-shadow:
+        0 32px 80px rgba(0,0,0,0.75),
+        0 0 0 1px rgba(15,23,42,0.7);
+      overflow: hidden;
+      backdrop-filter: blur(26px);
+      position: relative;
+      padding: 32px 32px 40px;
+    }
+
+    .page-shell::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 10% 0%, rgba(148,163,253,0.22) 0, transparent 55%),
+        radial-gradient(circle at 90% 0%, rgba(52,211,153,0.16) 0, transparent 50%);
+      mix-blend-mode: screen;
+      opacity: 0.8;
+      pointer-events: none;
+    }
+
+    .page-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .top-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .badge {
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,253,0.6);
+      background: radial-gradient(circle at 0 0, rgba(148,163,253,0.4), transparent 60%);
+      font-size: 12px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--ink-dim);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #22c55e 0, #166534 55%, transparent 70%);
+      box-shadow: 0 0 0 4px rgba(34,197,94,0.35);
+    }
+
+    .spacer { flex: 1; }
+
+    .chip {
+      padding: 9px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,253,0.6);
+      background: linear-gradient(135deg, rgba(15,23,42,0.9), rgba(15,23,42,0.7));
+      color: var(--ink);
+      font-size: 13px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      user-select: none;
+      transition: all .25s ease;
+      box-shadow: 0 8px 24px rgba(15,23,42,0.7);
+      backdrop-filter: blur(16px);
+    }
+
+    .chip span {
+      font-size: 16px;
+    }
+
+    .chip:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 36px rgba(15,23,42,0.9);
+      border-color: rgba(129,140,248,0.9);
+      background: linear-gradient(135deg, rgba(30,64,175,0.95), rgba(15,23,42,0.9));
+    }
+
+    header.page-header {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .page-title {
+      margin: 0 0 4px;
+      font-size: clamp(30px, 2.8vw, 38px);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      background: linear-gradient(135deg, #ffffff, #c4d2ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 8px 28px rgba(15,23,42,0.9);
+    }
+
+    .page-subtitle {
+      margin: 0;
+      font-size: 16px;
+      color: var(--ink-dim);
+      max-width: 780px;
+      margin-inline: auto;
+    }
+
+    .page-subtitle span {
+      color: var(--brand-2);
+      font-weight: 600;
+    }
+
+    .section-intro {
+      margin-bottom: 18px;
+      font-size: 13px;
+      color: var(--ink-dim);
+      text-align: center;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 26px;
+      font-size: 12px;
+    }
+
+    .pill-row span {
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,253,0.7);
+      background: radial-gradient(circle at 0 0, rgba(148,163,253,0.4), transparent 70%);
+      color: var(--ink-dim);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .stories-section {
+      margin-bottom: 32px;
+    }
+
+    .section-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--ink-dim);
+      margin-bottom: 6px;
+    }
+
+    .section-tag span {
+      font-size: 14px;
+    }
+
+    .section-title {
+      margin: 0 0 10px;
+      font-size: 18px;
+      letter-spacing: -0.02em;
+      color: #e5e7eb;
+    }
+
+    .stories-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 18px;
+    }
+
+    .story-card {
+      border-radius: 24px;
+      background:
+        radial-gradient(circle at 0 0, rgba(148,163,253,0.22), transparent 60%),
+        linear-gradient(145deg, rgba(15,23,42,0.96), rgba(10,16,36,0.96));
+      border: 1px solid rgba(129,140,248,0.7);
+      box-shadow:
+        0 14px 38px rgba(15,23,42,0.9),
+        0 0 0 1px rgba(15,23,42,0.9);
+      padding: 18px 20px 18px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .story-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 15% 0, rgba(56,189,248,0.26), transparent 56%);
+      opacity: 0.6;
+      pointer-events: none;
+    }
+
+    .story-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .story-header {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 12px;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .story-title {
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #e5e7eb;
+    }
+
+    .story-source {
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,253,0.7);
+      background: radial-gradient(circle at 0 0, rgba(148,163,253,0.4), transparent 70%);
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--ink-dim);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .story-source span {
+      font-size: 13px;
+    }
+
+    .story-meta,
+    .prompt-text {
+      font-size: 13px;
+      color: var(--ink-dim);
+      margin-bottom: 6px;
+    }
+
+    .story-meta strong,
+    .prompt-text strong {
+      color: #e5e7eb;
+    }
+
+    .star-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 6px;
+      margin-top: 6px;
+      font-size: 13px;
+    }
+
+    .star-block {
+      border-radius: 14px;
+      background: rgba(15,23,42,0.82);
+      border: 1px solid rgba(51,65,85,0.9);
+      padding: 8px 10px;
+    }
+
+    .star-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      color: var(--ink-dim);
+      margin-bottom: 2px;
+    }
+
+    .star-body {
+      font-size: 13px;
+      color: var(--ink-dim);
+    }
+
+    footer.page-footer {
+      margin-top: 22px;
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      font-size: 12px;
+      flex-wrap: wrap;
+    }
+
+    .footer-link {
+      text-decoration: none;
+      color: var(--ink-dim);
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,253,0.6);
+      background: linear-gradient(135deg, rgba(15,23,42,0.9), rgba(15,23,42,0.7));
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all .2s ease;
+    }
+
+    .footer-link span {
+      font-size: 14px;
+    }
+
+    .footer-link:hover {
+      color: var(--ink);
+      border-color: rgba(129,140,248,1);
+      transform: translateY(-1px);
+      box-shadow: 0 10px 24px rgba(15,23,42,0.9);
+    }
+
+    /* Light theme */
+    body.light {
+      --bg: #f7f9ff;
+      --card: #ffffff;
+      --muted: #e3e6f0;
+      --ink: #0f172a;
+      --ink-dim: #374151;
+      --brand: #365cff;
+      --brand-2: #0284c7;
+      --accent-1: #7c3aed;
+      --accent-2: #059669;
+      background:
+        radial-gradient(ellipse 1400px 800px at 20% -5%, rgba(54,92,255,0.12) 0%, transparent 55%),
+        radial-gradient(ellipse 1200px 700px at 80% 0%, rgba(167,139,250,0.12) 0%, transparent 55%),
+        #eef2ff;
+      color-scheme: light;
+    }
+
+    body.light .page-shell {
+      background: linear-gradient(150deg, rgba(255,255,255,0.96), rgba(248,250,255,0.99));
+      box-shadow:
+        0 26px 60px rgba(15,23,42,0.16),
+        0 0 0 1px rgba(191,219,254,0.8);
+      border-color: rgba(129,140,248,0.7);
+    }
+
+    body.light .page-shell::before {
+      opacity: 0.85;
+    }
+
+    body.light .page-title {
+      background: linear-gradient(135deg, #111827, #1d4ed8);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 6px 18px rgba(148,163,253,0.8);
+    }
+
+    body.light .page-subtitle {
+      color: #111827;
+    }
+
+    body.light .page-subtitle span {
+      color: #0369a1;
+    }
+
+    body.light .pill-row span {
+      background: radial-gradient(circle at 0 0, rgba(191,219,254,0.8), transparent 70%);
+      border-color: rgba(129,140,248,0.9);
+      color: #111827;
+    }
+
+    body.light .story-card {
+      background:
+        radial-gradient(circle at 0 0, rgba(191,219,254,0.5), transparent 65%),
+        linear-gradient(135deg, #ffffff, #e5edff);
+      border-color: rgba(129,140,248,0.9);
+      box-shadow:
+        0 12px 26px rgba(148,163,253,0.55),
+        0 0 0 1px rgba(191,219,254,0.9);
+    }
+
+    body.light .story-card::before {
+      background: radial-gradient(circle at 10% 0, rgba(129,140,248,0.4), transparent 60%);
+    }
+
+    body.light .story-title {
+      color: #111827;
+    }
+
+    body.light .story-source {
+      border-color: rgba(129,140,248,1);
+      background: radial-gradient(circle at 0 0, rgba(191,219,254,0.9), transparent 70%);
+      color: #111827;
+    }
+
+    body.light .story-meta strong,
+    body.light .prompt-text strong {
+      color: #111827;
+    }
+
+    body.light .star-block {
+      background: #ffffff;
+      border-color: rgba(209,213,219,1);
+    }
+
+    body.light .star-label {
+      color: #6b7280;
+    }
+
+    body.light .star-body {
+      color: #111827;
+    }
+
+    body.light .chip {
+      background: linear-gradient(135deg, #ffffff, #e5edff);
+      color: #0f172a;
+      box-shadow: 0 10px 26px rgba(148,163,253,0.6);
+    }
+
+    body.light .chip:hover {
+      background: linear-gradient(135deg, #e0e7ff, #dbeafe);
+    }
+
+    body.light .footer-link {
+      background: linear-gradient(135deg, #ffffff, #e5edff);
+      color: #111827;
+      border-color: rgba(148,163,253,0.9);
+    }
+
+    body.light .footer-link:hover {
+      background: linear-gradient(135deg, #e0e7ff, #dbeafe);
+    }
+
+    @media (max-width: 900px) {
+      body {
+        align-items: stretch;
+        padding: 16px;
+      }
+      .page-shell {
+        padding: 22px 18px 26px;
+        border-radius: 24px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .top-row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .spacer {
+        display: none;
+      }
+      header.page-header {
+        text-align: left;
+      }
+      .page-subtitle {
+        margin-top: 2px;
+      }
+      footer.page-footer {
+        justify-content: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-shell">
+    <div class="page-inner">
+      <div class="top-row">
+        <div class="badge">
+          <span class="badge-dot"></span>
+          CIS 4860 · Career Advancement Preparation
+        </div>
+        <div class="spacer"></div>
+        <button class="chip" id="themeToggle" type="button">
+          <span>🎨</span>
+          <span>Toggle Theme</span>
+        </button>
+      </div>
+
+      <header class="page-header">
+        <h1 class="page-title">6 STAR STORIES</h1>
+        <p class="page-subtitle">
+          A collection of <span>Situation–Task–Action–Result</span> stories that highlight teamwork,
+          problem solving, quality, complexity, stewardship, and time management throughout this project
+          and semester.
+        </p>
+      </header>
+
+      <div class="section-intro">
+        Each story follows the required structure with a clear title, source, topic, and four
+        labeled sections: <strong>Situation</strong>, <strong>Task</strong>, <strong>Action</strong>,
+        and <strong>Result</strong>.
+      </div>
+
+      <div class="pill-row">
+        <span>Project Presentation Stories (2)</span>
+        <span>PMI Principle Stories (3)</span>
+        <span>Additional Extra STAR Story (1)</span>
+      </div>
+
+      <!-- Project Presentation Stories -->
+      <section class="stories-section" id="project-stories">
+        <div class="section-tag">
+          <span>📊</span>
+          Project Presentation Stories
+        </div>
+        <h2 class="section-title">Stories from Project Presentations (2)</h2>
+
+        <div class="stories-grid">
+          <!-- Story 1 -->
+          <article class="story-card">
+            <div class="story-inner">
+              <div class="story-header">
+                <div class="story-title">
+                  Team collaboration and communication strategies
+                </div>
+                <div class="story-source">
+                  <span>📑</span>
+                  Source: Project Presentation
+                </div>
+              </div>
+              <div class="story-meta">
+                <strong>Topic:</strong>
+                Team collaboration and communication strategies
+              </div>
+              <div class="star-grid">
+                <div class="star-block">
+                  <div class="star-label">Situation</div>
+                  <div class="star-body">
+                    In my project management class, I had a group presentation on IT Procurement and Governance where we were all tasked with delivering a presentation explaining the concept.
+                  </div>
+                </div>
+                <div class="star-block">
+                  <div class="star-label">Task</div>
+                  <div class="star-body">
+                    Our team was tasked with delivering a presentation on IT procurement and governance. The presentation required various sections which included career exploration, professional interviews, and an interactive quiz, and in the end, slides that packaged all the sections into one presentation.
+                  </div>
+                </div>
+                <div class="star-block">
+                  <div class="star-label">Action</div>
+                  <div class="star-body">
+                    Communication was key since we all needed to collaborate on which parts we were going to get done. I was tasked with conducting two interviews with IT professionals. During my search, I used various websites to reach out, some websites I used were LinkedIn, Indeed, and Glassdoor. Unfortunately, it took me a long time to conduct my interviews since many IT professionals did not reach out. I communicated this with my team, and they were very understanding of my situation.
+                  </div>
+                </div>
+                <div class="star-block">
+                  <div class="star-label">Result</div>
+                  <div class="star-body">
+                    Since my team was understanding and we all communicated in a professional manner, this allowed me more time to continue to reach out, and in the end, the result was positive because I received two emails from people that were interested in having an interview with me. In the end, I submitted my part on time and we presented our presentation on time. This highlights how communication is important and can result in positive outcomes when working in teams.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Story 2 -->
+          <article class="story-card">
+            <div class="story-inner">
+              <div class="story-header">
+                <div class="story-title">
+                  Problem solving and decision making situations
+                </div>
+                <div class="story-source">
+                  <span>📑</span>
+                  Source: Project Presentation
+                </div>
+              </div>
+              <div class="story-meta">
+                <strong>Topic:</strong>
+                Problem solving and decision making situations
+              </div>
+              <div class="star-grid">
+                <div class="star-block">
+                  <div class="star-label">Situation</div>
+                  <div class="star-body">
+                    In my project management class, I had a second group presentation about system interactions. In our project, we were required to create visuals and present a case study and an interview, all with the goal of explaining systems interactions.
+                  </div>
+                </div>
+                <div class="star-block">
+                  <div class="star-label">Task</div>
+                  <div class="star-body">
+                    I was assigned to visualize the concept by making graphs and visuals. While I was working on creating the visuals, I had a hard time finding creative ideas on how to create engaging visual elements to provide to my team for our presentation.
+                  </div>
+                </div>
+                <div class="star-block">
+                  <div class="star-label">Action</div>
+                  <div class="star-body">
+                    I researched our PMI topic and found descriptive graphs and explanations on our principles, and this helped me clarify the concept of systems interactions and gave me inspiration on what graphs I should create while also using reliable information from our class's PMI textbook.
+                  </div>
+                </div>
+                <div class="star-block">
+                  <div class="star-label">Result</div>
+                  <div class="star-body">
+                    By researching our topic and not giving up, this helped me find the correct information, which led me to creating our visuals. This resulted in improving our presentation because I gave my group high-quality graphs, infographic slides, and charts that all helped explain our principle and add value to our slides. In the end, I achieved my goal of visualizing the concept.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- PMI Principle Stories -->
+      <section class="stories-section" id="pmi-stories">
+        <div class="section-tag">
+          <span>⭐</span>
+          PMI Principle Stories
+        </div>
+        <h2 class="section-title">Stories from PMI Principles (3)</h2>
+
+        <div class="stories-grid">
+          <!-- PMI Story 1: Build quality -->
+          <article class="story-card">
+            <div class="story-inner">
+              <div class="story-header">
+                <div class="story-title">
+                  Build quality into processes and deliverables
+                </div>
+                <div class="story-source">
+                  <span>📘</span>
+                  Source: PMI Principle 8 – Build quality into processes and deliverables
+                </div>
+              </div>
+              <div class="prompt-text">
+                <strong>Topic:</strong>
+                Build quality into processes and deliverables
+              </div>
+              <div class="star-grid">
+                <div class="star-block">
+                  <div class="star-label">Situation</div>
+                  <div class="star-body">
+                    For my semester-long project, one of my deliverables was a project charter that outlined my goals and a plan on how to achieve those goals. The project charter also had other detailed sections explaining stakeholders, costs, and a methodology section.
+                  </div>
+                </div>
+                <div class="star-block">
+                  <div class="star-label">Task</div>
+                  <div class="star-body">
+                    I was tasked to design and build the site, and the goal was not to just complete it but rather produce a high-quality project that had clear writing and a clean layout with links and different sections. Finding valuable deliverables was a challenge because I had a hard time finding deliverables that would benefit me and provide myself value.
+                  </div>
+                </div>
+                <div class="star-block">
+                  <div class="star-label">Action</div>
+                  <div class="star-body">
+                    I began by drafting different ideas that would provide me with value, and at first I picked to make a research project, but after receiving feedback, I realized this project was not viable. In the end, I created a project that had clear deliverables with clear steps, and I made sure that every deliverable provided me with value in my professional career.
+                  </div>
+                </div>
+                <div class="star-block">
+                  <div class="star-label">Result</div>
+                  <div class="star-body">
+                    I created a solid and polished project charter that included deliverables and clear steps on how to achieve them. The project charter was a success, and what helped me the most was focusing on the quality of my work and building structured plans on how to execute them.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- PMI Story 2: Navigate complexity -->
+          <article class="story-card">
+            <div class="story-inner">
+              <div class="story-header">
+                <div class="story-title">
+                  Navigate complexity
+                </div>
+                <div class="story-source">
+                  <span>📘</span>
+                  Source: PMI Principle 9 – Navigate complexity
+                </div>
+              </div>
+              <div class="prompt-text">
+                <strong>Topic:</strong>
+                Navigate complexity in technical tasks and projects
+              </div>
+              <div class="star-grid">
+                <div class="star-block">
+                  <div class="star-label">Situation</div>
+                  <div class="star-body">
+                    During one of my AWS labs, I was working on a long lab that expected me to figure out the process of creating a working server architecture. During my lab, it timed out since it took me hours, and all my progress was deleted.
+                  </div>
+                </div>
+                <div class="star-block">
+                  <div class="star-label">Task</div>
+                  <div class="star-body">
+                    In one of my CIS classes, I was tasked with completing several labs showing me the AWS architecture and features. At the end, I was tasked to show my understanding on how to build a working architecture with several features. During my attempt, I got very close, but I was stuck on one requirement and I could not find the correct solution to get full credit. After many hours, the lab timed out and all my progress was deleted.
+                  </div>
+                </div>
+                <div class="star-block">
+                  <div class="star-label">Action</div>
+                  <div class="star-body">
+                    I was very frustrated because I spent several hours working on my lab and all my progress had been deleted since the lab timed out. The next step I took was to calm down and focus on what I did right. I wrote down steps to make sure I configured everything correctly, and after troubleshooting, I found out how to set everything correctly.
+                  </div>
+                </div>
+                <div class="star-block">
+                  <div class="star-label">Result</div>
+                  <div class="star-body">
+                    After writing a structured plan on what steps to take, I navigated a complex topic and troubleshot all the issues I had. This situation highlights the importance of staying calm and approaching complex topics with a plan to help navigate complex issues.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- PMI Story 3: Stewardship -->
+          <article class="story-card">
+            <div class="story-inner">
+              <div class="story-header">
+                <div class="story-title">
+                  Be a diligent, respectful, and caring steward
+                </div>
+                <div class="story-source">
+                  <span>📘</span>
+                  Source: PMI Principle 1 – Be a diligent, respectful, and caring steward
+                </div>
+              </div>
+              <div class="prompt-text">
+                <strong>Topic:</strong>
+                Acting as a respectful and caring steward for your team
+              </div>
+              <div class="star-grid">
+                <div class="star-block">
+                  <div class="star-label">Situation</div>
+                  <div class="star-body">
+                    During one of my previous classes at CSULA, I had a project where team members were not ambitious and did not want to put effort into our project. I decided to be as respectful as possible and talk with my team members and motivate them to create a high-quality presentation.
+                  </div>
+                </div>
+                <div class="star-block">
+                  <div class="star-label">Task</div>
+                  <div class="star-body">
+                    My group was tasked with creating a presentation on a nonprofit where we would draw diagrams and explain why implementing a system for the nonprofit would benefit people with difficulty receiving digital literacy and education. During our project, my team members seemed uninterested and wanted to do the minimal effort for the project.
+                  </div>
+                </div>
+                <div class="star-block">
+                  <div class="star-label">Action</div>
+                  <div class="star-body">
+                    I decided to be as respectful as possible and motivate my team members to put more effort and dedicate more time to the project. I was very careful with not being a pushover, so instead I worked as much as possible on our project and helped my team members understand how to complete the project to assist them.
+                  </div>
+                </div>
+                <div class="star-block">
+                  <div class="star-label">Result</div>
+                  <div class="star-body">
+                    In the end, because I kept a positive attitude, it spread towards the team, and in the end we presented a well-formatted presentation with all the required sections. Because of my positive attitude, I motivated and helped my team to put more effort into the project, and in the end we became friends.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Additional Extra Story -->
+      <section class="stories-section" id="extra-story">
+        <div class="section-tag">
+          <span>⏰</span>
+          Additional Extra STAR Story
+        </div>
+        <h2 class="section-title">Time management and milestone achievement</h2>
+
+        <div class="stories-grid">
+          <article class="story-card">
+            <div class="story-inner">
+              <div class="story-header">
+                <div class="story-title">
+                  Time management and milestone achievement
+                </div>
+                <div class="story-source">
+                  <span>📘</span>
+                  Source: Additional STAR Story – Time management and milestone achievement
+                </div>
+              </div>
+              <div class="prompt-text">
+                <strong>Topic:</strong>
+                Time management and milestone achievement
+              </div>
+              <div class="star-grid">
+                <div class="star-block">
+                  <div class="star-label">Situation</div>
+                  <div class="star-body">
+                    During my last semester at CSULA, I took very challenging classes that involved large workloads and complex topics. This semester was one of my hardest semesters, but it is also one of the semesters where I learned the importance of organization, milestones, and setting goals and how to achieve them.
+                  </div>
+                </div>
+                <div class="star-block">
+                  <div class="star-label">Task</div>
+                  <div class="star-body">
+                    I had classes that required me to learn how to work with big data and databases and learning SQL, which involves writing queries to manipulate data. Additionally, I had other classes that required lots of assignments, presentations and group projects.
+                  </div>
+                </div>
+                <div class="star-block">
+                  <div class="star-label">Action</div>
+                  <div class="star-body">
+                    I learned that time management was key to overcoming stressful situations. This semester I implemented organization by creating structured Gantt charts that prepared me in advance to manage all my assignments. I also used a growth mindset to learn from my mistakes and grow from them.
+                  </div>
+                </div>
+                <div class="star-block">
+                  <div class="star-label">Result</div>
+                  <div class="star-body">
+                    Because I approached this semester with a growth mindset and used time management skills and set milestones, I learned how all of these skills can improve performance and lead to positive outcomes. I learned so much during this semester and learned concepts and skills that I will continue to use in my life and professional career.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <footer class="page-footer">
+        <a class="footer-link" href="career_advancement_hub.html">
+          <span>⬅</span>
+          Back to Hub
+        </a>
+        <a class="footer-link" href="#top">
+          <span>⬆</span>
+          Back to Top
+        </a>
+      </footer>
+    </div>
+  </div>
+
+  <script>
+    const body = document.body;
+    const toggle = document.getElementById('themeToggle');
+    const storedTheme = localStorage.getItem('careerHubTheme');
+
+    if (storedTheme === 'light') {
+      body.classList.add('light');
+    }
+
+    toggle?.addEventListener('click', () => {
+      body.classList.toggle('light');
+      const mode = body.classList.contains('light') ? 'light' : 'dark';
+      localStorage.setItem('careerHubTheme', mode);
+    });
+  </script>
+</body>
+</html>
