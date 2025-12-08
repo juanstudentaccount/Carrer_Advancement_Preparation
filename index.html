@@ -176,7 +176,7 @@
       width: 100%;
       height: 100%;
       border: none;
-      border-radius: 28px;
+      border-radius: 26px;
       background: #020617;
     }
 
@@ -626,12 +626,13 @@
     const framePanel = document.getElementById('framePanel');
     const frame = document.getElementById('pageFrame');
 
+    // NOTE: all targets are now inside the /pages/ folder
     const pageMap = {
-      charter: 'index.html',
-      status: 'status_reports_fixed_dark_light.html',
-      closure: 'closure_document.html',
-      interview: 'interview_joseph_cortez_v2.html',
-      star: 'star_stories_page.html'
+      charter: 'pages/index.html',
+      status: 'pages/status_reports_fixed_dark_light.html',
+      closure: 'pages/closure_document.html',
+      interview: 'pages/interview_joseph_cortez_v2.html',
+      star: 'pages/star_stories_page.html'
     };
 
     function setActiveNav(view) {
