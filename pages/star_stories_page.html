@@ -497,7 +497,7 @@
     }
   </style>
 </head>
-<body>
+<body id="top">
   <div class="page-shell">
     <div class="page-inner">
       <div class="top-row">
@@ -836,7 +836,7 @@
       </section>
 
       <footer class="page-footer">
-        <a class="footer-link" href="career_advancement_hub.html">
+        <a class="footer-link" href="#" id="backToHub">
           <span>⬅</span>
           Back to Hub
         </a>
@@ -861,6 +861,18 @@
       body.classList.toggle('light');
       const mode = body.classList.contains('light') ? 'light' : 'dark';
       localStorage.setItem('careerHubTheme', mode);
+    });
+
+    // Back to Hub button – works inside the iframe hub, and standalone
+    const backToHubLink = document.getElementById('backToHub');
+    backToHubLink?.addEventListener('click', (event) => {
+      event.preventDefault();
+      if (window.parent && typeof window.parent.capHubShowHub === 'function') {
+        window.parent.capHubShowHub();
+      } else {
+        // Fallback if opened directly, not in hub iframe
+        window.location.href = 'career_advancement_hub.html';
+      }
     });
   </script>
 </body>
