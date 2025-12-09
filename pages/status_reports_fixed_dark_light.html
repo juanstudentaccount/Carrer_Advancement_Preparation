@@ -263,7 +263,7 @@
       box-shadow: 0 10px 24px rgba(15,23,42,0.9);
     }
 
-    /* Light theme: keep card readable and text dark */
+    /* Light theme */
     body.light {
       --bg: #f7f9ff;
       --ink: #0f172a;
@@ -300,7 +300,7 @@
       color: #111827;
     }
 
-    /* In light mode, keep text inside reports dark and backgrounds slightly lighter */
+    /* In light mode, keep all text in the status reports dark for readability */
     body.light .status-content .body,
     body.light .status-content p,
     body.light .status-content ul,
@@ -319,7 +319,7 @@
       color: #111827;
     }
 
-    /* Override the dark Executive Summary panels in light mode */
+    /* Override dark Executive Summary panels in light mode */
     body.light .status-content div[style*="rgba(10,14,30"] {
       background: #e5f3ff !important;
       color: #111827 !important;
@@ -330,6 +330,14 @@
       color: #111827 !important;
     }
 
+    /* Global override so all inline-colored text inside subboxes becomes dark in light mode */
+    body.light .status-content .subbox *,
+    body.light .status-content .subbox strong,
+    body.light .status-content .subbox span {
+      color: #111827 !important;
+    }
+
+    /* Keep chips and footer buttons readable in light mode */
     body.light .chip {
       background: linear-gradient(135deg, #ffffff, #e5edff);
       color: #0f172a;
