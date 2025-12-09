@@ -18,6 +18,67 @@
     *, *::before, *::after { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
 
+    @keyframes starFly {
+      0% {
+        transform: translate(0, 0) scale(0);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        transform: translate(var(--tx), var(--ty)) scale(1);
+        opacity: 0;
+      }
+    }
+
+    @keyframes shimmer {
+      0%, 100% { opacity: 0.8; }
+      50% { opacity: 1; }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+    }
+
+    @keyframes glow {
+      0%, 100% { filter: brightness(1) drop-shadow(0 0 8px currentColor); }
+      50% { filter: brightness(1.2) drop-shadow(0 0 16px currentColor); }
+    }
+
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .star-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 9999;
+      overflow: hidden;
+    }
+
+    .flying-star {
+      position: absolute;
+      font-size: 24px;
+      animation: starFly 2s ease-out forwards;
+      pointer-events: none;
+    }
+
     body {
       margin: 0;
       font: 16px/1.6 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
@@ -31,7 +92,6 @@
       display: flex;
       justify-content: center;
       align-items: flex-start;
-      /* slightly tighter side padding so content can breathe more */
       padding: 96px 8px 32px;
       transition: background .35s ease, color .35s ease;
     }
@@ -42,7 +102,6 @@
       top: 16px;
       left: 50%;
       transform: translateX(-50%);
-      /* wider content area */
       width: min(1400px, 100% - 16px);
       z-index: 30;
     }
@@ -74,6 +133,7 @@
       text-transform: uppercase;
       color: var(--ink-dim);
       white-space: nowrap;
+      animation: shimmer 3s ease-in-out infinite;
     }
 
     .nav-dot {
@@ -82,6 +142,7 @@
       border-radius: 999px;
       background: radial-gradient(circle, #22c55e 0, #166534 55%, transparent 70%);
       box-shadow: 0 0 0 4px rgba(34,197,94,0.35);
+      animation: glow 2s ease-in-out infinite;
     }
 
     .nav-links {
@@ -149,7 +210,6 @@
 
     /* Main layout */
     .main-shell {
-      /* match nav-shell and give the inner pages more width */
       width: min(1400px, 100% - 16px);
     }
 
@@ -171,7 +231,6 @@
       padding: 0;
       overflow: hidden;
       display: none;
-      /* a touch taller so embedded pages feel more “full screen” */
       height: calc(100vh - 112px);
       min-height: 420px;
     }
@@ -240,6 +299,36 @@
       display: flex;
       flex-direction: column;
       gap: 10px;
+      opacity: 0;
+      animation: slideInUp 0.6s ease-out forwards;
+      transition: all 0.3s ease;
+    }
+
+    .hub-card:nth-child(1) { animation-delay: 0.1s; }
+    .hub-card:nth-child(2) { animation-delay: 0.2s; }
+    .hub-card:nth-child(3) { animation-delay: 0.3s; }
+    .hub-card:nth-child(4) { animation-delay: 0.4s; }
+    .hub-card:nth-child(5) { animation-delay: 0.5s; }
+
+    .hub-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(148,163,253,0.3), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .hub-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 24px 50px rgba(15,23,42,1);
+      border-color: rgba(148,163,253,0.9);
+    }
+
+    .hub-card:hover::before {
+      left: 100%;
     }
 
     .hub-card.wide {
@@ -251,6 +340,18 @@
       box-shadow:
         0 18px 42px rgba(15,23,42,1),
         0 0 0 1px rgba(250,204,21,0.3);
+    }
+
+    .hub-card.wide::before {
+      background: linear-gradient(90deg, transparent, rgba(250,204,21,0.4), transparent);
+    }
+
+    .hub-card.wide:hover {
+      border-color: rgba(250,204,21,1);
+      box-shadow:
+        0 24px 52px rgba(15,23,42,1),
+        0 0 0 1px rgba(250,204,21,0.5),
+        0 0 40px rgba(250,204,21,0.3);
     }
 
     .hub-card-header {
@@ -270,11 +371,13 @@
       font-size: 18px;
       background: radial-gradient(circle at 30% 0, #fbbf24, #f97316);
       box-shadow: 0 8px 18px rgba(251,191,36,0.7);
+      animation: float 3s ease-in-out infinite;
     }
 
     .hub-card.wide .hub-icon {
       background: radial-gradient(circle at 30% 0, #facc15, #f97316);
       box-shadow: 0 10px 22px rgba(250,204,21,0.9);
+      animation: float 3s ease-in-out infinite, glow 3s ease-in-out infinite;
     }
 
     .hub-title {
@@ -324,13 +427,42 @@
       cursor: pointer;
       box-shadow: 0 10px 26px rgba(37,99,235,0.85);
       transition: all .22s ease;
+      position: relative;
+      overflow: hidden;
     }
 
-    .hub-btn span:last-child { font-size: 14px; }
+    .hub-btn::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      transform: translate(-50%, -50%);
+      transition: width 0.4s ease, height 0.4s ease;
+    }
+
+    .hub-btn:hover::before {
+      width: 300px;
+      height: 300px;
+    }
+
+    .hub-btn span:last-child { 
+      font-size: 14px;
+      position: relative;
+      z-index: 1;
+    }
 
     .hub-btn:hover {
-      transform: translateY(-1px);
-      filter: brightness(1.05);
+      transform: translateY(-2px);
+      filter: brightness(1.1);
+      box-shadow: 0 14px 32px rgba(37,99,235,0.95);
+    }
+
+    .hub-btn:active {
+      transform: translateY(0);
     }
 
     .hub-card.wide .hub-btn {
@@ -338,6 +470,14 @@
       border-color: rgba(245,158,11,0.95);
       box-shadow: 0 10px 30px rgba(245,158,11,0.85);
       color: #111827;
+    }
+
+    .hub-card.wide .hub-btn:hover {
+      box-shadow: 0 14px 36px rgba(245,158,11,0.95);
+    }
+
+    .hub-card.wide .hub-btn::before {
+      background: rgba(255, 255, 255, 0.4);
     }
 
     .hub-footer-note {
@@ -431,6 +571,16 @@
         0 0 0 1px rgba(191,219,254,0.9);
     }
 
+    body.light .hub-card::before {
+      background: linear-gradient(90deg, transparent, rgba(148,163,253,0.4), transparent);
+    }
+
+    body.light .hub-card:hover {
+      box-shadow:
+        0 20px 40px rgba(148,163,253,0.7),
+        0 0 0 1px rgba(148,163,253,1);
+    }
+
     body.light .hub-card.wide {
       background:
         radial-gradient(circle at 0 0, rgba(254,240,138,0.95), transparent 65%),
@@ -439,6 +589,17 @@
       box-shadow:
         0 18px 38px rgba(250,204,21,0.7),
         0 0 0 1px rgba(253,224,71,0.8);
+    }
+
+    body.light .hub-card.wide::before {
+      background: linear-gradient(90deg, transparent, rgba(250,204,21,0.5), transparent);
+    }
+
+    body.light .hub-card.wide:hover {
+      box-shadow:
+        0 22px 44px rgba(250,204,21,0.8),
+        0 0 0 1px rgba(250,204,21,1),
+        0 0 30px rgba(250,204,21,0.4);
     }
 
     body.light .hub-body { color: #111827; }
@@ -466,6 +627,9 @@
   </style>
 </head>
 <body>
+  <!-- Star Animation Container -->
+  <div class="star-container" id="starContainer"></div>
+
   <!-- Top navigation bar -->
   <div class="nav-shell">
     <div class="top-nav">
@@ -610,6 +774,60 @@
   </div>
 
   <script>
+    // Star animation on first load
+    function createStarAnimation() {
+      const starContainer = document.getElementById('starContainer');
+      const stars = ['⭐', '✨', '🌟', '💫', '⚡'];
+      const numStars = 40;
+
+      for (let i = 0; i < numStars; i++) {
+        setTimeout(() => {
+          const star = document.createElement('div');
+          star.className = 'flying-star';
+          star.textContent = stars[Math.floor(Math.random() * stars.length)];
+          
+          // Random starting position
+          const startX = Math.random() * window.innerWidth;
+          const startY = Math.random() * window.innerHeight;
+          star.style.left = startX + 'px';
+          star.style.top = startY + 'px';
+          
+          // Random trajectory
+          const tx = (Math.random() - 0.5) * 2000;
+          const ty = (Math.random() - 0.5) * 2000;
+          star.style.setProperty('--tx', tx + 'px');
+          star.style.setProperty('--ty', ty + 'px');
+          
+          // Random animation duration
+          const duration = 1.5 + Math.random() * 1;
+          star.style.animationDuration = duration + 's';
+          
+          starContainer.appendChild(star);
+          
+          // Remove star after animation
+          setTimeout(() => {
+            star.remove();
+          }, duration * 1000);
+        }, i * 50);
+      }
+
+      // Remove container after all animations complete
+      setTimeout(() => {
+        starContainer.style.display = 'none';
+      }, 3500);
+    }
+
+    // Check if this is first visit
+    const hasVisited = sessionStorage.getItem('cap-hub-visited');
+    if (!hasVisited) {
+      sessionStorage.setItem('cap-hub-visited', 'true');
+      window.addEventListener('load', () => {
+        setTimeout(createStarAnimation, 300);
+      });
+    } else {
+      document.getElementById('starContainer').style.display = 'none';
+    }
+
     // Theme handling
     const body = document.body;
     const themeToggle = document.getElementById('themeToggle');
@@ -693,4 +911,4 @@
     showHub();
   </script>
 </body>
-</html>
+</html
