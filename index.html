@@ -61,6 +61,21 @@
       }
     }
 
+    /* unified sheen animation for all cards */
+    @keyframes cardSheen {
+      0% {
+        transform: translateX(-140%);
+        opacity: 0;
+      }
+      45% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateX(140%);
+        opacity: 0;
+      }
+    }
+
     .star-container {
       position: fixed;
       top: 0;
@@ -94,6 +109,19 @@
       align-items: flex-start;
       padding: 96px 8px 32px;
       transition: background .35s ease, color .35s ease;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(96,165,250,0.8) rgba(15,23,42,0.9);
+    }
+
+    body::-webkit-scrollbar {
+      width: 8px;
+    }
+    body::-webkit-scrollbar-track {
+      background: rgba(15,23,42,0.95);
+    }
+    body::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, #3b82f6, #22d3ee);
+      border-radius: 999px;
     }
 
     /* Top bar */
@@ -153,6 +181,7 @@
     }
 
     .nav-link {
+      position: relative;
       text-decoration: none;
       font-size: 13px;
       padding: 6px 13px;
@@ -177,6 +206,18 @@
       font-weight: 600;
       box-shadow: 0 10px 24px rgba(37,99,235,0.8);
       border-color: transparent;
+    }
+
+    .nav-link.is-active::after {
+      content: '';
+      position: absolute;
+      left: 12px;
+      right: 12px;
+      bottom: -3px;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(56,189,248,0.4), rgba(129,140,248,0.9));
+      opacity: 0.95;
     }
 
     .spacer { flex: 1; }
@@ -233,6 +274,18 @@
       display: none;
       height: calc(100vh - 112px);
       min-height: 420px;
+      position: relative;
+    }
+
+    .frame-panel::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 26px;
+      pointer-events: none;
+      background: radial-gradient(circle at 0 0, rgba(56,189,248,0.18), transparent 60%);
+      opacity: 0.7;
+      mix-blend-mode: screen;
     }
 
     #pageFrame {
@@ -301,7 +354,7 @@
       gap: 10px;
       opacity: 0;
       animation: slideInUp 0.6s ease-out forwards;
-      transition: all 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, background 0.35s ease;
     }
 
     .hub-card:nth-child(1) { animation-delay: 0.1s; }
@@ -310,15 +363,36 @@
     .hub-card:nth-child(4) { animation-delay: 0.4s; }
     .hub-card:nth-child(5) { animation-delay: 0.5s; }
 
+    /* soft ambient glow behind every card */
+    .hub-card::after {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: inherit;
+      background:
+        radial-gradient(circle at 0 0, rgba(148,163,253,0.26), transparent 60%);
+      opacity: 0.3;
+      pointer-events: none;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .hub-card:hover::after {
+      opacity: 0.5;
+      transform: scale(1.02);
+    }
+
+    /* unified shiny swipe for all cards */
     .hub-card::before {
       content: '';
       position: absolute;
       top: 0;
-      left: -100%;
-      width: 100%;
+      left: 0;
+      width: 130%;
       height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(148,163,253,0.3), transparent);
-      transition: left 0.5s ease;
+      background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.26) 50%, transparent 100%);
+      transform: translateX(-140%);
+      opacity: 0;
+      pointer-events: none;
     }
 
     .hub-card:hover {
@@ -328,7 +402,7 @@
     }
 
     .hub-card:hover::before {
-      left: 100%;
+      animation: cardSheen 0.9s ease-out;
     }
 
     .hub-card.wide {
@@ -342,8 +416,12 @@
         0 0 0 1px rgba(250,204,21,0.3);
     }
 
+    .hub-card.wide::after {
+      background: radial-gradient(circle at 0 0, rgba(250,204,21,0.45), transparent 60%);
+    }
+
     .hub-card.wide::before {
-      background: linear-gradient(90deg, transparent, rgba(250,204,21,0.4), transparent);
+      background: linear-gradient(120deg, transparent 0%, rgba(253,224,71,0.5) 50%, transparent 100%);
     }
 
     .hub-card.wide:hover {
@@ -359,6 +437,8 @@
       align-items: center;
       gap: 10px;
       margin-bottom: 4px;
+      position: relative;
+      z-index: 1;
     }
 
     .hub-icon {
@@ -406,12 +486,16 @@
       font-size: 14px;
       color: var(--ink-dim);
       margin-bottom: 10px;
+      position: relative;
+      z-index: 1;
     }
 
     .hub-footer-row {
       display: flex;
       justify-content: flex-end;
       margin-top: auto;
+      position: relative;
+      z-index: 1;
     }
 
     .hub-btn {
@@ -529,6 +613,10 @@
       box-shadow: 0 10px 26px rgba(37,99,235,0.85);
     }
 
+    body.light .nav-link.is-active::after {
+      background: linear-gradient(90deg, rgba(96,165,250,0.7), rgba(129,140,248,1));
+    }
+
     body.light .theme-chip {
       background: linear-gradient(135deg, #ffffff, #e5edff);
       color: #111827;
@@ -551,6 +639,10 @@
         0 0 0 1px rgba(191,219,254,0.9);
     }
 
+    body.light .frame-panel::before {
+      background: radial-gradient(circle at 0 0, rgba(96,165,250,0.35), transparent 60%);
+    }
+
     body.light .hero-title {
       background: linear-gradient(135deg, #0f172a, #1d4ed8);
       -webkit-background-clip: text;
@@ -571,8 +663,12 @@
         0 0 0 1px rgba(191,219,254,0.9);
     }
 
+    body.light .hub-card::after {
+      background: radial-gradient(circle at 0 0, rgba(148,163,253,0.38), transparent 60%);
+    }
+
     body.light .hub-card::before {
-      background: linear-gradient(90deg, transparent, rgba(148,163,253,0.4), transparent);
+      background: linear-gradient(120deg, transparent 0%, rgba(148,163,253,0.55) 50%, transparent 100%);
     }
 
     body.light .hub-card:hover {
@@ -591,8 +687,12 @@
         0 0 0 1px rgba(253,224,71,0.8);
     }
 
+    body.light .hub-card.wide::after {
+      background: radial-gradient(circle at 0 0, rgba(250,204,21,0.65), transparent 60%);
+    }
+
     body.light .hub-card.wide::before {
-      background: linear-gradient(90deg, transparent, rgba(250,204,21,0.5), transparent);
+      background: linear-gradient(120deg, transparent 0%, rgba(250,204,21,0.8) 50%, transparent 100%);
     }
 
     body.light .hub-card.wide:hover {
@@ -911,4 +1011,4 @@
     showHub();
   </script>
 </body>
-</html
+</html>
