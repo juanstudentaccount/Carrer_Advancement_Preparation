@@ -685,6 +685,17 @@
     body.light .hub-body { color: #111827; }
     body.light .hub-footer-note { color: #4b5563; }
 
+    /* Added to ensure hub text is fully readable in light mode */
+    body.light .hub-title {
+      color: #0f172a;
+    }
+
+    body.light .hub-pill {
+      background: linear-gradient(135deg, #e5edff, #e0f2fe);
+      color: #111827;
+      border-color: rgba(148,163,253,1);
+    }
+
     @media (max-width: 900px) {
       body { padding-top: 96px; }
       .top-nav {
@@ -857,8 +868,8 @@
     // Star animation on each load
     function createStarAnimation() {
       const starContainer = document.getElementById('starContainer');
-      const stars = ['⭐', '✨', '🌟', '💫', '⚡'];
-      const numStars = 40;
+      const stars = ['⭐', '⭐', '⭐', '⭐', '⭐'];
+      const numStars = 70;
 
       for (let i = 0; i < numStars; i++) {
         setTimeout(() => {
