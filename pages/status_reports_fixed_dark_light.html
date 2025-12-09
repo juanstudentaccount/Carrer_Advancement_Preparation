@@ -3,84 +3,63 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Career Advancement Preparation – Status Reports</title>
+  <title>Career Advancement Preparation - Status Reports</title>
   <style>
     :root {
-      --bg: #050816;
-      --card: #0b1020;
-      --muted: #111827;
-      --ink: #e5e7eb;
-      --ink-soft: #9ca3af;
-      --ink-soft-2: #6b7280;
-      --brand: #60a5fa;
-      --brand-soft: rgba(96,165,250,0.2);
-      --brand-2: #22d3ee;
-      --accent-1: #a855f7;
+      --bg: #0a0e1a;
+      --card: #0f152b;
+      --ink: #e7eaf7;
+      --ink-dim: #b9bfd7;
+      --brand: #5b8cff;
+      --brand-2: #8ae6ff;
+      --accent-1: #a78bfa;
       --accent-2: #34d399;
-      --danger: #f97373;
-      --border-subtle: rgba(148,163,253,0.35);
     }
 
     *, *::before, *::after { box-sizing: border-box; }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
-      font: 15px/1.6 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font: 16px/1.7 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
       color: var(--ink);
       background:
-        radial-gradient(ellipse 1200px 700px at 18% -8%, rgba(96,165,250,0.22) 0%, transparent 55%),
-        radial-gradient(ellipse 1000px 600px at 82% 0%, rgba(168,85,247,0.18) 0%, transparent 55%),
-        radial-gradient(ellipse 1100px 650px at 40% 100%, rgba(34,197,94,0.16) 0%, transparent 55%),
+        radial-gradient(ellipse 1400px 800px at 20% -5%, rgba(91,140,255,0.22) 0%, transparent 55%),
+        radial-gradient(ellipse 1200px 700px at 80% 0%, rgba(167,139,250,0.18) 0%, transparent 55%),
+        radial-gradient(ellipse 1000px 600px at 50% 100%, rgba(52,211,153,0.12) 0%, transparent 55%),
         var(--bg);
       min-height: 100vh;
-      padding: 80px 12px 32px;
       display: flex;
+      align-items: center;
       justify-content: center;
-      align-items: flex-start;
-      scrollbar-width: thin;
-      scrollbar-color: rgba(96,165,250,0.85) rgba(15,23,42,0.95);
-    }
-
-    body::-webkit-scrollbar { width: 8px; }
-    body::-webkit-scrollbar-track { background: rgba(15,23,42,0.95); }
-    body::-webkit-scrollbar-thumb {
-      background: linear-gradient(180deg, #3b82f6, #22d3ee);
-      border-radius: 999px;
+      padding: 24px;
+      transition: background .35s ease, color .35s ease;
     }
 
     .page-shell {
-      width: min(1200px, 100%);
-    }
-
-    .page-card {
-      border-radius: 26px;
-      background:
-        radial-gradient(circle at 0 0, rgba(96,165,250,0.28), transparent 65%),
-        linear-gradient(145deg, rgba(15,23,42,0.98), rgba(15,23,42,0.94));
-      border: 1px solid rgba(148,163,253,0.7);
+      width: 100%;
+      max-width: 1150px;
+      border-radius: 32px;
+      background: linear-gradient(145deg, rgba(255,255,255,0.06), rgba(15,21,43,0.96));
+      border: 1px solid rgba(91,140,255,0.35);
       box-shadow:
-        0 22px 60px rgba(15,23,42,0.98),
-        0 0 0 1px rgba(15,23,42,0.9);
-      padding: 26px 24px 24px;
+        0 32px 80px rgba(0,0,0,0.75),
+        0 0 0 1px rgba(15,23,42,0.7);
+      overflow: hidden;
       backdrop-filter: blur(26px);
       position: relative;
-      overflow: hidden;
+      padding: 32px 32px 34px;
     }
 
-    .page-card::before {
+    .page-shell::before {
       content: "";
       position: absolute;
-      inset: -1px;
-      border-radius: inherit;
+      inset: 0;
       background:
-        radial-gradient(circle at 0 0, rgba(96,165,250,0.32), transparent 60%),
-        radial-gradient(circle at 100% 0, rgba(168,85,247,0.2), transparent 60%);
-      opacity: 0.55;
-      mix-blend-mode: soft-light;
+        radial-gradient(circle at 10% 0%, rgba(148,163,253,0.22) 0, transparent 55%),
+        radial-gradient(circle at 90% 0%, rgba(52,211,153,0.16) 0, transparent 50%);
+      mix-blend-mode: screen;
+      opacity: 0.8;
       pointer-events: none;
     }
 
@@ -89,897 +68,1105 @@
       z-index: 1;
     }
 
-    .page-header {
+    .top-row {
       display: flex;
-      flex-wrap: wrap;
+      align-items: center;
       gap: 16px;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 22px;
-    }
-
-    .header-main {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .eyebrow {
-      font-size: 11px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--ink-soft);
-    }
-
-    .page-title {
-      margin: 0;
-      font-size: clamp(26px, 2.7vw, 34px);
-      font-weight: 800;
-      letter-spacing: -0.04em;
-      background: linear-gradient(135deg, #ffffff, #c4d2ff);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 0 9px 30px rgba(15,23,42,1);
-    }
-
-    .page-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      font-size: 13px;
-      color: var(--ink-soft);
-    }
-
-    .page-meta span {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 3px 9px;
-      border-radius: 999px;
-      background: rgba(15,23,42,0.9);
-      border: 1px solid rgba(148,163,253,0.6);
-    }
-
-    .theme-toggle {
-      padding: 7px 13px;
-      border-radius: 999px;
-      border: 1px solid rgba(148,163,253,0.8);
-      background: linear-gradient(135deg, rgba(15,23,42,0.98), rgba(15,23,42,0.9));
-      color: var(--ink);
-      font-size: 13px;
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      cursor: pointer;
-      user-select: none;
-      box-shadow: 0 12px 30px rgba(15,23,42,0.95);
-      transition: all 0.22s ease;
-      position: relative;
-      z-index: 1;
-    }
-
-    .theme-toggle span:first-child { font-size: 16px; }
-
-    .theme-toggle:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 16px 36px rgba(15,23,42,1);
-      border-color: rgba(129,140,248,0.95);
-      background: linear-gradient(135deg, rgba(30,64,175,0.98), rgba(15,23,42,0.92));
-    }
-
-    .theme-toggle:focus-visible {
-      outline: 2px solid rgba(56,189,248,0.95);
-      outline-offset: 2px;
-    }
-
-    .page-intro {
-      margin-bottom: 24px;
-      padding: 14px 14px 12px;
-      border-radius: 18px;
-      background:
-        radial-gradient(circle at 0 0, rgba(96,165,250,0.32), transparent 60%),
-        rgba(15,23,42,0.96);
-      border: 1px solid rgba(148,163,253,0.7);
-      display: grid;
-      grid-template-columns: minmax(0, 2.4fr) minmax(0, 1.6fr);
-      gap: 14px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .page-intro::before {
-      content: "";
-      position: absolute;
-      inset: -1px;
-      border-radius: inherit;
-      background: radial-gradient(circle at 0 0, rgba(96,165,250,0.3), transparent 60%);
-      opacity: 0.55;
-      pointer-events: none;
-    }
-
-    .intro-main {
-      position: relative;
-      z-index: 1;
-    }
-
-    .intro-title {
-      margin: 0 0 4px;
-      font-size: 17px;
-      font-weight: 600;
-      color: #e5e7eb;
-    }
-
-    .intro-text {
-      margin: 0;
-      font-size: 14px;
-      color: var(--ink-soft);
-    }
-
-    .intro-key {
-      position: relative;
-      z-index: 1;
-      font-size: 13px;
-      color: var(--ink-soft);
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      align-items: flex-start;
-      justify-content: flex-end;
-    }
-
-    .legend-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 3px 8px;
-      border-radius: 999px;
-      border: 1px solid rgba(148,163,253,0.7);
-      background: rgba(15,23,42,0.95);
-      color: var(--ink-soft);
-      white-space: nowrap;
-    }
-
-    .legend-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 999px;
-      background: var(--brand);
-      box-shadow: 0 0 0 3px rgba(96,165,250,0.5);
-    }
-
-    .legend-dot-behind { background: var(--accent-2); box-shadow: 0 0 0 3px rgba(34,197,94,0.45); }
-    .legend-dot-at-risk { background: #f97316; box-shadow: 0 0 0 3px rgba(248,153,56,0.45); }
-
-    .report-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.9fr) minmax(0, 1.6fr);
-      gap: 18px;
-    }
-
-    .column {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .section-card {
-      border-radius: 18px;
-      background:
-        radial-gradient(circle at 0 0, rgba(15,23,42,0.95), transparent 60%),
-        rgba(15,23,42,0.98);
-      border: 1px solid rgba(148,163,253,0.6);
-      padding: 14px 13px 12px;
-      box-shadow: 0 16px 32px rgba(15,23,42,0.9);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .section-card::before {
-      content: "";
-      position: absolute;
-      inset: -1px;
-      border-radius: inherit;
-      background: radial-gradient(circle at 0 0, rgba(96,165,250,0.18), transparent 60%);
-      opacity: 0.6;
-      pointer-events: none;
-    }
-
-    .section-header {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 6px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .section-label {
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--ink-soft);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .section-pill {
-      margin-left: auto;
-      padding: 3px 9px;
-      border-radius: 999px;
-      border: 1px solid rgba(148,163,253,0.7);
-      background: rgba(15,23,42,0.96);
-      font-size: 11px;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: var(--ink-soft);
-    }
-
-    .section-body {
-      position: relative;
-      z-index: 1;
-      font-size: 14px;
-      color: var(--ink-soft);
-    }
-
-    .section-body p {
-      margin: 0 0 6px;
-    }
-
-    .section-body p:last-child { margin-bottom: 0; }
-
-    ul.section-list {
-      margin: 0;
-      padding-left: 1.1rem;
-    }
-
-    ul.section-list li {
-      margin-bottom: 4px;
-    }
-
-    .status-badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 4px;
-      font-size: 12px;
+      margin-bottom: 20px;
     }
 
     .badge {
-      padding: 2px 8px;
+      padding: 6px 14px;
       border-radius: 999px;
-      border: 1px solid rgba(148,163,253,0.75);
-      background: rgba(15,23,42,0.96);
-      color: var(--ink-soft);
+      border: 1px solid rgba(148,163,253,0.6);
+      background: radial-gradient(circle at 0 0, rgba(148,163,253,0.4), transparent 60%);
+      font-size: 12px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--ink-dim);
       display: inline-flex;
       align-items: center;
       gap: 6px;
     }
 
     .badge-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: var(--brand);
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #22c55e 0, #166534 55%, transparent 70%);
+      box-shadow: 0 0 0 4px rgba(34,197,94,0.35);
     }
 
-    .badge-info .badge-dot { background: var(--brand-2); }
-    .badge-risk .badge-dot { background: #f97316; }
+    .spacer { flex: 1; }
 
-    .week-row {
-      display: grid;
-      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.7fr);
-      gap: 10px;
-      margin-bottom: 10px;
-      padding-bottom: 8px;
-      border-bottom: 1px dashed rgba(148,163,253,0.38);
-    }
-
-    .week-row:last-of-type {
-      border-bottom: none;
-      margin-bottom: 0;
-      padding-bottom: 0;
-    }
-
-    .week-label {
-      font-size: 13px;
-      font-weight: 600;
-      color: #e5e7eb;
-    }
-
-    .week-status {
-      font-size: 13px;
-      color: var(--ink-soft);
-    }
-
-    .week-status span {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 2px 8px;
+    .chip {
+      padding: 9px 16px;
       border-radius: 999px;
       border: 1px solid rgba(148,163,253,0.6);
-      background: rgba(15,23,42,0.96);
-      margin-bottom: 3px;
-    }
-
-    .week-status .on-track-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: var(--accent-2);
-    }
-
-    .week-status .at-risk-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: #f97316;
-    }
-
-    .week-status p {
-      margin: 2px 0 0;
-    }
-
-    .summary-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 10px;
-      margin-top: 8px;
+      background: linear-gradient(135deg, rgba(15,23,42,0.9), rgba(15,23,42,0.7));
+      color: var(--ink);
       font-size: 13px;
-    }
-
-    .summary-pill {
-      border-radius: 999px;
-      border: 1px solid rgba(148,163,253,0.7);
-      background: rgba(15,23,42,0.96);
-      padding: 6px 9px;
-      display: flex;
+      display: inline-flex;
       align-items: center;
-      justify-content: space-between;
       gap: 8px;
-      color: var(--ink-soft);
+      cursor: pointer;
+      user-select: none;
+      transition: all .25s ease;
+      box-shadow: 0 8px 24px rgba(15,23,42,0.7);
+      backdrop-filter: blur(16px);
     }
 
-    .summary-pill span:first-child {
-      font-weight: 500;
+    .chip span { font-size: 16px; }
+
+    .chip:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 36px rgba(15,23,42,0.9);
+      border-color: rgba(129,140,248,0.9);
+      background: linear-gradient(135deg, rgba(30,64,175,0.95), rgba(15,23,42,0.9));
+    }
+
+    header.page-header {
+      text-align: left;
+      margin-bottom: 16px;
+    }
+
+    .page-title {
+      margin: 0 0 4px;
+      font-size: clamp(30px, 2.8vw, 36px);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      background: linear-gradient(135deg, #ffffff, #c4d2ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 8px 28px rgba(15,23,42,0.9);
+    }
+
+    .page-subtitle {
+      margin: 0;
+      font-size: 15px;
+      color: var(--ink-dim);
+      max-width: 720px;
+    }
+
+    .page-subtitle span {
+      color: var(--brand-2);
+      font-weight: 600;
+    }
+
+    .hint-text {
+      margin-top: 10px;
+      font-size: 13px;
+      color: var(--ink-dim);
+    }
+
+    .status-content {
+      margin-top: 20px;
+    }
+
+    /* Make each subbox look like a clean card */
+    .status-content .subbox {
+      border-radius: 20px !important;
+      padding: 16px 18px !important;
+      margin-bottom: 20px;
+      box-shadow:
+        0 16px 40px rgba(0,0,0,0.65),
+        0 0 0 1px rgba(15,23,42,0.9);
+    }
+
+    .status-content .subbox:last-of-type {
+      margin-bottom: 4px;
+    }
+
+    /* Improve typography inside status body */
+    .status-content .body {
+      font-size: 15px;
+      color: var(--ink);
+    }
+
+    .status-content p {
+      margin: 0 0 10px;
+      color: var(--ink);
+    }
+
+    .status-content ul,
+    .status-content ol {
+      margin: 0 0 12px 1.2rem;
+      padding-left: 1rem;
+      color: var(--ink);
+    }
+
+    .status-content li {
+      margin-bottom: 4px;
+    }
+
+    /* Tables: better contrast */
+    .status-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 10px 0 16px;
+      font-size: 14px;
+    }
+
+    .status-content th,
+    .status-content td {
+      border: 1px solid rgba(148,163,253,0.4);
+      padding: 8px 10px;
+      text-align: left;
+    }
+
+    .status-content th {
+      background: rgba(15,23,42,0.85);
       color: #e5e7eb;
+      font-weight: 600;
     }
 
-    .summary-pill span:last-child {
-      font-size: 12px;
-      opacity: 0.9;
+    .status-content td {
+      background: rgba(15,23,42,0.5);
+      color: var(--ink);
     }
 
-    .page-footer {
-      margin-top: 22px;
-      padding-top: 12px;
-      border-top: 1px dashed rgba(148,163,253,0.5);
+    .status-content em {
+      font-style: italic;
+    }
+
+    footer.page-footer {
+      margin-top: 18px;
       display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: 12px;
       flex-wrap: wrap;
       align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      font-size: 12px;
-      color: var(--ink-soft-2);
-      position: relative;
-      z-index: 1;
+      color: var(--ink-dim);
     }
 
     .footer-link {
+      text-decoration: none;
+      color: var(--ink-dim);
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,253,0.6);
+      background: linear-gradient(135deg, rgba(15,23,42,0.9), rgba(15,23,42,0.7));
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 5px 11px;
-      border-radius: 999px;
-      border: 1px solid rgba(148,163,253,0.7);
-      background: rgba(15,23,42,0.96);
-      color: var(--ink-soft);
-      text-decoration: none;
-      cursor: pointer;
-      transition: all 0.22s ease;
+      transition: all .2s ease;
     }
+
+    .footer-link span { font-size: 14px; }
 
     .footer-link:hover {
-      color: #e5e7eb;
-      border-color: rgba(129,140,248,0.95);
-      box-shadow: 0 10px 22px rgba(15,23,42,0.9);
+      color: var(--ink);
+      border-color: rgba(129,140,248,1);
       transform: translateY(-1px);
+      box-shadow: 0 10px 24px rgba(15,23,42,0.9);
     }
 
-    .footer-link:focus-visible {
-      outline: 2px solid rgba(56,189,248,0.95);
-      outline-offset: 2px;
+    /* Light theme: keep card readable and text dark */
+    body.light {
+      --bg: #f7f9ff;
+      --ink: #0f172a;
+      --ink-dim: #374151;
+      --brand: #365cff;
+      --brand-2: #0284c7;
+      background:
+        radial-gradient(ellipse 1400px 800px at 20% -5%, rgba(54,92,255,0.12) 0%, transparent 55%),
+        radial-gradient(ellipse 1200px 700px at 80% 0%, rgba(167,139,250,0.12) 0%, transparent 55%),
+        #eef2ff;
+      color-scheme: light;
+    }
+
+    body.light .page-shell {
+      background: linear-gradient(150deg, rgba(255,255,255,0.96), rgba(248,250,255,0.99));
+      box-shadow:
+        0 26px 60px rgba(15,23,42,0.18),
+        0 0 0 1px rgba(191,219,254,0.8);
+      border-color: rgba(129,140,248,0.7);
+    }
+
+    body.light .page-shell::before { opacity: 0.85; }
+
+    body.light .page-title {
+      background: linear-gradient(135deg, #111827, #1d4ed8);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 6px 18px rgba(148,163,253,0.8);
+    }
+
+    body.light .page-subtitle,
+    body.light .hint-text {
+      color: #111827;
+    }
+
+    /* In light mode, keep text inside reports dark and backgrounds slightly lighter */
+    body.light .status-content .body,
+    body.light .status-content p,
+    body.light .status-content ul,
+    body.light .status-content ol,
+    body.light .status-content li {
+      color: #111827;
+    }
+
+    body.light .status-content th {
+      background: #e0e7ff;
+      color: #111827;
+    }
+
+    body.light .status-content td {
+      background: #f3f4ff;
+      color: #111827;
+    }
+
+    /* Improve colored headings/badges contrast in light mode */
+    body.light .status-content [style*="color: #a7f3d0"] {
+      color: #065f46 !important; /* deep green instead of pale mint */
+    }
+
+    body.light .status-content [style*="color: #fdba74"] {
+      color: #92400e !important; /* warm amber-brown */
+    }
+
+    body.light .status-content [style*="color: #fca5a5"] {
+      color: #991b1b !important; /* strong red */
+    }
+
+    /* Override the dark Executive Summary panels in light mode */
+    body.light .status-content div[style*="rgba(10,14,30"] {
+      background: #e5f3ff !important;
+      color: #111827 !important;
+    }
+
+    body.light .status-content div[style*="rgba(10,14,30"] p,
+    body.light .status-content div[style*="rgba(10,14,30"] div {
+      color: #111827 !important;
+    }
+
+    body.light .chip {
+      background: linear-gradient(135deg, #ffffff, #e5edff);
+      color: #0f172a;
+      box-shadow: 0 10px 26px rgba(148,163,253,0.6);
+    }
+
+    body.light .chip:hover {
+      background: linear-gradient(135deg, #e0e7ff, #dbeafe);
+    }
+
+    body.light .footer-link {
+      background: linear-gradient(135deg, #ffffff, #e5edff);
+      color: #111827;
+      border-color: rgba(148,163,253,0.9);
+    }
+
+    body.light .footer-link:hover {
+      background: linear-gradient(135deg, #e0e7ff, #dbeafe);
     }
 
     @media (max-width: 900px) {
-      body { padding-top: 70px; }
-      .page-intro {
-        grid-template-columns: minmax(0, 1fr);
+      body {
+        align-items: stretch;
+        padding: 16px;
       }
-      .report-grid {
-        grid-template-columns: minmax(0, 1fr);
+      .page-shell {
+        padding: 22px 18px 26px;
+        border-radius: 24px;
       }
     }
 
     @media (max-width: 640px) {
-      .page-card {
-        padding: 20px 16px 18px;
-      }
-      .page-header {
-        align-items: flex-start;
-      }
-      .page-meta {
+      .top-row {
         flex-direction: column;
         align-items: flex-start;
       }
-    }
-
-    /* LIGHT THEME OVERRIDES */
-    body.light {
-      --bg: #f4f6ff;
-      --card: #ffffff;
-      --muted: #e5edff;
-      --ink: #020617;
-      --ink-soft: #4b5563;
-      --ink-soft-2: #6b7280;
-      --brand: #2563eb;
-      --brand-2: #0ea5e9;
-      --accent-1: #7c3aed;
-      --accent-2: #16a34a;
-      --border-subtle: rgba(148,163,253,0.5);
-      background:
-        radial-gradient(ellipse 1200px 700px at 18% -8%, rgba(96,165,250,0.22) 0%, transparent 55%),
-        radial-gradient(ellipse 1100px 650px at 82% 0%, rgba(196,181,253,0.24) 0%, transparent 55%),
-        #e5edff;
-      color-scheme: light;
-    }
-
-    body.light .page-card {
-      background:
-        radial-gradient(circle at 0 0, rgba(191,219,254,0.9), transparent 60%),
-        linear-gradient(145deg, #ffffff, #e5edff);
-      border-color: rgba(148,163,253,0.9);
-      box-shadow:
-        0 22px 46px rgba(148,163,253,0.6),
-        0 0 0 1px rgba(191,219,254,0.9);
-    }
-
-    body.light .page-card::before {
-      background:
-        radial-gradient(circle at 0 0, rgba(191,219,254,0.9), transparent 60%),
-        radial-gradient(circle at 100% 0, rgba(221,214,254,0.7), transparent 60%);
-      opacity: 0.9;
-      mix-blend-mode: normal;
-    }
-
-    body.light .page-title {
-      background: linear-gradient(135deg, #0f172a, #1d4ed8);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 0 5px 18px rgba(148,163,253,0.8);
-    }
-
-    body.light .eyebrow {
-      color: #6b7280;
-    }
-
-    body.light .page-meta span {
-      background: #e5edff;
-      border-color: rgba(148,163,253,0.9);
-      color: #374151;
-    }
-
-    body.light .theme-toggle {
-      background: linear-gradient(135deg, #ffffff, #e5edff);
-      color: #111827;
-      border-color: rgba(148,163,253,0.95);
-      box-shadow: 0 12px 28px rgba(148,163,253,0.65);
-    }
-
-    body.light .theme-toggle:hover {
-      background: linear-gradient(135deg, #e0e7ff, #dbeafe);
-      box-shadow: 0 16px 32px rgba(148,163,253,0.8);
-    }
-
-    body.light .page-intro {
-      background:
-        radial-gradient(circle at 0 0, rgba(191,219,254,0.95), transparent 60%),
-        #ffffff;
-      border-color: rgba(148,163,253,0.95);
-    }
-
-    body.light .intro-title {
-      color: #111827;
-    }
-
-    body.light .intro-text {
-      color: #4b5563;
-    }
-
-    body.light .legend-pill {
-      background: #e5edff;
-      border-color: rgba(148,163,253,0.9);
-      color: #374151;
-    }
-
-    body.light .legend-dot {
-      box-shadow: 0 0 0 3px rgba(96,165,250,0.45);
-    }
-
-    body.light .legend-dot-behind {
-      box-shadow: 0 0 0 3px rgba(34,197,94,0.4);
-    }
-
-    body.light .legend-dot-at-risk {
-      box-shadow: 0 0 0 3px rgba(248,153,56,0.4);
-    }
-
-    body.light .section-card {
-      background:
-        radial-gradient(circle at 0 0, rgba(219,234,254,0.9), transparent 60%),
-        #ffffff;
-      border-color: rgba(148,163,253,0.85);
-      box-shadow:
-        0 16px 32px rgba(148,163,253,0.45),
-        0 0 0 1px rgba(191,219,254,0.8);
-    }
-
-    body.light .section-card::before {
-      background: radial-gradient(circle at 0 0, rgba(191,219,254,0.75), transparent 60%);
-    }
-
-    body.light .section-label {
-      color: #374151;
-    }
-
-    body.light .section-pill {
-      background: #e5edff;
-      border-color: rgba(148,163,253,1);
-      color: #4b5563;
-    }
-
-    body.light .section-body {
-      color: #374151;
-    }
-
-    body.light .badge {
-      background: #e5edff;
-      border-color: rgba(148,163,253,0.9);
-      color: #374151;
-    }
-
-    body.light .week-label {
-      color: #111827;
-    }
-
-    body.light .week-status {
-      color: #374151;
-    }
-
-    body.light .week-status span {
-      background: #e5edff;
-      border-color: rgba(148,163,253,0.9);
-      color: #374151;
-    }
-
-    body.light .page-footer {
-      border-top-color: rgba(148,163,253,0.8);
-      color: #6b7280;
-    }
-
-    body.light .footer-link {
-      background: #e5edff;
-      border-color: rgba(148,163,253,1);
-      color: #374151;
-    }
-
-    body.light .footer-link:hover {
-      color: #111827;
-      box-shadow: 0 10px 24px rgba(148,163,253,0.7);
+      .spacer {
+        display: none;
+      }
+      header.page-header {
+        text-align: left;
+      }
+      .page-subtitle {
+        margin-top: 2px;
+      }
+      footer.page-footer {
+        flex-direction: column;
+        align-items: flex-start;
+      }
     }
   </style>
 </head>
 <body>
   <div class="page-shell">
-    <div class="page-card">
-      <div class="page-inner">
-        <header class="page-header">
-          <div class="header-main">
-            <div class="eyebrow">CIS 4860 · Managing Information Systems Projects</div>
-            <h1 class="page-title">Status Reports – Career Advancement Preparation Project</h1>
-            <div class="page-meta">
-              <span><strong>Student:</strong> Juan Talome</span>
-              <span><strong>Course:</strong> Career Advancement Preparation</span>
-              <span><strong>Semester:</strong> Fall 2024</span>
-            </div>
-          </div>
-          <button id="themeToggle" class="theme-toggle" type="button">
-            <span>🎨</span>
-            <span>Toggle Theme</span>
-          </button>
-        </header>
-
-        <section class="page-intro">
-          <div class="intro-main">
-            <h2 class="intro-title">How to Read These Status Reports</h2>
-            <p class="intro-text">
-              This page summarizes high-level status reports for the Career Advancement Preparation project
-              across the semester. It highlights key milestones, risks, accomplishments, and adjustments.
-            </p>
-          </div>
-          <div class="intro-key">
-            <span class="legend-pill">
-              <span class="legend-dot"></span>
-              On Track
-            </span>
-            <span class="legend-pill">
-              <span class="legend-dot-behind"></span>
-              Slightly Behind
-            </span>
-            <span class="legend-pill">
-              <span class="legend-dot-at-risk"></span>
-              At Risk
-            </span>
-          </div>
-        </section>
-
-        <section class="report-grid">
-          <div class="column">
-            <article class="section-card" id="summary">
-              <div class="section-header">
-                <div class="section-label">
-                  <span>Overall Summary</span>
-                </div>
-                <div class="section-pill">Overview</div>
-              </div>
-              <div class="section-body">
-                <p>
-                  The Career Advancement Preparation project stayed mostly <strong>on track</strong> throughout
-                  the semester with clear weekly goals, steady progress on deliverables, and adjustment when
-                  unexpected obstacles appeared. The project moved from planning and research into execution,
-                  reflection, and final packaging of materials such as the charter, interview, and STAR stories.
-                </p>
-                <div class="status-badges">
-                  <span class="badge">
-                    <span class="badge-dot"></span>
-                    Final deliverables submitted on time
-                  </span>
-                  <span class="badge badge-info">
-                    <span class="badge-dot"></span>
-                    Scope adjusted for realism
-                  </span>
-                  <span class="badge badge-risk">
-                    <span class="badge-dot"></span>
-                    Occasional time management risks
-                  </span>
-                </div>
-              </div>
-            </article>
-
-            <article class="section-card" id="risks">
-              <div class="section-header">
-                <div class="section-label">
-                  <span>Risks &amp; Issues</span>
-                </div>
-                <div class="section-pill">Monitoring</div>
-              </div>
-              <div class="section-body">
-                <p>
-                  The main risks were related to time management, balancing this project with other CIS and AWS
-                  coursework, and making sure the deliverables stayed aligned with the original scope. A few weeks
-                  required adjusting the schedule or reducing extra “nice-to-have” tasks so that the core
-                  requirements could be completed with quality.
-                </p>
-                <ul class="section-list">
-                  <li>Some weeks had heavier AWS labs and CIS assignments, putting pressure on this project.</li>
-                  <li>Needed to regularly verify that new ideas still matched the original project objectives.</li>
-                  <li>Risk of procrastination when multiple deliverables were due in the same time frame.</li>
-                </ul>
-                <div class="status-badges">
-                  <span class="badge badge-risk">
-                    <span class="badge-dot"></span>
-                    Time management risk
-                  </span>
-                  <span class="badge badge-info">
-                    <span class="badge-dot"></span>
-                    Scope kept under control
-                  </span>
-                </div>
-              </div>
-            </article>
-          </div>
-
-          <div class="column">
-            <article class="section-card" id="adjustments">
-              <div class="section-header">
-                <div class="section-label">
-                  <span>Adjustments</span>
-                </div>
-                <div class="section-pill">Changes</div>
-              </div>
-              <div class="section-body">
-                <p>
-                  When time or workload became tight, I adjusted by prioritizing the most important parts of the
-                  project and simplifying sections that didn’t directly support my final career preparation goals.
-                </p>
-                <ul class="section-list">
-                  <li>Grouped related tasks (e.g., updating charter, STAR stories, and interview reflection together).</li>
-                  <li>Shifted some polishing work to weekends instead of weeknights with heavy classes.</li>
-                  <li>Used checklists to mark what was “must have” vs. “nice to have” for each deliverable.</li>
-                </ul>
-                <div class="summary-grid">
-                  <div class="summary-pill">
-                    <span>Scope</span>
-                    <span>Refined, but goals preserved</span>
-                  </div>
-                  <div class="summary-pill">
-                    <span>Quality</span>
-                    <span>Maintained by focusing effort</span>
-                  </div>
-                  <div class="summary-pill">
-                    <span>Schedule</span>
-                    <span>Adjusted during busier weeks</span>
-                  </div>
-                </div>
-              </div>
-            </article>
-
-            <article class="section-card" id="lessons">
-              <div class="section-header">
-                <div class="section-label">
-                  <span>Lessons Learned</span>
-                </div>
-                <div class="section-pill">Reflection</div>
-              </div>
-              <div class="section-body">
-                <p>
-                  A key lesson from these status reports is that <strong>small, consistent check-ins</strong> help prevent
-                  problems from growing. Writing weekly updates forced me to look honestly at my progress, risks,
-                  and workload across all classes—not just this one project.
-                </p>
-                <ul class="section-list">
-                  <li>Short weekly reviews are easier to maintain than large midterm catch-up efforts.</li>
-                  <li>Documenting risks makes it easier to talk about them and ask for feedback.</li>
-                  <li>Connecting this project to other classes helped motivate the work and see patterns.</li>
-                </ul>
-                <p>
-                  Going forward, I plan to keep using status-style summaries for big assignments, internships, and
-                  early career projects so I can stay accountable to timelines and learning goals.
-                </p>
-              </div>
-            </article>
-          </div>
-        </section>
-
-        <section class="section-card" id="week-by-week" style="margin-top: 18px;">
-          <div class="section-header">
-            <div class="section-label">
-              <span>Week-by-Week Highlights</span>
-            </div>
-            <div class="section-pill">Timeline</div>
-          </div>
-          <div class="section-body">
-            <div class="week-row">
-              <div class="week-label">Week 1–2: Project Launch &amp; Charter Draft</div>
-              <div class="week-status">
-                <span>
-                  <span class="on-track-dot"></span>
-                  On Track
-                </span>
-                <p>
-                  Defined the Career Advancement Preparation project, identified key deliverables (charter,
-                  interview, STAR stories), and created an initial timeline. Drafted the project charter with
-                  mission, vision, scope, and stakeholder analysis.
-                </p>
-              </div>
-            </div>
-
-            <div class="week-row">
-              <div class="week-label">Week 3–4: Refining Scope &amp; Planning Tasks</div>
-              <div class="week-status">
-                <span>
-                  <span class="on-track-dot"></span>
-                  On Track
-                </span>
-                <p>
-                  Adjusted the project scope to be realistic with the semester schedule. Updated milestones and
-                  clarified the specific outcomes for the charter, interview, and STAR stories. Checked alignment
-                  with course expectations and instructor feedback.
-                </p>
-              </div>
-            </div>
-
-            <div class="week-row">
-              <div class="week-label">Week 5–6: Interview Preparation &amp; Execution</div>
-              <div class="week-status">
-                <span>
-                  <span class="on-track-dot"></span>
-                  On Track
-                </span>
-                <p>
-                  Prepared for and completed the interview with Joseph Cortez, Senior Controls and Automation Engineer.
-                  Developed thoughtful questions, captured detailed notes, and translated the conversation into a
-                  written deliverable that connects back to project management skills and career growth.
-                </p>
-              </div>
-            </div>
-
-            <div class="week-row">
-              <div class="week-label">Week 7–8: STAR Story Drafting &amp; Revision</div>
-              <div class="week-status">
-                <span>
-                  <span class="on-track-dot"></span>
-                  On Track
-                </span>
-                <p>
-                  Wrote six STAR stories based on coursework and project experiences, then revised them for clarity,
-                  structure, and alignment with employer expectations. Focused on showing impact, technical skills,
-                  and collaboration.
-                </p>
-              </div>
-            </div>
-
-            <div class="week-row">
-              <div class="week-label">Week 9–10: Workload Pressure &amp; Adjustments</div>
-              <div class="week-status">
-                <span>
-                  <span class="at-risk-dot"></span>
-                  At Risk → Recovered
-                </span>
-                <p>
-                  This period had a heavier workload from other CIS and AWS classes, which created time management
-                  risks. I responded by prioritizing the most important pieces of this project, breaking tasks into
-                  smaller steps, and scheduling focused work sessions on specific days.
-                </p>
-              </div>
-            </div>
-
-            <div class="week-row">
-              <div class="week-label">Week 11–12: Polishing Deliverables &amp; Integration</div>
-              <div class="week-status">
-                <span>
-                  <span class="on-track-dot"></span>
-                  On Track
-                </span>
-                <p>
-                  Polished the charter, interview, and STAR stories so they read consistently and supported the
-                  overall career narrative. Updated formatting, clarified language, and made sure each section could
-                  be used directly in applications, interviews, or future portfolios.
-                </p>
-              </div>
-            </div>
-
-            <div class="week-row">
-              <div class="week-label">Week 13–14: Final Review &amp; Submission</div>
-              <div class="week-status">
-                <span>
-                  <span class="on-track-dot"></span>
-                  On Track
-                </span>
-                <p>
-                  Completed final checks on all deliverables, confirmed requirements, and submitted the project.
-                  Reflected on what worked well and what could be improved for future long-term projects, especially
-                  around planning ahead, blocking time, and seeking early feedback to avoid further delays.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <footer class="page-footer">
-          <div>Use this page as evidence of consistent tracking, adjustment, and follow-through during the semester.</div>
-          <div>
-            <a class="footer-link" href="career_advancement_hub_fixed.html" id="backToHub">
-              <span>⬅</span>
-              Back to Hub
-            </a>
-          </div>
-        </footer>
+    <div class="page-inner">
+      <div class="top-row">
+        <div class="badge">
+          <span class="badge-dot"></span>
+          CIS 4860 · Career Advancement Preparation
+        </div>
+        <div class="spacer"></div>
+        <button class="chip" id="themeToggle" type="button">
+          <span>🎨</span>
+          <span>Toggle Theme</span>
+        </button>
       </div>
+
+      <header class="page-header">
+        <h1 class="page-title">Status Reports</h1>
+        <p class="page-subtitle">
+          Weekly check-ins capturing <span>progress, risks</span>, and key actions as the Career
+          Advancement Preparation project moved from planning to completion.
+        </p>
+        <p class="hint-text">
+          Review these entries to see how the project evolved over time and to support your final
+          project closure and reflection.
+        </p>
+      </header>
+
+      <section class="status-content">
+<div class="body">
+
+<div class="subbox" style="border-color: #10b981; background: linear-gradient(135deg, rgba(16,185,129,0.12), rgba(16,185,129,0.06));">
+  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; flex-wrap: wrap; gap: 12px;">
+    <div>
+      <div style="font-size: 24px; font-weight: 800; color: #a7f3d0; margin-bottom: 4px;">Week 15 Status Report</div>
+      <div style="color: var(--ink-dim); font-size: 14px;">Reporting Period: Sunday, November 30, 2025</div>
+    </div>
+    <div style="padding: 12px 20px; background: linear-gradient(135deg, rgba(16,185,129,0.2), rgba(16,185,129,0.15)); border: 2px solid #10b981; border-radius: 12px; font-weight: 800; color: #a7f3d0; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">🟢 ON TRACK</div>
+  </div>
+
+  <div style="background: linear-gradient(135deg, rgba(10,14,30,.7), rgba(10,14,30,.5)); border: 1px solid rgba(16,185,129,0.3); border-radius: 10px; padding: 16px; margin-bottom: 20px;">
+    <div style="font-weight: 700; color: #a7f3d0; margin-bottom: 8px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">Executive Summary</div>
+    <p style="margin: 0; line-height: 1.7;">
+      This week my project remains on track as I continued executing key deliverables. I completed <strong>4 additional job applications</strong>, bringing my total to <strong>8 out of 10</strong> for entry-level IT help desk roles. I also made strong progress on my Google IT Support Professional Certificate and updated my Trello plan to include the final project closure steps I need to complete once all deliverables are finished.
+    </p>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-bottom: 20px;">
+    <div style="background: linear-gradient(135deg, rgba(91,140,255,0.12), rgba(91,140,255,0.06)); border: 1px solid rgba(91,140,255,0.3); border-radius: 10px; padding: 16px;">
+      <div style="font-weight: 700; color: var(--brand-2); margin-bottom: 12px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">✅ Accomplishments This Week</div>
+      <ul style="margin: 0; padding-left: 20px; font-size: 14px;">
+        <li>Submitted <strong>4 more</strong> job applications for the positions I identified in my job search (now at <strong>8/10</strong> total).</li>
+        <li>Continued working on the Google IT Support Professional Certificate and made substantial progress toward completion.</li>
+        <li>Updated my Trello project plan with a new section outlining the steps required to complete my Final Project Closure Document.</li>
+      </ul>
+    </div>
+    <div style="background: linear-gradient(135deg, rgba(91,140,255,0.12), rgba(91,140,255,0.06)); border: 1px solid rgba(91,140,255,0.3); border-radius: 10px; padding: 16px;">
+      <div style="font-weight: 700; color: var(--brand-2); margin-bottom: 12px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">📅 Plan for Next Week</div>
+      <ul style="margin: 0; padding-left: 20px; font-size: 14px;">
+        <li>Submit the remaining <strong>2 job applications</strong> to reach my goal of 10.</li>
+        <li>Finish the Google IT Support Professional Certificate.</li>
+        <li>Complete any remaining deliverable tasks and begin working on the Final Project Closure Document.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div style="background: linear-gradient(135deg, rgba(10,14,30,.7), rgba(10,14,30,.5)); border: 1px solid rgba(16,185,129,0.3); border-radius: 10px; padding: 16px; margin-bottom: 20px;">
+    <div style="font-weight: 700; color: #a7f3d0; margin-bottom: 12px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">🎯 Upcoming Milestones</div>
+    <table style="width: 100%; border: none; margin: 0;">
+      <thead>
+        <tr>
+          <th style="text-align: left; padding: 8px 0; border: none; background: transparent; font-size: 12px;">Milestone</th>
+          <th style="text-align: center; padding: 8px 0; border: none; background: transparent; font-size: 12px;">Target Date</th>
+          <th style="text-align: center; padding: 8px 0; border: none; background: transparent; font-size: 12px;">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border: none;">
+          <td style="padding: 8px 0; border: none; background: transparent;">Google IT Support Professional Certificate</td>
+          <td style="text-align: center; padding: 8px 0; border: none; background: transparent;">11/30/2025</td>
+          <td style="text-align: center; padding: 8px 0; border: none; background: transparent;">
+            <span style="padding: 4px 10px; background: rgba(16,185,129,0.2); border: 1px solid #10b981; border-radius: 999px; font-size: 11px; font-weight: 700; color: #a7f3d0;">ON TRACK</span>
+          </td>
+        </tr>
+        <tr style="border: none;">
+          <td style="padding: 8px 0; border: none; background: transparent;">LinkedIn Profile Enhancement</td>
+          <td style="text-align: center; padding: 8px 0; border: none; background: transparent;">11/30/2025</td>
+          <td style="text-align: center; padding: 8px 0; border: none; background: transparent;">
+            <span style="padding: 4px 10px; background: rgba(16,185,129,0.2); border: 1px solid #10b981; border-radius: 999px; font-size: 11px; font-weight: 700; color: #a7f3d0;">ON TRACK</span>
+          </td>
+        </tr>
+        <tr style="border: none;">
+          <td style="padding: 8px 0; border: none; background: transparent;">Entry-level IT Help Desk Job Applications (10 total)</td>
+          <td style="text-align: center; padding: 8px 0; border: none; background: transparent;">12/05/2025</td>
+          <td style="text-align: center; padding: 8px 0; border: none; background: transparent;">
+            <span style="padding: 4px 10px; background: rgba(16,185,129,0.2); border: 1px solid #10b981; border-radius: 999px; font-size: 11px; font-weight: 700; color: #a7f3d0;">ON TRACK</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div style="background: linear-gradient(135deg, rgba(16,185,129,0.12), rgba(16,185,129,0.06)); border: 1px solid #10b981; border-radius: 10px; padding: 16px; margin-bottom: 20px;">
+    <div style="font-weight: 700; color: #a7f3d0; margin-bottom: 12px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">⚠️ Issues &amp; Risks</div>
+    <div style="margin-bottom: 8px;">
+      <span style="padding: 4px 10px; background: rgba(16,185,129,0.20); border: 1px solid #10b981; border-radius: 999px; font-size: 11px; font-weight: 700; color: #a7f3d0; text-transform: uppercase;">NONE</span>
+      <span style="margin-left: 8px; font-weight: 600;">No issues or risks identified this period.</span>
+    </div>
+    <div style="font-size: 14px; line-height: 1.7;">
+      <strong style="color: var(--brand-2);">Mitigation:</strong> Continue regular progress on applications and certificate work, and follow the updated plan for project closure.
+    </div>
+  </div>
+
+  <div style="background: linear-gradient(135deg, rgba(91,140,255,0.12), rgba(91,140,255,0.06)); border: 1px solid rgba(91,140,255,0.3); border-radius: 10px; padding: 16px;">
+    <div style="font-weight: 700; color: var(--brand-2); margin-bottom: 12px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">🔄 Changes Since Last Report</div>
+    <p style="margin: 0; line-height: 1.7;">
+      Since the last report, I increased my total job applications from 4 to <strong>8</strong>, advanced further in my Google IT Support Professional Certificate, and updated my Trello plan with a dedicated section for final project closure tasks.
+    </p>
+  </div>
+</div>
+
+<div class="subbox" style="border-color: #10b981; background: linear-gradient(135deg, rgba(16,185,129,0.12), rgba(16,185,129,0.06));">
+<div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; flex-wrap: wrap; gap: 12px;">
+<div>
+<div style="font-size: 24px; font-weight: 800; color: #a7f3d0; margin-bottom: 4px;">Week 14 Status Report</div>
+<div style="color: var(--ink-dim); font-size: 14px;">Reporting Period: Sunday, November 23, 2025</div>
+</div>
+<div style="padding: 12px 20px; background: linear-gradient(135deg, rgba(16,185,129,0.2), rgba(16,185,129,0.15)); border: 2px solid #10b981; border-radius: 12px; font-weight: 800; color: #a7f3d0; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">🟢 ON TRACK</div>
+</div>
+<div style="background: linear-gradient(135deg, rgba(10,14,30,.7), rgba(10,14,30,.5)); border: 1px solid rgba(16,185,129,0.3); border-radius: 10px; padding: 16px; margin-bottom: 20px;">
+<div style="font-weight: 700; color: #a7f3d0; margin-bottom: 8px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">Executive Summary</div>
+<p style="margin: 0; line-height: 1.7;">
+      This week I kept my project on track by continuing progress on my Google IT Support Professional Certificate while advancing other deliverables in parallel. I also submitted <strong>4 job applications</strong> and plan to continue applying next week until I reach my goal of 10. No new risks were identified.
+    </p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-bottom: 20px;">
+<div style="background: linear-gradient(135deg, rgba(91,140,255,0.12), rgba(91,140,255,0.06)); border: 1px solid rgba(91,140,255,0.3); border-radius: 10px; padding: 16px;">
+<div style="font-weight: 700; color: var(--brand-2); margin-bottom: 12px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">✅ Accomplishments This Week</div>
+<ul style="margin: 0; padding-left: 20px; font-size: 14px;">
+<li>Continued coursework on the Google IT Support Professional Certificate.</li>
+<li>Submitted <strong>4</strong> entry-level help desk job applications.</li>
+<li>Updated my project tool and website with the latest status report and screenshots.</li>
+</ul>
+</div>
+<div style="background: linear-gradient(135deg, rgba(91,140,255,0.12), rgba(91,140,255,0.06)); border: 1px solid rgba(91,140,255,0.3); border-radius: 10px; padding: 16px;">
+<div style="font-weight: 700; color: var(--brand-2); margin-bottom: 12px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">📅 Plan for Next Week</div>
+<ul style="margin: 0; padding-left: 20px; font-size: 14px;">
+<li>Keep progressing on the certificate toward completion.</li>
+<li>Submit the remaining job applications to reach the goal of 10.</li>
+<li>Finalize remaining deliverables and polish the project charter for the final.</li>
+</ul>
+</div>
+</div>
+<div style="background: linear-gradient(135deg, rgba(10,14,30,.7), rgba(10,14,30,.5)); border: 1px solid rgba(16,185,129,0.3); border-radius: 10px; padding: 16px; margin-bottom: 20px;">
+<div style="font-weight: 700; color: #a7f3d0; margin-bottom: 12px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">🎯 Upcoming Milestones</div>
+<table style="width: 100%; border: none; margin: 0;">
+<thead>
+<tr>
+<th style="text-align: left; padding: 8px 0; border: none; background: transparent; font-size: 12px;">Milestone</th>
+<th style="text-align: center; padding: 8px 0; border: none; background: transparent; font-size: 12px;">Target Date</th>
+<th style="text-align: center; padding: 8px 0; border: none; background: transparent; font-size: 12px;">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr style="border: none;">
+<td style="padding: 8px 0; border: none; background: transparent;">Google IT Support Professional Certificate</td>
+<td style="text-align: center; padding: 8px 0; border: none; background: transparent;">11/30/2025</td>
+<td style="text-align: center; padding: 8px 0; border: none; background: transparent;">
+<span style="padding: 4px 10px; background: rgba(16,185,129,0.2); border: 1px solid #10b981; border-radius: 999px; font-size: 11px; font-weight: 700; color: #a7f3d0;">ON TRACK</span>
+</td>
+</tr>
+<tr style="border: none;">
+<td style="padding: 8px 0; border: none; background: transparent;">LinkedIn Profile Enhancement</td>
+<td style="text-align: center; padding: 8px 0; border: none; background: transparent;">11/25/2025</td>
+<td style="text-align: center; padding: 8px 0; border: none; background: transparent;">
+<span style="padding: 4px 10px; background: rgba(16,185,129,0.2); border: 1px solid #10b981; border-radius: 999px; font-size: 11px; font-weight: 700; color: #a7f3d0;">ON TRACK</span>
+</td>
+</tr>
+<tr style="border: none;">
+<td style="padding: 8px 0; border: none; background: transparent;">Entry-level IT Help Desk Job Applications (10 total)</td>
+<td style="text-align: center; padding: 8px 0; border: none; background: transparent;">12/05/2025</td>
+<td style="text-align: center; padding: 8px 0; border: none; background: transparent;">
+<span style="padding: 4px 10px; background: rgba(16,185,129,0.2); border: 1px solid #10b981; border-radius: 999px; font-size: 11px; font-weight: 700; color: #a7f3d0;">ON TRACK</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div style="background: linear-gradient(135deg, rgba(16,185,129,0.12), rgba(16,185,129,0.06)); border: 1px solid #10b981; border-radius: 10px; padding: 16px; margin-bottom: 20px;">
+<div style="font-weight: 700; color: #a7f3d0; margin-bottom: 12px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">⚠️ Issues &amp; Risks</div>
+<div style="margin-bottom: 8px;">
+<span style="padding: 4px 10px; background: rgba(16,185,129,0.20); border: 1px solid #10b981; border-radius: 999px; font-size: 11px; font-weight: 700; color: #a7f3d0; text-transform: uppercase;">NONE</span>
+<span style="margin-left: 8px; font-weight: 600;">No issues or risks identified this period.</span>
+</div>
+<div style="font-size: 14px; line-height: 1.7;">
+<strong style="color: var(--brand-2);">Mitigation:</strong> Continue regular progress and time management to meet all deadlines.
+    </div>
+</div>
+<div style="background: linear-gradient(135deg, rgba(91,140,255,0.12), rgba(91,140,255,0.06)); border: 1px solid rgba(91,140,255,0.3); border-radius: 10px; padding: 16px;">
+<div style="font-weight: 700; color: var(--brand-2); margin-bottom: 12px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">🔄 Changes Since Last Report</div>
+<p style="margin: 0; line-height: 1.7;">No changes were made to scope or schedule this week; I updated progress only.</p>
+</div>
+</div>
+
+<!-- Week 9 Status Report (inserted inside Section 10 body) -->
+<!-- /Week 9 Status Report -->
+<!-- Week 10 Status Report (auto-inserted) -->
+<!-- /Week 10 Status Report -->
+<!-- Week 11 Status Report (inserted) -->
+<!-- /Week 11 Status Report -->
+<!-- Week 12 Status Report -->
+<!-- /Week 12 Status Report -->
+<div class="subbox" style="border-color: #10b981; background: linear-gradient(135deg, rgba(16,185,129,0.12), rgba(16,185,129,0.06));">
+<div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; flex-wrap: wrap; gap: 12px;">
+<div>
+<div style="font-size: 24px; font-weight: 800; color: #a7f3d0; margin-bottom: 4px;">Week 13 Status Report</div>
+<div style="color: var(--ink-dim); font-size: 14px;">Reporting Period: Sunday, November 16, 2025</div>
+</div>
+<div style="padding: 12px 20px; background: linear-gradient(135deg, rgba(16,185,129,0.2), rgba(16,185,129,0.15)); border: 2px solid #10b981; border-radius: 12px; font-weight: 800; color: #a7f3d0; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">🟢 ON TRACK</div>
+</div>
+<div style="background: linear-gradient(135deg, rgba(10,14,30,.7), rgba(10,14,30,.5)); border: 1px solid rgba(16,185,129,0.3); border-radius: 10px; padding: 16px; margin-bottom: 20px;">
+<div style="font-weight: 700; color: #a7f3d0; margin-bottom: 8px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">Executive Summary</div>
+<p style="margin: 0; line-height: 1.7;">
+      My project health is on track because I continue to actively monitor the progress of my deliverables and other requirements. This week I continued to work on my certificate and advanced to my fourth module (<strong>System Administration and IT Infrastructure Services</strong>). I have also started integrating new parts into my project charter for my final.
+    </p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-bottom: 20px;">
+<div style="background: linear-gradient(135deg, rgba(91,140,255,0.12), rgba(91,140,255,0.06)); border: 1px solid rgba(91,140,255,0.3); border-radius: 10px; padding: 16px;">
+<div style="font-weight: 700; color: var(--brand-2); margin-bottom: 12px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">✅ Accomplishments This Week</div>
+<ul style="margin: 0; padding-left: 20px; font-size: 14px;">
+<li>Advanced to my fourth module on my certificate: System Administration and IT Infrastructure Services.</li>
+<li>Started integrating the final sections of my project charter (in progress).</li>
+<li>Identified 10 jobs to apply for once all deliverables are finished as part of my final deliverable.</li>
+</ul>
+</div>
+<div style="background: linear-gradient(135deg, rgba(91,140,255,0.12), rgba(91,140,255,0.06)); border: 1px solid rgba(91,140,255,0.3); border-radius: 10px; padding: 16px;">
+<div style="font-weight: 700; color: var(--brand-2); margin-bottom: 12px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">📅 Plan for Next Week</div>
+<ul style="margin: 0; padding-left: 20px; font-size: 14px;">
+<li>Fix bugs/refine additional sections of my project charter and add them to my final charter.</li>
+<li>Finish my Google IT Support Professional Certificate.</li>
+<li>Apply to 10 entry-level job positions.</li>
+</ul>
+</div>
+</div>
+<div style="background: linear-gradient(135deg, rgba(10,14,30,.7), rgba(10,14,30,.5)); border: 1px solid rgba(16,185,129,0.3); border-radius: 10px; padding: 16px; margin-bottom: 20px;">
+<div style="font-weight: 700; color: #a7f3d0; margin-bottom: 12px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">🎯 Upcoming Milestones</div>
+<table style="width: 100%; border: none; margin: 0;">
+<thead>
+<tr>
+<th style="text-align: left; padding: 8px 0; border: none; background: transparent; font-size: 12px;">Milestone</th>
+<th style="text-align: center; padding: 8px 0; border: none; background: transparent; font-size: 12px;">Target Date</th>
+<th style="text-align: center; padding: 8px 0; border: none; background: transparent; font-size: 12px;">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr style="border: none;">
+<td style="padding: 8px 0; border: none; background: transparent;">Google IT Support Professional Certificate</td>
+<td style="text-align: center; padding: 8px 0; border: none; background: transparent;">11/17/2025</td>
+<td style="text-align: center; padding: 8px 0; border: none; background: transparent;">
+<span style="padding: 4px 10px; background: rgba(16,185,129,0.2); border: 1px solid #10b981; border-radius: 999px; font-size: 11px; font-weight: 700; color: #a7f3d0;">ON TRACK</span>
+</td>
+</tr>
+<tr style="border: none;">
+<td style="padding: 8px 0; border: none; background: transparent;">LinkedIn Profile Enhancement</td>
+<td style="text-align: center; padding: 8px 0; border: none; background: transparent;">11/21/2025</td>
+<td style="text-align: center; padding: 8px 0; border: none; background: transparent;">
+<span style="padding: 4px 10px; background: rgba(16,185,129,0.2); border: 1px solid #10b981; border-radius: 999px; font-size: 11px; font-weight: 700; color: #a7f3d0;">ON TRACK</span>
+</td>
+</tr>
+<tr style="border: none;">
+<td style="padding: 8px 0; border: none; background: transparent;">Entry-level IT Help Desk Job Applications</td>
+<td style="text-align: center; padding: 8px 0; border: none; background: transparent;">11/26/2025</td>
+<td style="text-align: center; padding: 8px 0; border: none; background: transparent;">
+<span style="padding: 4px 10px; background: rgba(16,185,129,0.2); border: 1px solid #10b981; border-radius: 999px; font-size: 11px; font-weight: 700; color: #a7f3d0;">ON TRACK</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div style="background: linear-gradient(135deg, rgba(16,185,129,0.12), rgba(16,185,129,0.06)); border: 1px solid #10b981; border-radius: 10px; padding: 16px; margin-bottom: 20px;">
+<div style="font-weight: 700; color: #a7f3d0; margin-bottom: 12px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">⚠️ Issues &amp; Risks</div>
+<div style="margin-bottom: 8px;">
+<span style="padding: 4px 10px; background: rgba(16,185,129,0.20); border: 1px solid #10b981; border-radius: 999px; font-size: 11px; font-weight: 700; color: #a7f3d0; text-transform: uppercase;">NONE</span>
+<span style="margin-left: 8px; font-weight: 600;">No issues or risks to report for this period.</span>
+</div>
+<div style="font-size: 14px; line-height: 1.7;">
+<strong style="color: var(--brand-2);">Mitigation:</strong> Continue executing the plan; monitor workload and deadlines.
+    </div>
+</div>
+<div style="background: linear-gradient(135deg, rgba(91,140,255,0.12), rgba(91,140,255,0.06)); border: 1px solid rgba(91,140,255,0.3); border-radius: 10px; padding: 16px;">
+<div style="font-weight: 700; color: var(--brand-2); margin-bottom: 12px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">🔄 Changes Since Last Report</div>
+<p style="margin: 0; line-height: 1.7;">No changes occurred since the last reporting period.</p>
+</div>
+</div>
+<div class="subbox" style="border-color: #10b981; background: linear-gradient(135deg, rgba(16,185,129,0.12), rgba(16,185,129,0.06));">
+<div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; flex-wrap: wrap; gap: 12px;">
+<div>
+<div style="font-size: 24px; font-weight: 800; color: #a7f3d0; margin-bottom: 4px;">Week 12 Status Report</div>
+<div style="color: var(--ink-dim); font-size: 14px;">Reporting Period: Sunday, November 9, 2025</div>
+</div>
+<div style="padding: 12px 20px; background: linear-gradient(135deg, rgba(16,185,129,0.2), rgba(16,185,129,0.15)); border: 2px solid #10b981; border-radius: 12px; font-weight: 800; color: #a7f3d0; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">🟢 ON TRACK</div>
+</div>
+<div style="background: linear-gradient(135deg, rgba(10,14,30,.7), rgba(10,14,30,.5)); border: 1px solid rgba(16,185,129,0.3); border-radius: 10px; padding: 16px; margin-bottom: 20px;">
+<div style="font-weight: 700; color: #a7f3d0; margin-bottom: 8px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">Executive Summary</div>
+<p style="margin: 0; line-height: 1.7;">
+      This week my project remains on track. I continued working on the Google IT Support Professional Certificate and advanced to Module 3 (Operating Systems and You). At this pace, I am on schedule to complete the certificate and hit upcoming milestones like updating my LinkedIn profile and applying for entry-level positions.
+    </p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-bottom: 20px;">
+<div style="background: linear-gradient(135deg, rgba(91,140,255,0.12), rgba(91,140,255,0.06)); border: 1px solid rgba(91,140,255,0.3); border-radius: 10px; padding: 16px;">
+<div style="font-weight: 700; color: var(--brand-2); margin-bottom: 12px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">✅ Accomplishments This Week</div>
+<ul style="margin: 0; padding-left: 20px; font-size: 14px;">
+<li>Worked on my Google IT Support Professional Certificate and advanced to Module 3: Operating Systems and You.</li>
+<li>Fixed layout bugs on the Project Status Report tab and ensured the charter reflects relevant information.</li>
+<li>Began searching for relevant entry-level help desk job postings to prepare for the application stage.</li>
+</ul>
+</div>
+<div style="background: linear-gradient(135deg, rgba(91,140,255,0.12), rgba(91,140,255,0.06)); border: 1px solid rgba(91,140,255,0.3); border-radius: 10px; padding: 16px;">
+<div style="font-weight: 700; color: var(--brand-2); margin-bottom: 12px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">📅 Plan for Next Week</div>
+<ul style="margin: 0; padding-left: 20px; font-size: 14px;">
+<li>Continue working on the certificate toward completion.</li>
+<li>Prepare for upcoming deliverables.</li>
+<li>Monitor risks and adjust the schedule to meet deadlines.</li>
+</ul>
+</div>
+</div>
+<div style="background: linear-gradient(135deg, rgba(10,14,30,.7), rgba(10,14,30,.5)); border: 1px solid rgba(16,185,129,0.3); border-radius: 10px; padding: 16px; margin-bottom: 20px;">
+<div style="font-weight: 700; color: #a7f3d0; margin-bottom: 12px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">🎯 Upcoming Milestones</div>
+<table style="width: 100%; border: none; margin: 0;">
+<thead>
+<tr>
+<th style="text-align: left; padding: 8px 0; border: none; background: transparent; font-size: 12px;">Milestone</th>
+<th style="text-align: center; padding: 8px 0; border: none; background: transparent; font-size: 12px;">Target Date</th>
+<th style="text-align: center; padding: 8px 0; border: none; background: transparent; font-size: 12px;">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr style="border: none;">
+<td style="padding: 8px 0; border: none; background: transparent;">Google IT Support Professional Certificate</td>
+<td style="text-align: center; padding: 8px 0; border: none; background: transparent;">11/17/2025</td>
+<td style="text-align: center; padding: 8px 0; border: none; background: transparent;">
+<span style="padding: 4px 10px; background: rgba(16,185,129,0.2); border: 1px solid #10b981; border-radius: 999px; font-size: 11px; font-weight: 700; color: #a7f3d0;">ON TRACK</span>
+</td>
+</tr>
+<tr style="border: none;">
+<td style="padding: 8px 0; border: none; background: transparent;">LinkedIn Profile Enhancement</td>
+<td style="text-align: center; padding: 8px 0; border: none; background: transparent;">11/22/2025</td>
+<td style="text-align: center; padding: 8px 0; border: none; background: transparent;">
+<span style="padding: 4px 10px; background: rgba(16,185,129,0.2); border: 1px solid #10b981; border-radius: 999px; font-size: 11px; font-weight: 700; color: #a7f3d0;">ON TRACK</span>
+</td>
+</tr>
+<tr style="border: none;">
+<td style="padding: 8px 0; border: none; background: transparent;">Entry-level IT Help Desk Job Applications</td>
+<td style="text-align: center; padding: 8px 0; border: none; background: transparent;">11/27/2025</td>
+<td style="text-align: center; padding: 8px 0; border: none; background: transparent;">
+<span style="padding: 4px 10px; background: rgba(16,185,129,0.2); border: 1px solid #10b981; border-radius: 999px; font-size: 11px; font-weight: 700; color: #a7f3d0;">ON TRACK</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div style="background: linear-gradient(135deg, rgba(16,185,129,0.12), rgba(16,185,129,0.06)); border: 1px solid #10b981; border-radius: 10px; padding: 16px; margin-bottom: 20px;">
+<div style="font-weight: 700; color: #a7f3d0; margin-bottom: 12px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">⚠️ Issues &amp; Risks</div>
+<div style="margin-bottom: 8px;">
+<span style="padding: 4px 10px; background: rgba(16,185,129,0.20); border: 1px solid #10b981; border-radius: 999px; font-size: 11px; font-weight: 700; color: #a7f3d0; text-transform: uppercase;">NONE</span>
+<span style="margin-left: 8px; font-weight: 600;">No issues or risks to report for this period.</span>
+</div>
+<div style="font-size: 14px; line-height: 1.7;">
+<strong style="color: var(--brand-2);">Mitigation:</strong> Continue executing the plan; monitor workload and deadlines.
+    </div>
+</div>
+<div style="background: linear-gradient(135deg, rgba(91,140,255,0.12), rgba(91,140,255,0.06)); border: 1px solid rgba(91,140,255,0.3); border-radius: 10px; padding: 16px;">
+<div style="font-weight: 700; color: var(--brand-2); margin-bottom: 12px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">🔄 Changes Since Last Report</div>
+<p style="margin: 0; line-height: 1.7;">No changes occurred since the last reporting period.</p>
+</div>
+</div>
+<div class="subbox" style="border-color: #10b981; background: linear-gradient(135deg, rgba(16,185,129,0.12), rgba(16,185,129,0.06));">
+<div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; flex-wrap: wrap; gap: 12px;">
+<div>
+<div style="font-size: 24px; font-weight: 800; color: #a7f3d0; margin-bottom: 4px;">Week 11 Status Report</div>
+<div style="color: var(--ink-dim); font-size: 14px;">Reporting Period: Sunday, November 2, 2025</div>
+</div>
+<div style="padding: 12px 20px; background: linear-gradient(135deg, rgba(16,185,129,0.2), rgba(16,185,129,0.15)); border: 2px solid #10b981; border-radius: 12px; font-weight: 800; color: #a7f3d0; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">🟢 ON TRACK</div>
+</div>
+<div style="background: linear-gradient(135deg, rgba(10,14,30,.7), rgba(10,14,30,.5)); border: 1px solid rgba(16,185,129,0.3); border-radius: 10px; padding: 16px; margin-bottom: 20px;">
+<div style="font-weight: 700; color: #a7f3d0; margin-bottom: 8px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">Executive Summary</div>
+<p style="margin: 0; line-height: 1.7;">
+      This week I purchased my first certificate on Coursera—<strong>Google IT Support Professional Certificate</strong>. I made progress on the first module and will continue working on it to ensure the project stays on track. After completion, my next goals are to update my <strong>LinkedIn</strong> profile and apply to entry-level IT help desk positions.
+    </p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-bottom: 20px;">
+<div style="background: linear-gradient(135deg, rgba(91,140,255,0.12), rgba(91,140,255,0.06)); border: 1px solid rgba(91,140,255,0.3); border-radius: 10px; padding: 16px;">
+<div style="font-weight: 700; color: var(--brand-2); margin-bottom: 12px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">✅ Accomplishments This Week</div>
+<ul style="margin: 0; padding-left: 20px; font-size: 14px;">
+<li>Purchased the <strong>Google IT Support Professional Certificate</strong>.</li>
+<li>Made meaningful progress on the first module.</li>
+<li>Updated my Trello plan and continued monitoring to stay on schedule.</li>
+</ul>
+</div>
+<div style="background: linear-gradient(135deg, rgba(91,140,255,0.12), rgba(91,140,255,0.06)); border: 1px solid rgba(91,140,255,0.3); border-radius: 10px; padding: 16px;">
+<div style="font-weight: 700; color: var(--brand-2); margin-bottom: 12px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">📅 Plan for Next Week</div>
+<ul style="margin: 0; padding-left: 20px; font-size: 14px;">
+<li>Continue working through the Google IT Support certificate.</li>
+<li>Research the second certificate and review required content.</li>
+<li>Continue monitoring progress to avoid scope creep.</li>
+</ul>
+</div>
+</div>
+<div style="background: linear-gradient(135deg, rgba(10,14,30,.7), rgba(10,14,30,.5)); border: 1px solid rgba(16,185,129,0.3); border-radius: 10px; padding: 16px; margin-bottom: 20px;">
+<div style="font-weight: 700; color: #a7f3d0; margin-bottom: 12px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">🎯 Upcoming Milestones</div>
+<table style="width: 100%; border: none; margin: 0;">
+<thead>
+<tr>
+<th style="text-align: left; padding: 8px 0; border: none; background: transparent; font-size: 12px;">Milestone</th>
+<th style="text-align: center; padding: 8px 0; border: none; background: transparent; font-size: 12px;">Target Date</th>
+<th style="text-align: center; padding: 8px 0; border: none; background: transparent; font-size: 12px;">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr style="border: none;">
+<td style="padding: 8px 0; border: none; background: transparent;">Microsoft IT Professional Certificate</td>
+<td style="text-align: center; padding: 8px 0; border: none; background: transparent;">11/18/2025</td>
+<td style="text-align: center; padding: 8px 0; border: none; background: transparent;">
+<span style="padding: 4px 10px; background: rgba(16,185,129,0.2); border: 1px solid #10b981; border-radius: 999px; font-size: 11px; font-weight: 700; color: #a7f3d0;">ON TRACK</span>
+</td>
+</tr>
+<tr style="border: none;">
+<td style="padding: 8px 0; border: none; background: transparent;">LinkedIn Profile Enhancement</td>
+<td style="text-align: center; padding: 8px 0; border: none; background: transparent;">11/23/2025</td>
+<td style="text-align: center; padding: 8px 0; border: none; background: transparent;">
+<span style="padding: 4px 10px; background: rgba(16,185,129,0.2); border: 1px solid #10b981; border-radius: 999px; font-size: 11px; font-weight: 700; color: #a7f3d0;">ON TRACK</span>
+</td>
+</tr>
+<tr style="border: none;">
+<td style="padding: 8px 0; border: none; background: transparent;">Job Applications</td>
+<td style="text-align: center; padding: 8px 0; border: none; background: transparent;">11/28/2025</td>
+<td style="text-align: center; padding: 8px 0; border: none; background: transparent;">
+<span style="padding: 4px 10px; background: rgba(16,185,129,0.2); border: 1px solid #10b981; border-radius: 999px; font-size: 11px; font-weight: 700; color: #a7f3d0;">ON TRACK</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div style="background: linear-gradient(135deg, rgba(16,185,129,0.12), rgba(16,185,129,0.06)); border: 1px solid #10b981; border-radius: 10px; padding: 16px; margin-bottom: 20px;">
+<div style="font-weight: 700; color: #a7f3d0; margin-bottom: 12px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">⚠️ Issues &amp; Risks</div>
+<div style="margin-bottom: 8px;">
+<span style="padding: 4px 10px; background: rgba(16,185,129,0.20); border: 1px solid #10b981; border-radius: 999px; font-size: 11px; font-weight: 700; color: #a7f3d0; text-transform: uppercase;">NONE</span>
+<span style="margin-left: 8px; font-weight: 600;">No issues or risks to report for this period.</span>
+</div>
+<div style="font-size: 14px; line-height: 1.7;">
+<strong style="color: var(--brand-2);">Mitigation:</strong> Continue executing the plan; monitor workload and deadlines.
+    </div>
+</div>
+<div style="background: linear-gradient(135deg, rgba(91,140,255,0.12), rgba(91,140,255,0.06)); border: 1px solid rgba(91,140,255,0.3); border-radius: 10px; padding: 16px;">
+<div style="font-weight: 700; color: var(--brand-2); margin-bottom: 12px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">🔄 Changes Since Last Report</div>
+<p style="margin: 0; line-height: 1.7;">No changes occurred since the last reporting period.</p>
+</div>
+</div>
+<div class="subbox" style="border-color: #10b981; background: linear-gradient(135deg, rgba(16,185,129,0.12), rgba(16,185,129,0.06));">
+<div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; flex-wrap: wrap; gap: 12px;">
+<div>
+<div style="font-size: 24px; font-weight: 800; color: #a7f3d0; margin-bottom: 4px;">Week 10 Status Report</div>
+<div style="color: var(--ink-dim); font-size: 14px;">Reporting Period: Sunday, October 26, 2025</div>
+</div>
+<div style="padding: 12px 20px; background: linear-gradient(135deg, rgba(16,185,129,0.2), rgba(16,185,129,0.15)); border: 2px solid #10b981; border-radius: 12px; font-weight: 800; color: #a7f3d0; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">🟢 ON TRACK</div>
+</div>
+<div style="background: linear-gradient(135deg, rgba(10,14,30,.7), rgba(10,14,30,.5)); border: 1px solid rgba(16,185,129,0.3); border-radius: 10px; padding: 16px; margin-bottom: 20px;">
+<div style="font-weight: 700; color: #a7f3d0; margin-bottom: 8px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">Executive Summary</div>
+<p style="margin: 0; line-height: 1.7;">
+      My project health is in good standing because I am in the executing phase of my project and so far I have fully updated and tailored my résumé, and I have completed my project portfolio that highlights my skills and experience. My next step is to start working on my first certificate, which is the Microsoft IT Support Certificate, to support my primary goal.
+    </p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-bottom: 20px;">
+<div style="background: linear-gradient(135deg, rgba(91,140,255,0.12), rgba(91,140,255,0.06)); border: 1px solid rgba(91,140,255,0.3); border-radius: 10px; padding: 16px;">
+<div style="font-weight: 700; color: var(--brand-2); margin-bottom: 12px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">✅ Accomplishments This Week</div>
+<ul style="margin: 0; padding-left: 20px; font-size: 14px;">
+<li>Finished and refined my portfolio highlighting my skills and experience, focused on an entry-level IT help desk role.</li>
+<li>Enhanced my project charter with visual improvements to make it more professional.</li>
+<li>Researched my first certificate and prepared by studying required materials.</li>
+</ul>
+</div>
+<div style="background: linear-gradient(135deg, rgba(91,140,255,0.12), rgba(91,140,255,0.06)); border: 1px solid rgba(91,140,255,0.3); border-radius: 10px; padding: 16px;">
+<div style="font-weight: 700; color: var(--brand-2); margin-bottom: 12px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">📅 Plan for Next Week</div>
+<ul style="margin: 0; padding-left: 20px; font-size: 14px;">
+<li>Sign up for my first certificate.</li>
+<li>Begin the Microsoft IT Support Certificate.</li>
+<li>Continue preparation for the upcoming certificate coursework.</li>
+</ul>
+</div>
+</div>
+<div style="background: linear-gradient(135deg, rgba(10,14,30,.7), rgba(10,14,30,.5)); border: 1px solid rgba(16,185,129,0.3); border-radius: 10px; padding: 16px; margin-bottom: 20px;">
+<div style="font-weight: 700; color: #a7f3d0; margin-bottom: 12px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">🎯 Upcoming Milestones</div>
+<table style="width: 100%; border: none; margin: 0;">
+<thead>
+<tr>
+<th style="text-align: left; padding: 8px 0; border: none; background: transparent; font-size: 12px;">Milestone</th>
+<th style="text-align: center; padding: 8px 0; border: none; background: transparent; font-size: 12px;">Target Date</th>
+<th style="text-align: center; padding: 8px 0; border: none; background: transparent; font-size: 12px;">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr style="border: none;">
+<td style="padding: 8px 0; border: none; background: transparent;">Microsoft IT Support Certificate</td>
+<td style="text-align: center; padding: 8px 0; border: none; background: transparent;">10/31/2025</td>
+<td style="text-align: center; padding: 8px 0; border: none; background: transparent;">
+<span style="padding: 4px 10px; background: rgba(16,185,129,0.2); border: 1px solid #10b981; border-radius: 999px; font-size: 11px; font-weight: 700; color: #a7f3d0;">ON TRACK</span>
+</td>
+</tr>
+<tr style="border: none;">
+<td style="padding: 8px 0; border: none; background: transparent;">Google IT Support Certificate</td>
+<td style="text-align: center; padding: 8px 0; border: none; background: transparent;">11/11/2025</td>
+<td style="text-align: center; padding: 8px 0; border: none; background: transparent;">
+<span style="padding: 4px 10px; background: rgba(16,185,129,0.2); border: 1px solid #10b981; border-radius: 999px; font-size: 11px; font-weight: 700; color: #a7f3d0;">ON TRACK</span>
+</td>
+</tr>
+<tr style="border: none;">
+<td style="padding: 8px 0; border: none; background: transparent;">LinkedIn Profile Enhancement</td>
+<td style="text-align: center; padding: 8px 0; border: none; background: transparent;">11/29/2025</td>
+<td style="text-align: center; padding: 8px 0; border: none; background: transparent;">
+<span style="padding: 4px 10px; background: rgba(16,185,129,0.2); border: 1px solid #10b981; border-radius: 999px; font-size: 11px; font-weight: 700; color: #a7f3d0;">ON TRACK</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div style="background: linear-gradient(135deg, rgba(16,185,129,0.12), rgba(16,185,129,0.06)); border: 1px solid #10b981; border-radius: 10px; padding: 16px; margin-bottom: 20px;">
+<div style="font-weight: 700; color: #a7f3d0; margin-bottom: 12px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">⚠️ Issues &amp; Risks</div>
+<div style="margin-bottom: 8px;">
+<span style="padding: 4px 10px; background: rgba(16,185,129,0.20); border: 1px solid #10b981; border-radius: 999px; font-size: 11px; font-weight: 700; color: #a7f3d0; text-transform: uppercase;">NONE</span>
+<span style="margin-left: 8px; font-weight: 600;">No issues or risks to report for this period.</span>
+</div>
+<div style="font-size: 14px; line-height: 1.7;">
+<strong style="color: var(--brand-2);">Mitigation:</strong> Continue executing the plan; monitor workload and deadlines.
+    </div>
+</div>
+<div style="background: linear-gradient(135deg, rgba(91,140,255,0.12), rgba(91,140,255,0.06)); border: 1px solid rgba(91,140,255,0.3); border-radius: 10px; padding: 16px;">
+<div style="font-weight: 700; color: var(--brand-2); margin-bottom: 12px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">🔄 Changes Since Last Report</div>
+<p style="margin: 0; line-height: 1.7;">No changes occurred since the last reporting period.</p>
+</div>
+</div>
+<div class="subbox" style="border-color: #10b981; background: linear-gradient(135deg, rgba(16,185,129,0.12), rgba(16,185,129,0.06));">
+<div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; flex-wrap: wrap; gap: 12px;">
+<div>
+<div style="font-size: 24px; font-weight: 800; color: #a7f3d0; margin-bottom: 4px;">Week 9 Status Report</div>
+<div style="color: var(--ink-dim); font-size: 14px;">Reporting Period: Monday, October 20, 2025</div>
+</div>
+<div style="padding: 12px 20px; background: linear-gradient(135deg, rgba(16,185,129,0.2), rgba(16,185,129,0.15)); border: 2px solid #10b981; border-radius: 12px; font-weight: 800; color: #a7f3d0; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">🟢 ON TRACK</div>
+</div>
+<div style="background: linear-gradient(135deg, rgba(10,14,30,.7), rgba(10,14,30,.5)); border: 1px solid rgba(16,185,129,0.3); border-radius: 10px; padding: 16px; margin-bottom: 20px;">
+<div style="font-weight: 700; color: #a7f3d0; margin-bottom: 8px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">Executive Summary</div>
+<p style="margin: 0; line-height: 1.7;">
+      Project is on track. I finalized the updated project charter and moved into execution. I reformatted my résumé to highlight help-desk skills and experience, and I created the portfolio template and started adding accomplishments and skills.
+    </p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-bottom: 20px;">
+<div style="background: linear-gradient(135deg, rgba(91,140,255,0.12), rgba(91,140,255,0.06)); border: 1px solid rgba(91,140,255,0.3); border-radius: 10px; padding: 16px;">
+<div style="font-weight: 700; color: var(--brand-2); margin-bottom: 12px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">✅ Accomplishments This Week</div>
+<ul style="margin: 0; padding-left: 20px; font-size: 14px;">
+<li>Updated résumé to a professional format emphasizing skills and experience.</li>
+<li>Created portfolio template and began adding content (skills &amp; accomplishments).</li>
+<li>Refined goals and began executing against the charter.</li>
+</ul>
+</div>
+<div style="background: linear-gradient(135deg, rgba(91,140,255,0.12), rgba(91,140,255,0.06)); border: 1px solid rgba(91,140,255,0.3); border-radius: 10px; padding: 16px;">
+<div style="font-weight: 700; color: var(--brand-2); margin-bottom: 12px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">📅 Plan for Next Week</div>
+<ul style="margin: 0; padding-left: 20px; font-size: 14px;">
+<li>Finish portfolio content and layout.</li>
+<li>Publish the portfolio online for public access.</li>
+<li>Start Google IT Support Professional Certificate.</li>
+</ul>
+</div>
+</div>
+<div style="background: linear-gradient(135deg, rgba(10,14,30,.7), rgba(10,14,30,.5)); border: 1px solid rgba(16,185,129,0.3); border-radius: 10px; padding: 16px; margin-bottom: 20px;">
+<div style="font-weight: 700; color: #a7f3d0; margin-bottom: 12px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">🎯 Upcoming Milestones</div>
+<table style="width: 100%; border: none; margin: 0;">
+<thead>
+<tr>
+<th style="text-align: left; padding: 8px 0; border: none; background: transparent; font-size: 12px;">Milestone</th>
+<th style="text-align: center; padding: 8px 0; border: none; background: transparent; font-size: 12px;">Target Date</th>
+<th style="text-align: center; padding: 8px 0; border: none; background: transparent; font-size: 12px;">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr style="border: none;">
+<td style="padding: 8px 0; border: none; background: transparent;">Begin Google IT Support Certificate</td>
+<td style="text-align: center; padding: 8px 0; border: none; background: transparent;">10/27/2025</td>
+<td style="text-align: center; padding: 8px 0; border: none; background: transparent;">
+<span style="padding: 4px 10px; background: rgba(16,185,129,0.2); border: 1px solid #10b981; border-radius: 999px; font-size: 11px; font-weight: 700; color: #a7f3d0;">ON TRACK</span>
+</td>
+</tr>
+<tr style="border: none;">
+<td style="padding: 8px 0; border: none; background: transparent;">Begin Microsoft IT Support Certificate</td>
+<td style="text-align: center; padding: 8px 0; border: none; background: transparent;">10/27/2025</td>
+<td style="text-align: center; padding: 8px 0; border: none; background: transparent;">
+<span style="padding: 4px 10px; background: rgba(16,185,129,0.2); border: 1px solid #10b981; border-radius: 999px; font-size: 11px; font-weight: 700; color: #a7f3d0;">ON TRACK</span>
+</td>
+</tr>
+<tr style="border: none;">
+<td style="padding: 8px 0; border: none; background: transparent;">Update LinkedIn Profile</td>
+<td style="text-align: center; padding: 8px 0; border: none; background: transparent;">10/30/2025</td>
+<td style="text-align: center; padding: 8px 0; border: none; background: transparent;">
+<span style="padding: 4px 10px; background: rgba(16,185,129,0.2); border: 1px solid #10b981; border-radius: 999px; font-size: 11px; font-weight: 700; color: #a7f3d0;">ON TRACK</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div style="background: linear-gradient(135deg, rgba(16,185,129,0.12), rgba(16,185,129,0.06)); border: 1px solid #10b981; border-radius: 10px; padding: 16px; margin-bottom: 20px;">
+<div style="font-weight: 700; color: #a7f3d0; margin-bottom: 12px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">⚠️ Issues &amp; Risks</div>
+<div style="margin-bottom: 8px;">
+<span style="padding: 4px 10px; background: rgba(16,185,129,0.20); border: 1px solid #10b981; border-radius: 999px; font-size: 11px; font-weight: 700; color: #a7f3d0; text-transform: uppercase;">NONE</span>
+<span style="margin-left: 8px; font-weight: 600;">No issues or risks to report for this period.</span>
+</div>
+<div style="font-size: 14px; line-height: 1.7;">
+<strong style="color: var(--brand-2);">Mitigation:</strong> Continue executing the plan; monitor workload and deadlines.
+    </div>
+</div>
+<div style="background: linear-gradient(135deg, rgba(91,140,255,0.12), rgba(91,140,255,0.06)); border: 1px solid rgba(91,140,255,0.3); border-radius: 10px; padding: 16px;">
+<div style="font-weight: 700; color: var(--brand-2); margin-bottom: 12px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">🔄 Changes Since Last Report</div>
+<p style="margin: 0; line-height: 1.7;">No changes occurred since the last reporting period.</p>
+</div>
+</div>
+<div class="subbox" style="border-color: #f59e0b; background: linear-gradient(135deg, rgba(245,158,11,0.12), rgba(245,158,11,0.06));">
+<div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; flex-wrap: wrap; gap: 12px;">
+<div>
+<div style="font-size: 24px; font-weight: 800; color: #fdba74; margin-bottom: 4px;">Week 8 Status Report</div>
+<div style="color: var(--ink-dim); font-size: 14px;">Reporting Period: Monday, October 13, 2025</div>
+</div>
+<div style="padding: 12px 20px; background: linear-gradient(135deg, rgba(245,158,11,0.2), rgba(245,158,11,0.15)); border: 2px solid #f59e0b; border-radius: 12px; font-weight: 800; color: #fdba74; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">🟡 AT RISK</div>
+</div>
+<div style="background: linear-gradient(135deg, rgba(10,14,30,.7), rgba(10,14,30,.5)); border: 1px solid rgba(245,158,11,0.3); border-radius: 10px; padding: 16px; margin-bottom: 20px;">
+<div style="font-weight: 700; color: #fdba74; margin-bottom: 8px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">Executive Summary</div>
+<p style="margin: 0; line-height: 1.7;">Project is trending back on track. I updated the charter, Trello plan, and graphs to reflect the new goal. I also incorporated feedback from my professor and classmates to improve clarity and better align the charter with the rubric.</p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-bottom: 20px;">
+<div style="background: linear-gradient(135deg, rgba(91,140,255,0.12), rgba(91,140,255,0.06)); border: 1px solid rgba(91,140,255,0.3); border-radius: 10px; padding: 16px;">
+<div style="font-weight: 700; color: var(--brand-2); margin-bottom: 12px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">✅ Accomplishments This Week</div>
+<ul style="margin: 0; padding-left: 20px; font-size: 14px;">
+<li>Proofread project charter and implemented all updates based on the new project goal.</li>
+<li>Applied feedback from in-class 1:1 session, updated goals/deliverables, refreshed the charter’s design.</li>
+<li>Incorporated classmates feedback, fixed a light-mode readability bug, corrected Mission/Vision/Strategy order.</li>
+</ul>
+</div>
+<div style="background: linear-gradient(135deg, rgba(91,140,255,0.12), rgba(91,140,255,0.06)); border: 1px solid rgba(91,140,255,0.3); border-radius: 10px; padding: 16px;">
+<div style="font-weight: 700; color: var(--brand-2); margin-bottom: 12px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">📅 Plan for Next Week</div>
+<ul style="margin: 0; padding-left: 20px; font-size: 14px;">
+<li>Get approval for my updated project charter.</li>
+<li>Update my resume as planned in my Trello work breakdown structure.</li>
+<li>Start executing the required tasks for my portfolio.</li>
+</ul>
+</div>
+</div>
+<div style="background: linear-gradient(135deg, rgba(10,14,30,.7), rgba(10,14,30,.5)); border: 1px solid rgba(245,158,11,0.3); border-radius: 10px; padding: 16px; margin-bottom: 20px;">
+<div style="font-weight: 700; color: #fdba74; margin-bottom: 12px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">🎯 Upcoming Milestones</div>
+<table style="width: 100%; border: none; margin: 0;">
+<thead>
+<tr>
+<th style="text-align: left; padding: 8px 0; border: none; background: transparent; font-size: 12px;">Milestone</th>
+<th style="text-align: center; padding: 8px 0; border: none; background: transparent; font-size: 12px;">Target Date</th>
+<th style="text-align: center; padding: 8px 0; border: none; background: transparent; font-size: 12px;">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr style="border: none;">
+<td style="padding: 8px 0; border: none; background: transparent;">Create Project Charter</td>
+<td style="text-align: center; padding: 8px 0; border: none; background: transparent;">10/14/2025</td>
+<td style="text-align: center; padding: 8px 0; border: none; background: transparent;"><span style="padding: 4px 10px; background: rgba(245,158,11,0.2); border: 1px solid #f59e0b; border-radius: 999px; font-size: 11px; font-weight: 700; color: #fdba74;">AT RISK</span></td>
+</tr>
+<tr style="border: none;">
+<td style="padding: 8px 0; border: none; background: transparent;">Updated Resume</td>
+<td style="text-align: center; padding: 8px 0; border: none; background: transparent;">10/17/2025</td>
+<td style="text-align: center; padding: 8px 0; border: none; background: transparent;"><span style="padding: 4px 10px; background: rgba(245,158,11,0.2); border: 1px solid #f59e0b; border-radius: 999px; font-size: 11px; font-weight: 700; color: #fdba74;">AT RISK</span></td>
+</tr>
+<tr style="border: none;">
+<td style="padding: 8px 0; border: none; background: transparent;">LinkedIn profile enhancement</td>
+<td style="text-align: center; padding: 8px 0; border: none; background: transparent;">10/28/2025</td>
+<td style="text-align: center; padding: 8px 0; border: none; background: transparent;"><span style="padding: 4px 10px; background: rgba(245,158,11,0.2); border: 1px solid #f59e0b; border-radius: 999px; font-size: 11px; font-weight: 700; color: #fdba74;">AT RISK</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div style="background: linear-gradient(135deg, rgba(245,158,11,0.12), rgba(245,158,11,0.06)); border: 1px solid rgba(245,158,11,0.3); border-radius: 10px; padding: 16px;">
+<div style="font-weight: 700; color: #fdba74; margin-bottom: 12px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">⚠️ Issues &amp; Risks</div>
+<div style="margin-bottom: 8px;">
+<span style="padding: 4px 10px; background: rgba(245,158,11,0.2); border: 1px solid #f59e0b; border-radius: 999px; font-size: 11px; font-weight: 700; color: #fdba74; text-transform: uppercase;">MEDIUM RISK</span>
+<span style="margin-left: 8px; font-weight: 600;">Project Charter Approval</span>
+</div>
+<div style="font-size: 14px; line-height: 1.7;">
+<strong style="color: var(--brand-2);">Mitigation:</strong> Continue to seek feedback from peers and professor with the goal of getting the project approved.
+                </div>
+</div>
+</div>
+<div class="subbox" style="border-color: #ef4444; background: linear-gradient(135deg, rgba(239,68,68,0.12), rgba(239,68,68,0.06));">
+<div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; flex-wrap: wrap; gap: 12px;">
+<div>
+<div style="font-size: 24px; font-weight: 800; color: #fca5a5; margin-bottom: 4px;">Week 7 Status Report</div>
+<div style="color: var(--ink-dim); font-size: 14px;">Reporting Period: Monday, October 6, 2025</div>
+</div>
+<div style="padding: 12px 20px; background: linear-gradient(135deg, rgba(239,68,68,0.2), rgba(239,68,68,0.15)); border: 2px solid #ef4444; border-radius: 12px; font-weight: 800; color: #fca5a5; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">🔴 OFF TRACK</div>
+</div>
+<div style="background: linear-gradient(135deg, rgba(10,14,30,.7), rgba(10,14,30,.5)); border: 1px solid rgba(239,68,68,0.3); border-radius: 10px; padding: 16px; margin-bottom: 20px;">
+<div style="font-weight: 700; color: #fca5a5; margin-bottom: 8px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">Executive Summary</div>
+<p style="margin: 0; line-height: 1.7;">Project underwent complete scope change from research paper to Career Advancement Preparation. Currently off track due to rebuilding project charter, updating project planner, and revising all documentation to align with new direction.</p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-bottom: 20px;">
+<div style="background: linear-gradient(135deg, rgba(91,140,255,0.12), rgba(91,140,255,0.06)); border: 1px solid rgba(91,140,255,0.3); border-radius: 10px; padding: 16px;">
+<div style="font-weight: 700; color: var(--brand-2); margin-bottom: 12px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">✅ Accomplishments This Week</div>
+<ul style="margin: 0; padding-left: 20px; font-size: 14px;">
+<li>Crafted new solid concise project for approval</li>
+<li>Updated title and project description</li>
+<li>Created new vision, mission, strategy and business case</li>
+</ul>
+</div>
+<div style="background: linear-gradient(135deg, rgba(91,140,255,0.12), rgba(91,140,255,0.06)); border: 1px solid rgba(91,140,255,0.3); border-radius: 10px; padding: 16px;">
+<div style="font-weight: 700; color: var(--brand-2); margin-bottom: 12px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">📅 Plan for Next Week</div>
+<ul style="margin: 0; padding-left: 20px; font-size: 14px;">
+<li>Finish new project charter with all changes</li>
+<li>Complete updated project planner and graphs</li>
+<li>Seek feedback and project approval</li>
+</ul>
+</div>
+</div>
+<div style="background: linear-gradient(135deg, rgba(10,14,30,.7), rgba(10,14,30,.5)); border: 1px solid rgba(245,158,11,0.3); border-radius: 10px; padding: 16px; margin-bottom: 20px;">
+<div style="font-weight: 700; color: #fdba74; margin-bottom: 12px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">🎯 Upcoming Milestones</div>
+<table style="width: 100%; border: none; margin: 0;">
+<thead>
+<tr>
+<th style="text-align: left; padding: 8px 0; border: none; background: transparent; font-size: 12px;">Milestone</th>
+<th style="text-align: center; padding: 8px 0; border: none; background: transparent; font-size: 12px;">Target Date</th>
+<th style="text-align: center; padding: 8px 0; border: none; background: transparent; font-size: 12px;">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr style="border: none;">
+<td style="padding: 8px 0; border: none; background: transparent;">Project Charter</td>
+<td style="text-align: center; padding: 8px 0; border: none; background: transparent;">10/14/2025</td>
+<td style="text-align: center; padding: 8px 0; border: none; background: transparent;"><span style="padding: 4px 10px; background: rgba(245,158,11,0.2); border: 1px solid #f59e0b; border-radius: 999px; font-size: 11px; font-weight: 700; color: #fdba74;">AT RISK</span></td>
+</tr>
+<tr style="border: none;">
+<td style="padding: 8px 0; border: none; background: transparent;">Updated Resume</td>
+<td style="text-align: center; padding: 8px 0; border: none; background: transparent;">10/17/2025</td>
+<td style="text-align: center; padding: 8px 0; border: none; background: transparent;"><span style="padding: 4px 10px; background: rgba(245,158,11,0.2); border: 1px solid #f59e0b; border-radius: 999px; font-size: 11px; font-weight: 700; color: #fdba74;">AT RISK</span></td>
+</tr>
+<tr style="border: none;">
+<td style="padding: 8px 0; border: none; background: transparent;">Complete Certificates</td>
+<td style="text-align: center; padding: 8px 0; border: none; background: transparent;">10/28/2025</td>
+<td style="text-align: center; padding: 8px 0; border: none; background: transparent;"><span style="padding: 4px 10px; background: rgba(245,158,11,0.2); border: 1px solid #f59e0b; border-radius: 999px; font-size: 11px; font-weight: 700; color: #fdba74;">AT RISK</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div style="background: linear-gradient(135deg, rgba(239,68,68,0.12), rgba(239,68,68,0.06)); border: 1px solid rgba(239,68,68,0.3); border-radius: 10px; padding: 16px;">
+<div style="font-weight: 700; color: #fca5a5; margin-bottom: 12px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">⚠️ Issues &amp; Risks</div>
+<div style="margin-bottom: 8px;">
+<span style="padding: 4px 10px; background: rgba(239,68,68,0.2); border: 1px solid #ef4444; border-radius: 999px; font-size: 11px; font-weight: 700; color: #fca5a5; text-transform: uppercase;">HIGH RISK</span>
+<span style="margin-left: 8px; font-weight: 600;">Completing project on time</span>
+</div>
+<div style="font-size: 14px; line-height: 1.7;">
+<strong style="color: var(--brand-2);">Mitigation:</strong> Working diligently to create new project that follows correct rubric and requirements. Prioritizing critical path items and seeking early feedback to avoid further delays.
+                </div>
+</div>
+</div></div>
+      </section>
+
+      <footer class="page-footer">
+        <div>Use this page as evidence of consistent tracking, adjustment, and follow-through during the semester.</div>
+        <div>
+          <a class="footer-link" href="career_advancement_hub_fixed.html">
+            <span>⬅</span>
+            Back to Hub
+          </a>
+        </div>
+      </footer>
     </div>
   </div>
 
@@ -998,22 +1185,6 @@
       const mode = body.classList.contains('light') ? 'light' : 'dark';
       localStorage.setItem('statusReportsTheme', mode);
     });
-
-    // Back to Hub button logic
-    const backToHub = document.getElementById('backToHub');
-    if (backToHub) {
-      backToHub.addEventListener('click', () => {
-        // If this page is in an iframe, ask the parent hub to switch views too
-        if (window.parent && window.parent !== window) {
-          try {
-            window.parent.postMessage({ type: 'cap-back-to-hub' }, '*');
-          } catch (e) {
-            // If messaging fails (cross-origin), the normal link still handles navigation
-          }
-        }
-        // When opened directly (not in an iframe), the normal href will navigate back to the hub page.
-      });
-    }
   </script>
 </body>
 </html>
