@@ -19,10 +19,20 @@
     html { scroll-behavior: smooth; }
 
     @keyframes starFly {
-      0% { transform: translate(0, 0) scale(0); opacity: 0; }
-      10% { opacity: 1; }
-      90% { opacity: 1; }
-      100% { transform: translate(var(--tx), var(--ty)) scale(1); opacity: 0; }
+      0% {
+        transform: translate(0, 0) scale(0.4);
+        opacity: 0;
+      }
+      15% {
+        opacity: 1;
+      }
+      70% {
+        opacity: 1;
+      }
+      100% {
+        transform: translate(var(--tx), var(--ty)) scale(1.1);
+        opacity: 0;
+      }
     }
 
     @keyframes shimmer {
@@ -685,7 +695,7 @@
     body.light .hub-body { color: #111827; }
     body.light .hub-footer-note { color: #4b5563; }
 
-    /* Added to ensure hub text is fully readable in light mode */
+    /* Ensure hub text is fully readable in light mode */
     body.light .hub-title {
       color: #0f172a;
     }
@@ -869,7 +879,7 @@
     function createStarAnimation() {
       const starContainer = document.getElementById('starContainer');
       const stars = ['⭐', '⭐', '⭐', '⭐', '⭐'];
-      const numStars = 100;
+      const numStars = 180;
 
       for (let i = 0; i < numStars; i++) {
         setTimeout(() => {
@@ -889,8 +899,8 @@
           star.style.setProperty('--tx', tx + 'px');
           star.style.setProperty('--ty', ty + 'px');
 
-          // Random animation duration
-          const duration = 1.5 + Math.random() * 1;
+          // Random animation duration (longer for slower fade)
+          const duration = 2.8 + Math.random() * 2.2; // ~2.8s–5s
           star.style.animationDuration = duration + 's';
 
           starContainer.appendChild(star);
@@ -902,10 +912,10 @@
         }, i * 50);
       }
 
-      // Remove container after all animations complete
+      // Remove container after all animations complete (slower so it doesn't feel abrupt)
       setTimeout(() => {
         starContainer.style.display = 'none';
-      }, 3500);
+      }, 7000);
     }
 
     // Run stars every time page loads
