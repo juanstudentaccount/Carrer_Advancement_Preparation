@@ -26,9 +26,9 @@
       font: 16px/1.7 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
       color: var(--ink);
       background:
-        radial-gradient(ellipse 1400px 800px at 20% -5%, rgba(91,140,255,0.22) 0, transparent 55%),
-        radial-gradient(ellipse 1200px 700px at 80% 0%, rgba(167,139,250,0.18) 0, transparent 55%),
-        radial-gradient(ellipse 1000px 600px at 50% 100%, rgba(52,211,153,0.12) 0, transparent 55%),
+        radial-gradient(ellipse 1400px 800px at 20% -5%, rgba(91,140,255,0.22) 0%, transparent 55%),
+        radial-gradient(ellipse 1200px 700px at 80% 0%, rgba(167,139,250,0.18) 0%, transparent 55%),
+        radial-gradient(ellipse 1000px 600px at 50% 100%, rgba(52,211,153,0.12) 0%, transparent 55%),
         var(--bg);
       min-height: 100vh;
       display: flex;
@@ -391,7 +391,7 @@
     }
   </style>
 </head>
-<body>
+<body id="top">
   <div class="page-shell">
     <div class="page-inner">
       <div class="top-row">
@@ -753,6 +753,10 @@
         >
           <span>⬅</span>
           Back to Hub
+        </a>
+        <a class="footer-link" href="#top">
+          <span>⬆</span>
+          Back to Top
         </a>
       </footer>
     </div>
