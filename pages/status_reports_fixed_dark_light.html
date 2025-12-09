@@ -532,7 +532,7 @@
       --border-subtle: rgba(148,163,253,0.5);
       background:
         radial-gradient(ellipse 1200px 700px at 18% -8%, rgba(96,165,250,0.22) 0%, transparent 55%),
-        radial-gradient(ellipse 1100px 650px at 82% 0, rgba(196,181,253,0.24) 0, transparent 55%),
+        radial-gradient(ellipse 1100px 650px at 82% 0%, rgba(196,181,253,0.24) 0%, transparent 55%),
         #e5edff;
       color-scheme: light;
     }
@@ -973,7 +973,7 @@
         <footer class="page-footer">
           <div>Use this page as evidence of consistent tracking, adjustment, and follow-through during the semester.</div>
           <div>
-            <a class="footer-link" href="career_advancement_hub.html">
+            <a class="footer-link" href="career_advancement_hub_fixed.html" id="backToHub">
               <span>⬅</span>
               Back to Hub
             </a>
@@ -998,6 +998,22 @@
       const mode = body.classList.contains('light') ? 'light' : 'dark';
       localStorage.setItem('statusReportsTheme', mode);
     });
+
+    // Back to Hub button logic
+    const backToHub = document.getElementById('backToHub');
+    if (backToHub) {
+      backToHub.addEventListener('click', () => {
+        // If this page is in an iframe, ask the parent hub to switch views too
+        if (window.parent && window.parent !== window) {
+          try {
+            window.parent.postMessage({ type: 'cap-back-to-hub' }, '*');
+          } catch (e) {
+            // If messaging fails (cross-origin), the normal link still handles navigation
+          }
+        }
+        // When opened directly (not in an iframe), the normal href will navigate back to the hub page.
+      });
+    }
   </script>
 </body>
 </html>
