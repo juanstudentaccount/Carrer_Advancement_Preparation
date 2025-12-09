@@ -960,6 +960,9 @@
       }
     }
 
+    // Expose hub switcher so iframe pages can call it
+    window.capHubShowHub = showHub;
+
     navLinks.forEach(link => {
       link.addEventListener('click', () => {
         const view = link.dataset.view;
