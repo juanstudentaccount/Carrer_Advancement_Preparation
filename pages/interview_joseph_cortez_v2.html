@@ -356,6 +356,7 @@
       align-items: center;
       gap: 6px;
       transition: all .2s ease;
+      cursor: pointer;
     }
 
     .footer-link span {
@@ -520,7 +521,7 @@
     }
   </style>
 </head>
-<body>
+<body id="top">
   <div class="page-shell">
     <div class="page-inner">
       <div class="top-row">
@@ -656,7 +657,12 @@
       </section>
 
       <footer class="page-footer">
-        <a class="footer-link" href="career_advancement_hub.html">
+        <!-- Fixed Back to Hub: works in iframe + direct open -->
+        <a
+          class="footer-link"
+          href="../career_advancement_hub_main.html"
+          onclick="backToHub(event)"
+        >
           <span>⬅</span>
           Back to Hub
         </a>
@@ -682,6 +688,19 @@
       const mode = body.classList.contains('light') ? 'light' : 'dark';
       localStorage.setItem('careerHubTheme', mode);
     });
+
+    // Back to Hub handler: supports iframe + direct navigation
+    function backToHub(event) {
+      if (event) event.preventDefault();
+
+      // If this page is inside the hub iframe and the hub API exists
+      if (window.parent && window.parent !== window && typeof window.parent.capHubShowHub === 'function') {
+        window.parent.capHubShowHub();
+      } else {
+        // Fallback: open the hub page directly if not in iframe
+        window.location.href = '../career_advancement_hub_main.html';
+      }
+    }
   </script>
 </body>
 </html>
