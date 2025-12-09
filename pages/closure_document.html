@@ -274,6 +274,7 @@
       align-items: center;
       gap: 6px;
       transition: all .2s ease;
+      cursor: pointer;
     }
 
     .footer-link span { font-size: 14px; }
@@ -624,49 +625,48 @@
             Documented lessons learned across the project lifecycle, using SDLC stages to organize insights.
           </p>
           <table>
-<tr>
-  <th>Date</th>
-  <th>SDLC Stage</th>
-  <th>What was the problem?</th>
-  <th>What was the consequence?</th>
-  <th>Lesson Learned Advice</th>
-</tr>
-<tr>
-  <td>09/05/2025</td>
-  <td>Initiation</td>
-  <td>My first idea (an AI research-style project) was too broad and not directly tied to my career goal.</td>
-  <td>I felt overwhelmed and unsure how to measure success for the semester.</td>
-  <td>Validate project scope with the instructor early and choose a project clearly aligned to a specific career outcome.</td>
-</tr>
-<tr>
-  <td>09/20/2025</td>
-  <td>Planning</td>
-  <td>I didn’t initially define clear, realistic deliverables for the charter and website.</td>
-  <td>I had to revise my plan and rebuild my deliverables to focus on things that truly helped my IT help desk goal.</td>
-  <td>Turn the overall goal into concrete, value-adding deliverables and confirm they are feasible within the semester.</td>
-</tr>
-<tr>
-  <td>10/15/2025</td>
-  <td>Execution</td>
-  <td>Coordinating interview schedules with busy professionals took longer than I expected.</td>
-  <td>The interview milestone became compressed, and I had less time to synthesize insights into my deliverables.</td>
-  <td>Start interview outreach early, build in follow-up time, and assume scheduling will take longer than planned.</td>
-</tr>
-<tr>
-  <td>11/03/2025</td>
-  <td>Monitoring</td>
-  <td>I skipped one weekly status check and didn’t update my progress and risks on time.</td>
-  <td>I lost visibility on what was slipping and had to catch up quickly on multiple tasks at once.</td>
-  <td>Protect a weekly review time to update status reports, adjust the plan, and identify risks before they become problems.</td>
-</tr>
-<tr>
-  <td>12/01/2025</td>
-  <td>Closing</td>
-  <td>I left polishing the website, STAR stories page, and formatting changes too close to the end.</td>
-  <td>The final week felt more stressful because I was doing content work and design fixes at the same time.</td>
-  <td>Finish draft content early, then schedule separate time just for quality and formatting so closing week is mainly review.</td>
-</tr>
-
+            <tr>
+              <th>Date</th>
+              <th>SDLC Stage</th>
+              <th>What was the problem?</th>
+              <th>What was the consequence?</th>
+              <th>Lesson Learned Advice</th>
+            </tr>
+            <tr>
+              <td>09/05/2025</td>
+              <td>Initiation</td>
+              <td>My first idea (an AI research-style project) was too broad and not directly tied to my career goal.</td>
+              <td>I felt overwhelmed and unsure how to measure success for the semester.</td>
+              <td>Validate project scope with the instructor early and choose a project clearly aligned to a specific career outcome.</td>
+            </tr>
+            <tr>
+              <td>09/20/2025</td>
+              <td>Planning</td>
+              <td>I didn’t initially define clear, realistic deliverables for the charter and website.</td>
+              <td>I had to revise my plan and rebuild my deliverables to focus on things that truly helped my IT help desk goal.</td>
+              <td>Turn the overall goal into concrete, value-adding deliverables and confirm they are feasible within the semester.</td>
+            </tr>
+            <tr>
+              <td>10/15/2025</td>
+              <td>Execution</td>
+              <td>Coordinating interview schedules with busy professionals took longer than I expected.</td>
+              <td>The interview milestone became compressed, and I had less time to synthesize insights into my deliverables.</td>
+              <td>Start interview outreach early, build in follow-up time, and assume scheduling will take longer than planned.</td>
+            </tr>
+            <tr>
+              <td>11/03/2025</td>
+              <td>Monitoring</td>
+              <td>I skipped one weekly status check and didn’t update my progress and risks on time.</td>
+              <td>I lost visibility on what was slipping and had to catch up quickly on multiple tasks at once.</td>
+              <td>Protect a weekly review time to update status reports, adjust the plan, and identify risks before they become problems.</td>
+            </tr>
+            <tr>
+              <td>12/01/2025</td>
+              <td>Closing</td>
+              <td>I left polishing the website, STAR stories page, and formatting changes too close to the end.</td>
+              <td>The final week felt more stressful because I was doing content work and design fixes at the same time.</td>
+              <td>Finish draft content early, then schedule separate time just for quality and formatting so closing week is mainly review.</td>
+            </tr>
           </table>
         </section>
 
@@ -745,7 +745,12 @@
       </div>
 
       <footer class="page-footer">
-        <a class="footer-link" href="career_advancement_hub_main.html">
+        <!-- Updated Back to Hub: works in iframe + direct open -->
+        <a
+          class="footer-link"
+          href="../career_advancement_hub_main.html"
+          onclick="backToHub(event)"
+        >
           <span>⬅</span>
           Back to Hub
         </a>
@@ -767,6 +772,19 @@
       const mode = body.classList.contains('light') ? 'light' : 'dark';
       localStorage.setItem('closureTheme', mode);
     });
+
+    // Back to Hub handler: supports iframe + direct navigation
+    function backToHub(event) {
+      if (event) event.preventDefault();
+
+      // If this page is inside the hub iframe and the hub API exists
+      if (window.parent && window.parent !== window && typeof window.parent.capHubShowHub === 'function') {
+        window.parent.capHubShowHub();
+      } else {
+        // Fallback: open the hub page directly if not in iframe
+        window.location.href = '../career_advancement_hub_main.html';
+      }
+    }
   </script>
 </body>
 </html>
