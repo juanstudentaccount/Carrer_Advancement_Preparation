@@ -151,6 +151,7 @@
 
     .nav-link {
       position: relative;
+      z-index: 0;
       text-decoration: none;
       font-size: 13px;
       padding: 6px 13px;
@@ -177,16 +178,16 @@
       border-color: transparent;
     }
 
+    /* gradient ring all around active bubble */
     .nav-link.is-active::after {
       content: '';
       position: absolute;
-      left: 12px;
-      right: 12px;
-      bottom: -3px;
-      height: 2px;
+      inset: -3px;
       border-radius: 999px;
       background: linear-gradient(90deg, rgba(56,189,248,0.4), rgba(129,140,248,0.9));
-      opacity: 0.95;
+      opacity: 0.98;
+      pointer-events: none;
+      z-index: -1;
     }
 
     .spacer { flex: 1; }
@@ -853,7 +854,7 @@
   </div>
 
   <script>
-    // Star animation on first load
+    // Star animation on each load
     function createStarAnimation() {
       const starContainer = document.getElementById('starContainer');
       const stars = ['⭐', '✨', '🌟', '💫', '⚡'];
@@ -896,16 +897,12 @@
       }, 3500);
     }
 
-    // Check if this is first visit
-    const hasVisited = sessionStorage.getItem('cap-hub-visited');
-    if (!hasVisited) {
-      sessionStorage.setItem('cap-hub-visited', 'true');
-      window.addEventListener('load', () => {
-        setTimeout(createStarAnimation, 300);
-      });
-    } else {
-      document.getElementById('starContainer').style.display = 'none';
-    }
+    // Run stars every time page loads
+    window.addEventListener('load', () => {
+      const starContainer = document.getElementById('starContainer');
+      starContainer.style.display = 'block';
+      createStarAnimation();
+    });
 
     // Theme handling
     const body = document.body;
@@ -927,7 +924,7 @@
     const framePanel = document.getElementById('framePanel');
     const frame = document.getElementById('pageFrame');
 
-    // All pages live in the /pages folder
+    // Page paths
     const pageMap = {
       charter: 'pages/Charter.html',
       status: 'pages/status_reports_fixed_dark_light.html',
