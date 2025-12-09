@@ -1161,7 +1161,8 @@
       <footer class="page-footer">
         <div>Use this page as evidence of consistent tracking, adjustment, and follow-through during the semester.</div>
         <div>
-          <a class="footer-link" href="career_advancement_hub_fixed.html">
+          <!-- ✅ id added so JS can hook into this -->
+          <a class="footer-link" href="career_advancement_hub_fixed.html" id="backToHub">
             <span>⬅</span>
             Back to Hub
           </a>
@@ -1185,6 +1186,22 @@
       const mode = body.classList.contains('light') ? 'light' : 'dark';
       localStorage.setItem('statusReportsTheme', mode);
     });
+
+    // ✅ Back to Hub button logic – matches your other pages
+    const backToHub = document.getElementById('backToHub');
+    if (backToHub) {
+      backToHub.addEventListener('click', () => {
+        // If this page is in an iframe, tell the parent hub to switch views
+        if (window.parent && window.parent !== window) {
+          try {
+            window.parent.postMessage({ type: 'cap-back-to-hub' }, '*');
+          } catch (e) {
+            // If messaging fails (cross-origin), the normal href still handles navigation
+          }
+        }
+        // If opened directly, the anchor's href does the navigation.
+      });
+    }
   </script>
 </body>
 </html>
