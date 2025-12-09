@@ -19,20 +19,10 @@
     html { scroll-behavior: smooth; }
 
     @keyframes starFly {
-      0% {
-        transform: translate(0, 0) scale(0);
-        opacity: 0;
-      }
-      10% {
-        opacity: 1;
-      }
-      90% {
-        opacity: 1;
-      }
-      100% {
-        transform: translate(var(--tx), var(--ty)) scale(1);
-        opacity: 0;
-      }
+      0% { transform: translate(0, 0) scale(0); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { transform: translate(var(--tx), var(--ty)) scale(1); opacity: 0; }
     }
 
     @keyframes shimmer {
@@ -51,37 +41,20 @@
     }
 
     @keyframes slideInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    /* unified sheen animation for all cards */
+    /* Unified sheen for all cards */
     @keyframes cardSheen {
-      0% {
-        transform: translateX(-140%);
-        opacity: 0;
-      }
-      45% {
-        opacity: 1;
-      }
-      100% {
-        transform: translateX(140%);
-        opacity: 0;
-      }
+      0%   { transform: translateX(-140%); opacity: 0; }
+      45%  { opacity: 1; }
+      100% { transform: translateX(140%); opacity: 0; }
     }
 
     .star-container {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      inset: 0;
       pointer-events: none;
       z-index: 9999;
       overflow: hidden;
@@ -113,12 +86,8 @@
       scrollbar-color: rgba(96,165,250,0.8) rgba(15,23,42,0.9);
     }
 
-    body::-webkit-scrollbar {
-      width: 8px;
-    }
-    body::-webkit-scrollbar-track {
-      background: rgba(15,23,42,0.95);
-    }
+    body::-webkit-scrollbar { width: 8px; }
+    body::-webkit-scrollbar-track { background: rgba(15,23,42,0.95); }
     body::-webkit-scrollbar-thumb {
       background: linear-gradient(180deg, #3b82f6, #22d3ee);
       border-radius: 999px;
@@ -238,15 +207,21 @@
       box-shadow: 0 10px 26px rgba(15,23,42,0.9);
     }
 
-    .theme-chip span:first-child {
-      font-size: 16px;
-    }
+    .theme-chip span:first-child { font-size: 16px; }
 
     .theme-chip:hover {
       transform: translateY(-1px);
       box-shadow: 0 14px 34px rgba(15,23,42,1);
       border-color: rgba(129,140,248,0.95);
       background: linear-gradient(135deg, rgba(30,64,175,0.98), rgba(15,23,42,0.92));
+    }
+
+    /* Accessible focus styles (keyboard) */
+    .nav-link:focus-visible,
+    .theme-chip:focus-visible,
+    .hub-btn:focus-visible {
+      outline: 2px solid rgba(56,189,248,0.95);
+      outline-offset: 2px;
     }
 
     /* Main layout */
@@ -316,6 +291,12 @@
       background-clip: text;
       -webkit-text-fill-color: transparent;
       text-shadow: 0 10px 32px rgba(15,23,42,1);
+      transition: transform .3s ease, text-shadow .3s ease;
+    }
+
+    .hub-panel:hover .hero-title {
+      transform: translateY(-1px);
+      text-shadow: 0 14px 40px rgba(15,23,42,1);
     }
 
     .hero-subtitle {
@@ -363,14 +344,13 @@
     .hub-card:nth-child(4) { animation-delay: 0.4s; }
     .hub-card:nth-child(5) { animation-delay: 0.5s; }
 
-    /* soft ambient glow behind every card */
+    /* Ambient glow behind cards */
     .hub-card::after {
       content: '';
       position: absolute;
       inset: -1px;
       border-radius: inherit;
-      background:
-        radial-gradient(circle at 0 0, rgba(148,163,253,0.26), transparent 60%);
+      background: radial-gradient(circle at 0 0, rgba(148,163,253,0.26), transparent 60%);
       opacity: 0.3;
       pointer-events: none;
       transition: opacity 0.3s ease, transform 0.3s ease;
@@ -381,7 +361,7 @@
       transform: scale(1.02);
     }
 
-    /* unified shiny swipe for all cards */
+    /* Shiny swipe */
     .hub-card::before {
       content: '';
       position: absolute;
@@ -528,15 +508,15 @@
       transition: width 0.4s ease, height 0.4s ease;
     }
 
-    .hub-btn:hover::before {
-      width: 300px;
-      height: 300px;
-    }
-
-    .hub-btn span:last-child { 
+    .hub-btn span:last-child {
       font-size: 14px;
       position: relative;
       z-index: 1;
+    }
+
+    .hub-btn:hover::before {
+      width: 300px;
+      height: 300px;
     }
 
     .hub-btn:hover {
@@ -545,9 +525,7 @@
       box-shadow: 0 14px 32px rgba(37,99,235,0.95);
     }
 
-    .hub-btn:active {
-      transform: translateY(0);
-    }
+    .hub-btn:active { transform: translateY(0); }
 
     .hub-card.wide .hub-btn {
       background: linear-gradient(135deg, #facc15, #f97316);
@@ -601,6 +579,7 @@
     }
 
     body.light .nav-link { color: #4b5563; }
+
     body.light .nav-link:hover {
       color: #111827;
       background: rgba(191,219,254,0.9);
@@ -737,14 +716,14 @@
         <span class="nav-dot"></span>
         CIS 4860 · CAREER ADVANCEMENT PREPARATION
       </div>
-      <div class="nav-links">
+      <nav class="nav-links" aria-label="Main navigation">
         <button class="nav-link is-active" data-view="hub" type="button">Hub</button>
         <button class="nav-link" data-view="charter" type="button">Project Charter</button>
         <button class="nav-link" data-view="status" type="button">Status Reports</button>
         <button class="nav-link" data-view="closure" type="button">Closure</button>
         <button class="nav-link" data-view="interview" type="button">Interview</button>
         <button class="nav-link" data-view="star" type="button">STAR Stories</button>
-      </div>
+      </nav>
       <div class="spacer"></div>
       <button id="themeToggle" class="theme-chip" type="button">
         <span>🎨</span>
@@ -755,7 +734,7 @@
 
   <div class="main-shell">
     <!-- Hub View -->
-    <section class="hub-panel" id="hubPanel">
+    <section class="hub-panel" id="hubPanel" aria-label="Career Advancement hub">
       <div class="eyebrow">CIS 4860 · Managing Information Systems Projects</div>
       <h1 class="hero-title">Career Advancement Preparation Hub</h1>
       <p class="hero-subtitle">
@@ -885,25 +864,25 @@
           const star = document.createElement('div');
           star.className = 'flying-star';
           star.textContent = stars[Math.floor(Math.random() * stars.length)];
-          
+
           // Random starting position
           const startX = Math.random() * window.innerWidth;
           const startY = Math.random() * window.innerHeight;
           star.style.left = startX + 'px';
           star.style.top = startY + 'px';
-          
+
           // Random trajectory
           const tx = (Math.random() - 0.5) * 2000;
           const ty = (Math.random() - 0.5) * 2000;
           star.style.setProperty('--tx', tx + 'px');
           star.style.setProperty('--ty', ty + 'px');
-          
+
           // Random animation duration
           const duration = 1.5 + Math.random() * 1;
           star.style.animationDuration = duration + 's';
-          
+
           starContainer.appendChild(star);
-          
+
           // Remove star after animation
           setTimeout(() => {
             star.remove();
@@ -948,7 +927,7 @@
     const framePanel = document.getElementById('framePanel');
     const frame = document.getElementById('pageFrame');
 
-    // UPDATED paths: all pages live in the /pages folder
+    // All pages live in the /pages folder
     const pageMap = {
       charter: 'pages/Charter.html',
       status: 'pages/status_reports_fixed_dark_light.html',
