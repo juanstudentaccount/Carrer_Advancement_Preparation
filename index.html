@@ -899,8 +899,8 @@
           star.style.setProperty('--tx', tx + 'px');
           star.style.setProperty('--ty', ty + 'px');
 
-          // Random animation duration (longer for slower fade)
-          const duration = 1.8 + Math.random() * 1.2; // ~1.8s–5s
+          // Shorter animation duration so it's less distracting
+          const duration = 1.6 + Math.random() * 1.2; // ~1.6s–2.8s
           star.style.animationDuration = duration + 's';
 
           starContainer.appendChild(star);
@@ -912,10 +912,10 @@
         }, i * 50);
       }
 
-      // Remove container after all animations complete (slower so it doesn't feel abrupt)
+      // Remove container after all animations complete (shorter overall)
       setTimeout(() => {
         starContainer.style.display = 'none';
-      }, 7000);
+      }, 4500);
     }
 
     // Run stars every time page loads
